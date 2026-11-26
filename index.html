@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Master-Level Primary SEO Meta Tags -->
+  <title>Smart Tools // Free Online Image, PDF & Daily Utility Studio</title>
+  <meta name="description" content="Fast, private, and free browser-based utility tools. Convert JPG, PNG, WebP, and PDF to exact file sizes, crop photos, remove backgrounds, and more." />
+  <meta name="keywords" content="Smart Tools, free online tools, image converter, pdf converter, compress image kb, background remover, photo cropper, web utilities" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Smart Tools" />
+  <meta name="theme-color" content="#dff1ff" />
+
+  <!-- Dynamic Canonical URL -->
+  <link rel="canonical" id="canonicalLink" href="https://example.com/" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Smart Tools" />
+  <meta property="og:title" content="Smart Tools // Fast & Private Browser Utility Tools" />
+  <meta property="og:description" content="All-in-one client-side web tools for image conversion, exact KB/MB compression, PDF tools, and daily utilities. 100% free." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Smart Tools // Free Online Utility Studio" />
+  <meta name="twitter:description" content="Convert images, compress files to exact KB/MB sizes, and use daily tools directly in your browser." />
+
+  <!-- Performance Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: WebSite + ItemList (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Smart Tools",
+        "description": "Free client-side multi-tool web studio for image conversion, file optimization, and daily utilities."
+      },
+      {
+        "@type": "ItemList",
+        "name": "Available Web Tools",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Image & PDF Format Converter",
+            "url": "/image-converter/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    @property --neon-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    :root {
+      --primary-blue: #2563eb;
+      --electric-cyan: #06b6d4;
+      --vivid-violet: #7c3aed;
+      --neon-pink: #ec4899;
+      --emerald: #059669;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    body {
+      background: linear-gradient(135deg, #d8eeff 0%, #ebe3ff 50%, #ffeedf 100%);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Full-Viewport Blurred Ambient Background */
+    .ambient-bg {
+      position: fixed;
+      inset: -40px;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      filter: blur(55px);
+      transform: translateZ(0);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .orb-1 {
+      width: 48vw;
+      height: 48vw;
+      max-width: 560px;
+      max-height: 560px;
+      background: radial-gradient(circle, rgba(253, 224, 71, 0.85) 0%, rgba(249, 115, 22, 0.62) 55%, transparent 75%);
+      top: -5%;
+      left: -4%;
+    }
+    .orb-2 {
+      width: 52vw;
+      height: 52vw;
+      max-width: 620px;
+      max-height: 620px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.85) 0%, rgba(99, 102, 241, 0.65) 55%, transparent 75%);
+      bottom: -8%;
+      right: -5%;
+    }
+    .orb-3 {
+      width: 46vw;
+      height: 46vw;
+      max-width: 540px;
+      max-height: 540px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.65) 0%, rgba(6, 182, 212, 0.45) 55%, transparent 75%);
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Full-Screen Edge-to-Edge Frosted Glass Surface */
+    .studio-shell {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      background: rgba(255, 255, 255, 0.34);
+      backdrop-filter: blur(38px) saturate(185%);
+      -webkit-backdrop-filter: blur(38px) saturate(185%);
+      display: flex;
+      flex-direction: column;
+      padding: 18px clamp(14px, 4vw, 48px) 36px;
+    }
+
+    .content-container {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-slash {
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .header-tagline {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Compact Hero Section (No Search Bar) */
+    .hero-section {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .hero-section h1 {
+      font-size: clamp(1.45rem, 3.2vw, 2.05rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .hero-section p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Tools Grid: 4 columns on desktop, 2 columns side-by-side on mobile */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* ============================================================
+       SLEEK COMPACT GLASS TOOL CARDS WITH RUNNING NEON BORDER
+       ============================================================ */
+    .tool-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      border-radius: 20px;
+      padding: 18px 14px 16px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28));
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      box-shadow:
+        0 12px 28px rgba(15, 23, 42, 0.06),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.92),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.45);
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    /* Running Neon Border Ring */
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 1.8px;
+      background: conic-gradient(
+        from var(--neon-angle),
+        rgba(255, 255, 255, 0.45) 0deg,
+        #06b6d4 65deg,
+        #2563eb 135deg,
+        #7c3aed 210deg,
+        #ec4899 280deg,
+        rgba(255, 255, 255, 0.45) 360deg
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: orbitNeonBorder 3.8s linear infinite;
+    }
+
+    /* Soft Neon Aura Glow */
+    .tool-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 21px;
+      padding: 2px;
+      background: conic-gradient(
+        from var(--neon-angle),
+        transparent 0deg,
+        rgba(6, 182, 212, 0.5) 75deg,
+        rgba(37, 99, 235, 0.5) 150deg,
+        rgba(124, 58, 237, 0.5) 230deg,
+        transparent 360deg
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      filter: blur(4px);
+      opacity: 0.72;
+      pointer-events: none;
+      animation: orbitNeonBorder 3.8s linear infinite;
+    }
+
+    .tool-card:nth-child(2)::before,
+    .tool-card:nth-child(2)::after { animation-delay: -0.95s; }
+    .tool-card:nth-child(3)::before,
+    .tool-card:nth-child(3)::after { animation-delay: -1.9s; }
+    .tool-card:nth-child(4)::before,
+    .tool-card:nth-child(4)::after { animation-delay: -2.85s; }
+
+    @keyframes orbitNeonBorder {
+      to { --neon-angle: 360deg; }
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46));
+      box-shadow:
+        0 18px 38px rgba(37, 99, 235, 0.14),
+        inset 0 1.5px 1px #ffffff;
+    }
+    .tool-card:hover::before,
+    .tool-card:hover::after {
+      animation-duration: 1.8s;
+      opacity: 1;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Compact Centered Top Icon */
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 10px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      transition: transform 0.22s ease;
+    }
+    .tool-card:hover .tool-icon {
+      transform: scale(1.06);
+    }
+    .icon-blue {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(37, 99, 235, 0.22));
+      color: var(--primary-blue);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+    .icon-amber {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.24), rgba(245, 158, 11, 0.22));
+      color: #d97706;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+    .icon-emerald {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(6, 182, 212, 0.22));
+      color: var(--emerald);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+    .icon-violet {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(236, 72, 153, 0.20));
+      color: var(--vivid-violet);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    .badge-live {
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .badge-soon {
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .tool-card h2 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+      line-height: 1.25;
+      text-align: center;
+    }
+    .tool-card p {
+      font-size: 0.79rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.60);
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .tool-card:hover .card-cta {
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 32px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Tablet & Mobile: Always 2 Cards Side-by-Side */
+    @media (max-width: 860px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .studio-shell {
+        padding: 14px 12px 28px;
+      }
+      header {
+        margin-bottom: 18px;
+      }
+      .hero-section {
+        margin-bottom: 20px;
+      }
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .tool-card {
+        padding: 14px 10px 13px;
+        border-radius: 18px;
+      }
+      .tool-card::before {
+        border-radius: 18px;
+      }
+      .tool-card::after {
+        border-radius: 19px;
+      }
+      .tool-icon {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 8px;
+        border-radius: 11px;
+      }
+      .tool-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+      .tool-card h2 {
+        font-size: 0.88rem;
+      }
+      .tool-card p {
+        font-size: 0.73rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+      .card-cta {
+        font-size: 0.72rem;
+        padding: 4px 11px;
+      }
+    }
+
+    /* ============================================================
+       SMART THRESHOLD SKELETON SHIMMER (Left-to-Right Light Sweep)
+       ============================================================ */
+    .skeleton-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(235, 244, 255, 0.92);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px clamp(14px, 4vw, 48px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .skeleton-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .skel-inner {
+      width: 100%;
+      max-width: 1020px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .skel-box {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      border-radius: 20px;
+    }
+    .skel-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.35) 25%,
+        rgba(6, 182, 212, 0.28) 50%,
+        rgba(255, 255, 255, 0.35) 75%,
+        transparent 100%
+      );
+      animation: shimmerSweep 1.15s infinite ease-in-out;
+    }
+    @keyframes shimmerSweep {
+      100% { transform: translateX(100%); }
+    }
+    .skel-header { width: 100%; height: 46px; margin-bottom: 24px; border-radius: 14px; }
+    .skel-hero { width: 100%; max-width: 440px; height: 58px; margin-bottom: 28px; }
+    .skel-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .skel-card { height: 175px; }
+    @media (max-width: 860px) {
+      .skel-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+
+    /* Sleek Glass Notice Modal for Upcoming Tools */
+    .glass-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      place-items: center;
+      padding: 16px;
+    }
+    .glass-modal-backdrop.open {
+      display: grid;
+    }
+    .glass-modal {
+      width: 100%;
+      max-width: 360px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1.5px solid #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+      animation: popModal 0.22s ease forwards;
+    }
+    @keyframes popModal {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .glass-modal h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    .glass-modal p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .modal-close-btn {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #ffffff;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Viewport Blurred Ambient Spheres -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Smart Skeleton Shimmer Loader (Triggers automatically if load > 120ms) -->
+  <div class="skeleton-overlay" id="skeletonOverlay" aria-hidden="true">
+    <div class="skel-inner">
+      <div class="skel-box skel-header"></div>
+      <div class="skel-box skel-hero"></div>
+      <div class="skel-grid">
+        <div class="skel-box skel-card"></div>
+        <div class="skel-box skel-card"></div>
+        <div class="skel-box skel-card"></div>
+        <div class="skel-box skel-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Edge-to-Edge Frosted Glass Shell -->
+  <div class="studio-shell">
+    <div class="content-container">
+      <header>
+        <div class="brand-group">
+          <a href="./" class="brand" aria-label="Smart Tools Home">
+            <span>Smart Tools</span>
+            <span class="brand-slash">//</span>
+          </a>
+          <span class="header-tagline">Fast, private &amp; free browser utilities</span>
+        </div>
+      </header>
+
+      <section class="hero-section">
+        <h1>All-in-One Smart Utility Tools</h1>
+        <p>Process images, PDFs, and daily tasks directly in your browser with zero server uploads.</p>
+      </section>
+
+      <main class="tools-grid" id="toolsGrid">
+        <!-- LIVE TOOL 1: Image Converter -->
+        <a href="./image-converter/index.html" class="tool-card" data-ready="true">
+          <div class="card-body">
+            <div class="tool-icon icon-blue">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="status-badge badge-live">Live Now</span>
+            <h2>Image &amp; PDF Converter</h2>
+            <p>Batch convert JPG, PNG, WebP &amp; PDF to exact KB/MB sizes.</p>
+          </div>
+          <span class="card-cta">Open Tool &rarr;</span>
+        </a>
+
+        <!-- UPCOMING TOOL 2: Preset Size Cropper -->
+        <a href="#preset-cropper" class="tool-card" data-ready="false" data-tool-name="Preset Size Cropper">
+          <div class="card-body">
+            <div class="tool-icon icon-amber">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 2v14a2 2 0 002 2h14M18 22V8a2 2 0 00-2-2H2" />
+              </svg>
+            </div>
+            <span class="status-badge badge-soon">Coming Soon</span>
+            <h2>Preset Size Cropper</h2>
+            <p>One-click cropping for Icons, Profiles, Thumbnails &amp; Banners.</p>
+          </div>
+          <span class="card-cta">Open Tool &rarr;</span>
+        </a>
+
+        <!-- UPCOMING TOOL 3: AI Background Remover -->
+        <a href="#bg-remover" class="tool-card" data-ready="false" data-tool-name="AI Background Remover">
+          <div class="card-body">
+            <div class="tool-icon icon-emerald">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <span class="status-badge badge-soon">Coming Soon</span>
+            <h2>Background Remover</h2>
+            <p>Remove photo backgrounds automatically with full transparency.</p>
+          </div>
+          <span class="card-cta">Open Tool &rarr;</span>
+        </a>
+
+        <!-- UPCOMING TOOL 4: Ramadan & Prayer Timetable -->
+        <a href="#ramadan-calendar" class="tool-card" data-ready="false" data-tool-name="Ramadan & Prayer Times">
+          <div class="card-body">
+            <div class="tool-icon icon-violet">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </div>
+            <span class="status-badge badge-soon">Coming Soon</span>
+            <h2>Ramadan &amp; Prayer</h2>
+            <p>Sehri &amp; Iftar schedule, live countdown timer &amp; daily Duas.</p>
+          </div>
+          <span class="card-cta">Open Tool &rarr;</span>
+        </a>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Smart Tools // — Fast, Private &amp; Free Browser Utilities.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Sleek Glass Modal for Tools Being Added Next -->
+  <div class="glass-modal-backdrop" id="comingSoonModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="glass-modal">
+      <h3 id="modalTitle">Tool Coming Soon</h3>
+      <p id="modalDesc">This utility is currently being built and will be added to Smart Tools shortly.</p>
+      <button type="button" class="modal-close-btn" id="closeModalBtn">Got It</button>
+    </div>
+  </div>
+
+  <script>
+    const canonicalEl = document.getElementById('canonicalLink');
+    if (canonicalEl && window.location.protocol.startsWith('http')) {
+      canonicalEl.href = window.location.origin + window.location.pathname;
+    }
+
+    /* 1. Smart Threshold Skeleton Shimmer (120ms Rule) */
+    const skeletonOverlay = document.getElementById('skeletonOverlay');
+    let skeletonShown = false;
+    const loaderTimer = setTimeout(() => {
+      skeletonOverlay.classList.add('visible');
+      skeletonShown = true;
+    }, 120);
+
+    window.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      if (skeletonShown) {
+        setTimeout(() => skeletonOverlay.classList.remove('visible'), 280);
+      }
+    });
+
+    /* 2. Full-Card Click Handler + Navigation Shimmer */
+    const cards = Array.from(document.querySelectorAll('.tool-card'));
+    const comingSoonModal = document.getElementById('comingSoonModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const isReady = card.dataset.ready === 'true';
+        if (!isReady) {
+          e.preventDefault();
+          modalTitle.textContent = `${card.dataset.toolName} — Coming Soon`;
+          modalDesc.textContent = `We are adding ${card.dataset.toolName} in the next update. Try the live Image Converter now!`;
+          comingSoonModal.classList.add('open');
+          return;
+        }
+
+        // Trigger smart 120ms threshold shimmer if navigation takes >120ms
+        setTimeout(() => {
+          skeletonOverlay.classList.add('visible');
+        }, 120);
+      });
+    });
+
+    closeModalBtn.addEventListener('click', () => comingSoonModal.classList.remove('open'));
+    comingSoonModal.addEventListener('click', (e) => {
+      if (e.target === comingSoonModal) comingSoonModal.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

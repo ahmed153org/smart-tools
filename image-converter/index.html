@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Master-Level Primary SEO Meta Tags -->
+  <title>X Converter // Convert Your Image & Target Your Size — JPG, PNG, WebP, PDF</title>
+  <meta name="description" content="Convert single or multiple images between JPG, PNG, WebP, and PDF to an exact target KB or MB file size directly in your browser. 100% free and private." />
+  <meta name="keywords" content="x converter, image converter, compress image to exact kb, jpg to webp, png to jpg, image to pdf, pdf to jpg, batch photo converter" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="X Converter" />
+  <meta name="theme-color" content="#e0f2fe" />
+
+  <!-- Dynamic Canonical URL -->
+  <link rel="canonical" id="canonicalLink" href="https://example.com/image-converter/" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="X Converter" />
+  <meta property="og:title" content="X Converter // Convert Your Image & Target Your Size" />
+  <meta property="og:description" content="Convert multiple photos and PDFs between JPG, PNG, WebP, and PDF with exact KB/MB file size targeting inside your browser." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="X Converter // Batch Image & PDF Converter" />
+  <meta name="twitter:description" content="Convert photos and PDFs to your exact target KB or MB size instantly in your browser." />
+
+  <!-- Performance Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: WebApplication + FAQPage + BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "X Converter — Image & PDF Format Converter",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Batch convert multiple JPG, PNG, WebP, and PDF files simultaneously",
+          "Exact target file size control in KB and MB",
+          "Convert PDF pages to high-resolution images",
+          "Download individual files or export all files as a single ZIP archive",
+          "100% client-side browser processing with zero server uploads"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+          { "@type": "ListItem", "position": 2, "name": "Image & PDF Converter", "item": "/image-converter/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I convert an image to an exact KB or MB size?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload your photo, choose JPG, PNG, WebP, or PDF, enter or slide to your desired target size in KB or MB, and click Convert Now."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I convert multiple images at once?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select or drag multiple photos into the upload box, set your target size and format, and convert the entire batch in one click."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my files uploaded to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All file conversions run locally inside your browser so your photos and documents remain completely private."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Non-blocking Deferred Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+
+  <style>
+    :root {
+      --glass-surface-strong: rgba(255, 255, 255, 0.84);
+      --glass-border: rgba(255, 255, 255, 0.96);
+      --glass-shadow: 0 16px 40px rgba(30, 58, 138, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+      --primary-blue: #2563eb;
+      --electric-cyan: #06b6d4;
+      --vivid-violet: #7c3aed;
+      --emerald: #059669;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #dff1ff 0%, #ede7ff 48%, #fff1e6 100%);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 16px 56px;
+    }
+
+    /* GPU-Optimized Lush Blurred 3D Spheres (Zero filter lag, full vibrant color) */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      transform: translateZ(0);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .orb-1 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 38% 38%, rgba(253, 224, 71, 0.85) 0%, rgba(249, 115, 22, 0.65) 48%, rgba(249, 115, 22, 0) 72%);
+      top: 2%;
+      left: 3%;
+    }
+    .orb-2 {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.82) 0%, rgba(99, 102, 241, 0.62) 50%, rgba(99, 102, 241, 0) 73%);
+      bottom: 1%;
+      right: 2%;
+    }
+    .orb-3 {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.42) 0%, rgba(56, 189, 248, 0.22) 45%, transparent 72%);
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Main Luminous Frosted Glass Shell (Single hardware-accelerated blur pass) */
+    .studio-shell {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      background: rgba(255, 255, 255, 0.52);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 18px 24px 30px;
+      box-shadow: 0 24px 60px rgba(30, 41, 59, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      transform: translateZ(0);
+    }
+
+    /* Compact Top Bar: X Converter // + Convert your image and target your size */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .brand-slash {
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .header-tagline {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+    }
+
+    /* ============================================================
+       INTERACTIVE PIPELINE STAGE
+       ============================================================ */
+    .pipeline-stage {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #pipeSvg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    /* 3D Translucent Glass Tube Styling */
+    .pipe-tube-shadow {
+      fill: none;
+      stroke: rgba(37, 99, 235, 0.12);
+      stroke-width: 13;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pipe-tube-glass {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.94);
+      stroke-width: 9.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pipe-tube-core {
+      fill: none;
+      stroke: rgba(148, 163, 184, 0.30);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s ease;
+    }
+    .pipe-tube-core.is-armed {
+      stroke: rgba(37, 99, 235, 0.45);
+    }
+
+    /* Wave Stream Layers (Hidden until Convert Now is clicked) */
+    .pipe-wave-primary {
+      fill: none;
+      stroke: url(#luminousWaveGrad);
+      stroke-width: 5.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 16 14 9 19;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .pipe-wave-secondary {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 8 22 5 23;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Activated ONLY while converting */
+    .pipe-wave-primary.is-flowing {
+      opacity: 1;
+      will-change: stroke-dashoffset;
+      animation: waveSurgeFlow 0.55s linear infinite;
+    }
+    .pipe-wave-secondary.is-flowing {
+      opacity: 0.95;
+      will-change: stroke-dashoffset;
+      animation: waveSurgeFlow 0.55s linear infinite;
+    }
+
+    @keyframes waveSurgeFlow {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -58; }
+    }
+
+    /* Luminous Frosted Glass Cards (Layered smoothly over studio-shell without nested blur overhead) */
+    .glass-card {
+      position: relative;
+      z-index: 3;
+      width: calc(100% - 140px);
+      max-width: 520px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1.5px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 18px 20px;
+      box-shadow: var(--glass-shadow), inset 0 1px 0 #ffffff;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .upload-box {
+      text-align: center;
+      cursor: pointer;
+      border: 2px dashed rgba(37, 99, 235, 0.28);
+    }
+    .upload-box.has-files {
+      cursor: default;
+      border-style: solid;
+      border-color: rgba(255, 255, 255, 0.96);
+      text-align: left;
+    }
+    .upload-box:not(.has-files):hover,
+    .upload-box.drag-over {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--primary-blue);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.14);
+    }
+
+    .upload-icon-wrap {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 10px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.14), rgba(37, 99, 235, 0.14));
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      display: grid;
+      place-items: center;
+      color: var(--primary-blue);
+    }
+    .upload-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+    .upload-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Multi-File Queue Inside Upload Box */
+    .batch-header {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    }
+    .batch-header.active {
+      display: flex;
+    }
+    .batch-count {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .batch-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .mini-btn {
+      background: rgba(37, 99, 235, 0.09);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      color: var(--primary-blue);
+      padding: 5px 10px;
+      border-radius: 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .mini-btn:hover {
+      background: var(--primary-blue);
+      color: #ffffff;
+    }
+    .mini-btn.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    .mini-btn.danger:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    .file-list {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 185px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .file-list.active {
+      display: flex;
+    }
+    .file-item-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #ffffff;
+      padding: 7px 10px;
+      border-radius: 13px;
+    }
+    .thumb-frame {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 1.5px solid #ffffff;
+      background: #f1f5f9;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.78rem;
+      color: var(--primary-blue);
+    }
+    .thumb-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .file-meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .file-name {
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+    .file-stats {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+    .remove-item-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(15, 23, 42, 0.06);
+      color: var(--text-muted);
+      font-weight: 800;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .remove-item-btn:hover {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    /* Middle Format Nodes Row */
+    .format-hub {
+      position: relative;
+      z-index: 3;
+      margin-top: 52px;
+      width: calc(100% - 150px);
+      max-width: 470px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .format-node {
+      position: relative;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1.5px solid #ffffff;
+      border-radius: 15px;
+      padding: 11px 8px;
+      text-align: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Top Pipe Connector Nozzle (All 4 buttons receive top pipes from top) */
+    .format-node::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: 2px solid #ffffff;
+      transition: background 0.2s ease;
+    }
+
+    /* Outgoing Pipe Connector Nozzles:
+       - JPG (#node-0): Left side
+       - PNG (#node-1) & WebP (#node-2): Bottom
+       - PDF (#node-3): Right side
+    */
+    .format-node::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: 2px solid #ffffff;
+      transition: background 0.2s ease;
+    }
+    #node-0::after {
+      left: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #node-1::after,
+    #node-2::after {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #node-3::after {
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .format-node:hover {
+      transform: translateY(-2px);
+      color: var(--primary-blue);
+      background: #ffffff;
+    }
+    .format-node.selected {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      border-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.30), 0 0 0 3px rgba(6, 182, 212, 0.16);
+    }
+    .format-node.selected::before,
+    .format-node.selected::after {
+      background: var(--electric-cyan);
+    }
+    .format-node.pulse-hit {
+      transform: scale(1.06);
+      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.50);
+    }
+
+    /* Spacious Action Bar with Exact Target Size (KB / MB) Control */
+    .action-bar {
+      position: relative;
+      z-index: 3;
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: calc(100% - 176px);
+      max-width: 470px;
+    }
+
+    .size-control-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1.5px solid #ffffff;
+      padding: 7px 11px;
+      border-radius: 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+    }
+    .size-control-pill input[type="range"] {
+      width: 82px;
+      accent-color: var(--primary-blue);
+      cursor: pointer;
+    }
+    .size-input-group {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(241, 245, 249, 0.95);
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      border-radius: 9px;
+      padding: 2px 6px;
+    }
+    .size-num-input {
+      width: 48px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--primary-blue);
+      text-align: right;
+      outline: none;
+    }
+    .size-unit-select {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.76rem;
+      color: var(--text-dark);
+      padding-left: 3px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .convert-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #4f46e5 55%, #7c3aed 100%);
+      border: none;
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.30);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      flex-shrink: 0;
+    }
+    .convert-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.42);
+    }
+    .convert-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Bottom Output Box */
+    .output-box {
+      margin-top: 38px;
+      min-height: 118px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    .output-box.has-results {
+      align-items: stretch;
+      text-align: left;
+    }
+    .output-box.energy-received {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: var(--electric-cyan);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.14), inset 0 0 18px rgba(6, 182, 212, 0.08);
+    }
+
+    /* Left & Right Side Pipe Connector Nozzles on Output Box */
+    .side-port {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+      z-index: 4;
+      transition: background 0.2s ease;
+    }
+    .side-port.left { left: -6px; }
+    .side-port.right { right: -6px; }
+    .side-port.is-armed {
+      background: var(--electric-cyan);
+    }
+
+    .output-placeholder {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .port-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      padding: 4px 11px;
+      border-radius: 999px;
+    }
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--electric-cyan);
+      animation: pulseDot 1.4s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Batch Output Results */
+    .output-results-wrapper {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .output-results-wrapper.active {
+      display: flex;
+    }
+    .output-summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    }
+    .output-summary-text {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .output-summary-text span {
+      color: var(--emerald);
+    }
+    .download-all-btn {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.24);
+      transition: transform 0.2s ease;
+    }
+    .download-all-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .output-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      max-height: 270px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .output-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid #ffffff;
+      padding: 9px 11px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    .result-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+    .size-pill {
+      display: inline-block;
+      margin-top: 2px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.24);
+    }
+    .download-btn {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #ffffff;
+      padding: 9px 15px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
+    }
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(16, 185, 129, 0.38);
+    }
+
+    /* ============================================================
+       ON-PAGE SEO CONTENT & FAQ SECTION
+       ============================================================ */
+    .seo-content-wrapper {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .seo-card {
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 14px 36px rgba(30, 41, 59, 0.05);
+    }
+    .seo-card h1, .seo-card h2 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 9px;
+    }
+    .seo-card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .feature-item {
+      background: rgba(255, 255, 255, 0.80);
+      border: 1px solid #ffffff;
+      border-radius: 15px;
+      padding: 14px;
+    }
+    .feature-item h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 4px;
+    }
+    .feature-item p {
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    details.faq-item {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding: 12px 0;
+    }
+    details.faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    details.faq-item summary {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    details.faq-item summary::after {
+      content: '+';
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    details.faq-item[open] summary::after {
+      content: '−';
+    }
+    details.faq-item p {
+      margin-top: 7px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      position: relative;
+      z-index: 5;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Smart Threshold Skeleton Loader (Only triggers if page load > 120ms) */
+    .skeleton-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(238, 244, 255, 0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .skeleton-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .skel-box {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1.5px solid #ffffff;
+      border-radius: 22px;
+    }
+    .skel-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.24), transparent);
+      animation: shimmerSweep 1.2s infinite ease-in-out;
+    }
+    @keyframes shimmerSweep {
+      100% { transform: translateX(100%); }
+    }
+    .skel-header { width: 100%; max-width: 800px; height: 48px; margin-bottom: 18px; border-radius: 16px; }
+    .skel-upload { width: calc(100% - 140px); max-width: 520px; height: 135px; }
+    .skel-pills {
+      width: calc(100% - 150px);
+      max-width: 470px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 52px;
+    }
+    .skel-pill { height: 44px; border-radius: 15px; }
+    .skel-btn { width: 220px; height: 42px; border-radius: 14px; margin-top: 38px; }
+    .skel-output { width: calc(100% - 140px); max-width: 520px; height: 118px; margin-top: 38px; }
+
+    @media (max-width: 680px) {
+      .studio-shell {
+        padding: 14px 10px 24px;
+        border-radius: 24px;
+      }
+      .glass-card {
+        width: calc(100% - 88px);
+        padding: 15px;
+      }
+      .format-hub {
+        width: calc(100% - 96px);
+        gap: 8px;
+        margin-top: 46px;
+      }
+      .format-node {
+        font-size: 0.8rem;
+        padding: 10px 4px;
+      }
+      .action-bar {
+        width: calc(100% - 116px);
+        max-width: 260px;
+        margin-top: 34px;
+        flex-direction: column;
+      }
+      .size-control-pill {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .size-control-pill input[type="range"] {
+        width: 60px;
+      }
+      .convert-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .output-item-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .download-btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Luminous Blurred 3D Spheres -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Automatic Smart Skeleton Loader -->
+  <div class="skeleton-overlay" id="skeletonOverlay" aria-hidden="true">
+    <div class="skel-box skel-header"></div>
+    <div class="skel-box skel-upload"></div>
+    <div class="skel-pills">
+      <div class="skel-box skel-pill"></div>
+      <div class="skel-box skel-pill"></div>
+      <div class="skel-box skel-pill"></div>
+      <div class="skel-box skel-pill"></div>
+    </div>
+    <div class="skel-box skel-btn"></div>
+    <div class="skel-box skel-output"></div>
+  </div>
+
+  <!-- Main Luminous Frosted Glass Studio -->
+  <div class="studio-shell">
+    <header>
+      <a href="../" class="brand" aria-label="X Converter Home">
+        <span>X Converter</span>
+        <span class="brand-slash">//</span>
+      </a>
+      <span class="header-tagline">Convert your image and target your size</span>
+    </header>
+
+    <!-- Main Interactive Pipeline Stage -->
+    <main class="pipeline-stage" id="pipelineStage">
+
+      <!-- Dynamic 3D Glass Pipes SVG -->
+      <svg id="pipeSvg" aria-hidden="true">
+        <defs>
+          <linearGradient id="luminousWaveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4" />
+            <stop offset="50%" stop-color="#2563eb" />
+            <stop offset="100%" stop-color="#7c3aed" />
+          </linearGradient>
+        </defs>
+
+        <!-- 4 Top Pipes (Upload Box -> JPG, PNG, WebP, PDF) -->
+        <g id="topPipesGroup"></g>
+
+        <!-- 4 Bottom Pipes (JPG Left Side -> Output Left Side, PNG/WebP -> Output Top, PDF Right Side -> Output Right Side) -->
+        <g id="bottomPipesGroup"></g>
+      </svg>
+
+      <!-- TOP BOX: Upload Single or Multiple Photos / PDFs -->
+      <section class="glass-card upload-box" id="uploadBox" aria-label="Upload Photos or PDFs">
+        <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,application/pdf" multiple hidden />
+
+        <!-- Empty State -->
+        <div id="uploadEmptyState">
+          <div class="upload-icon-wrap">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0l-4 4m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+            </svg>
+          </div>
+          <div class="upload-title">Click or Drag &amp; Drop Photos / PDFs Here</div>
+          <div class="upload-sub">Supports single or batch files (JPG, PNG, WebP &amp; PDF)</div>
+        </div>
+
+        <!-- Batch Header -->
+        <div class="batch-header" id="batchHeader">
+          <span class="batch-count" id="batchCountText">0 Files Selected</span>
+          <div class="batch-actions">
+            <button type="button" class="mini-btn" id="addMoreBtn">+ Add More</button>
+            <button type="button" class="mini-btn danger" id="clearAllBtn">Clear All</button>
+          </div>
+        </div>
+
+        <!-- Uploaded Files List -->
+        <div class="file-list" id="fileList"></div>
+      </section>
+
+      <!-- MIDDLE NODES: 4 Format Buttons -->
+      <div class="format-hub" id="formatHub" role="group" aria-label="Select Output Format">
+        <button type="button" class="format-node" data-format="jpg" id="node-0">JPG</button>
+        <button type="button" class="format-node" data-format="png" id="node-1">PNG</button>
+        <button type="button" class="format-node selected" data-format="webp" id="node-2">WebP</button>
+        <button type="button" class="format-node" data-format="pdf" id="node-3">PDF</button>
+      </div>
+
+      <!-- ACTION CONTROLS: Target Size (KB / MB) Meter + Convert Button -->
+      <div class="action-bar" id="actionBar">
+        <div class="size-control-pill">
+          <label for="targetSizeInput">Target Size:</label>
+          <input type="range" id="targetSizeRange" min="10" max="1000" step="5" value="200" aria-label="Target file size slider" />
+          <div class="size-input-group">
+            <input type="number" id="targetSizeInput" class="size-num-input" min="5" max="5000" value="200" />
+            <select id="targetSizeUnit" class="size-unit-select" aria-label="File size unit">
+              <option value="KB" selected>KB</option>
+              <option value="MB">MB</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="convert-btn" id="convertBtn" disabled>
+          <span id="convertBtnLabel">Convert Now</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- BOTTOM BOX: Converted Output Box -->
+      <section class="glass-card output-box" id="outputBox" aria-live="polite">
+        <!-- Left & Right Pipe Connection Nozzles for JPG and PDF -->
+        <span class="side-port left" id="leftOutputPort" aria-hidden="true"></span>
+        <span class="side-port right" id="rightOutputPort" aria-hidden="true"></span>
+
+        <div class="output-placeholder" id="outputPlaceholder">
+          <div class="port-indicator">
+            <span class="dot-pulse"></span>
+            <span>Output Ready</span>
+          </div>
+          <span>Upload files, set your target KB/MB size, and click Convert Now</span>
+        </div>
+
+        <div class="output-results-wrapper" id="outputResultsWrapper">
+          <div class="output-summary-bar">
+            <div class="output-summary-text" id="outputSummaryText">
+              Converted <span>0 Files</span>
+            </div>
+            <button type="button" class="download-all-btn" id="downloadAllBtn" style="display:none;">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              <span>Download All (ZIP)</span>
+            </button>
+          </div>
+          <div class="output-list" id="outputList"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- On-Page SEO Section: Features & FAQ -->
+  <section class="seo-content-wrapper" aria-label="Converter Features and Frequently Asked Questions">
+    <article class="seo-card">
+      <h1>Free Batch Image &amp; PDF Format Converter with Exact Target File Size</h1>
+      <p>
+        Need to optimize an image under <strong>50 KB</strong>, <strong>100 KB</strong>, or <strong>2 MB</strong> for a website, form, or document? X Converter automatically calibrates compression and resolution in your browser so your converted <strong>JPG</strong>, <strong>PNG</strong>, <strong>WebP</strong>, or <strong>PDF</strong> files match your exact target size.
+      </p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>Exact KB &amp; MB Targeting</h3>
+          <p>Set any desired output size using the slider or number box, and our smart binary-search engine hits your target size with maximum sharpness.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Batch Multi-File Conversion</h3>
+          <p>Convert dozens of photos or PDFs in one batch and download each file individually or export everything together as a ZIP archive.</p>
+        </div>
+        <div class="feature-item">
+          <h3>100% Browser-Side Privacy</h3>
+          <p>Zero server uploads. Every image and PDF is processed locally on your device for instant speed and complete confidentiality.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="seo-card">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <details class="faq-item" open>
+        <summary>How do I resize an image to an exact KB or MB file size?</summary>
+        <p>Select your photos, pick JPG, PNG, WebP, or PDF, enter your desired size in the Target Size meter (e.g., 100 KB or 1.5 MB), and click Convert Now.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I convert multiple images at the same time?</summary>
+        <p>Yes. Drag and drop or select multiple files at once. Each file will be converted to your chosen format and target size, ready for individual or ZIP download.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are my files uploaded to a server?</summary>
+        <p>No. X Converter runs 100% inside your web browser. Your files never leave your computer or smartphone.</p>
+      </details>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 X Converter // — Fast, Private &amp; Free Browser Utilities.</p>
+  </footer>
+
+  <script>
+    /* Set Canonical URL Dynamically */
+    const canonicalEl = document.getElementById('canonicalLink');
+    if (canonicalEl && window.location.protocol.startsWith('http')) {
+      canonicalEl.href = window.location.origin + window.location.pathname;
+    }
+
+    /* ============================================================
+       1. AUTOMATIC SMART SKELETON LOADER (120ms Rule)
+       ============================================================ */
+    const skeletonOverlay = document.getElementById('skeletonOverlay');
+    let skeletonShown = false;
+
+    const loaderTimer = setTimeout(() => {
+      skeletonOverlay.classList.add('visible');
+      skeletonShown = true;
+    }, 120);
+
+    window.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      if (skeletonShown) {
+        setTimeout(() => skeletonOverlay.classList.remove('visible'), 300);
+      }
+      drawPipes();
+    });
+
+    /* ============================================================
+       2. PIPE GEOMETRY:
+          - JPG pipe plugs into LEFT SIDE of JPG button -> LEFT SIDE of Output Box
+          - PDF pipe plugs into RIGHT SIDE of PDF button -> RIGHT SIDE of Output Box
+          - PNG & WebP pipes plug into BOTTOM of buttons -> TOP of Output Box
+       ============================================================ */
+    const stage = document.getElementById('pipelineStage');
+    const uploadBox = document.getElementById('uploadBox');
+    const actionBar = document.getElementById('actionBar');
+    const outputBox = document.getElementById('outputBox');
+    const leftOutputPort = document.getElementById('leftOutputPort');
+    const rightOutputPort = document.getElementById('rightOutputPort');
+    const topPipesGroup = document.getElementById('topPipesGroup');
+    const bottomPipesGroup = document.getElementById('bottomPipesGroup');
+    const formatNodes = Array.from(document.querySelectorAll('.format-node'));
+
+    let selectedIndex = 2; // WebP default
+    let selectedFormat = 'webp';
+
+    function drawPipes() {
+      const stageRect = stage.getBoundingClientRect();
+      const upRect = uploadBox.getBoundingClientRect();
+      const actRect = actionBar.getBoundingClientRect();
+      const outRect = outputBox.getBoundingClientRect();
+
+      topPipesGroup.innerHTML = '';
+      bottomPipesGroup.innerHTML = '';
+
+      /* --- PART A: 4 Top Pipes (Upload Box Bottom -> 4 Format Nodes Top) --- */
+      const upBottomY = upRect.bottom - stageRect.top;
+      const upCenterX = (upRect.left - stageRect.left) + upRect.width / 2;
+      const upSpread = Math.min(upRect.width * 0.54, 240);
+
+      formatNodes.forEach((node, idx) => {
+        const nRect = node.getBoundingClientRect();
+        const targetX = (nRect.left - stageRect.left) + nRect.width / 2;
+        const targetY = nRect.top - stageRect.top;
+
+        const startX = upCenterX - upSpread / 2 + (upSpread / 3) * idx;
+        const midY = upBottomY + (targetY - upBottomY) * 0.52;
+
+        const topD = `M ${startX} ${upBottomY} C ${startX} ${midY}, ${targetX} ${midY}, ${targetX} ${targetY}`;
+        createPipeLayers(topPipesGroup, topD, `top-pipe-${idx}`, idx === selectedIndex);
+      });
+
+      /* --- PART B: 4 Bottom Pipes --- */
+      const actLeft = actRect.left - stageRect.left;
+      const actRight = actRect.right - stageRect.left;
+      const actBottomY = actRect.bottom - stageRect.top;
+
+      const outLeftX = outRect.left - stageRect.left;
+      const outRightX = outRect.right - stageRect.left;
+      const outTopY = outRect.top - stageRect.top;
+      const outMidY = outTopY + outRect.height * 0.5;
+      const outCenterX = outLeftX + outRect.width / 2;
+
+      const isMobile = window.innerWidth <= 680;
+      const innerClearance = isMobile ? 12 : 16;
+      const outerSideOffset = isMobile ? 18 : 28;
+
+      const leftInnerLaneX = Math.max(26, actLeft - innerClearance);
+      const leftOuterLaneX = Math.max(8, outLeftX - outerSideOffset);
+
+      const rightInnerLaneX = Math.min(stageRect.width - 26, actRight + innerClearance);
+      const rightOuterLaneX = Math.min(stageRect.width - 8, outRightX + outerSideOffset);
+
+      formatNodes.forEach((node, idx) => {
+        const nRect = node.getBoundingClientRect();
+        const r = 9;
+        let bottomD = '';
+
+        if (idx === 0) {
+          // JPG Pipe: starts directly from LEFT SIDE of JPG button -> goes left -> down -> plugs into LEFT SIDE of Output Box
+          const startX = nRect.left - stageRect.left;
+          const startY = (nRect.top - stageRect.top) + nRect.height * 0.5;
+          bottomD = `
+            M ${startX} ${startY}
+            L ${leftOuterLaneX + r} ${startY}
+            Q ${leftOuterLaneX} ${startY} ${leftOuterLaneX} ${startY + r}
+            L ${leftOuterLaneX} ${outMidY - r}
+            Q ${leftOuterLaneX} ${outMidY} ${leftOuterLaneX + r} ${outMidY}
+            L ${outLeftX} ${outMidY}
+          `;
+        } else if (idx === 3) {
+          // PDF Pipe: starts directly from RIGHT SIDE of PDF button -> goes right -> down -> plugs into RIGHT SIDE of Output Box
+          const startX = nRect.right - stageRect.left;
+          const startY = (nRect.top - stageRect.top) + nRect.height * 0.5;
+          bottomD = `
+            M ${startX} ${startY}
+            L ${rightOuterLaneX - r} ${startY}
+            Q ${rightOuterLaneX} ${startY} ${rightOuterLaneX} ${startY + r}
+            L ${rightOuterLaneX} ${outMidY - r}
+            Q ${rightOuterLaneX} ${outMidY} ${rightOuterLaneX - r} ${outMidY}
+            L ${outRightX} ${outMidY}
+          `;
+        } else if (idx === 1) {
+          // PNG Pipe: bottom of PNG -> left inner lane -> top-left of Output Box
+          const startX = (nRect.left - stageRect.left) + nRect.width * 0.5;
+          const startY = nRect.bottom - stageRect.top;
+          const upperTurnY = startY + 20;
+          const lowerTurnY = actBottomY + 18;
+          const endX = outCenterX - Math.min(outRect.width * 0.16, 65);
+          const dir1 = leftInnerLaneX < startX ? -1 : 1;
+          const dir2 = endX < leftInnerLaneX ? -1 : 1;
+          bottomD = `
+            M ${startX} ${startY}
+            L ${startX} ${upperTurnY - r}
+            Q ${startX} ${upperTurnY} ${startX + dir1 * r} ${upperTurnY}
+            L ${leftInnerLaneX - dir1 * r} ${upperTurnY}
+            Q ${leftInnerLaneX} ${upperTurnY} ${leftInnerLaneX} ${upperTurnY + r}
+            L ${leftInnerLaneX} ${lowerTurnY - r}
+            Q ${leftInnerLaneX} ${lowerTurnY} ${leftInnerLaneX + dir2 * r} ${lowerTurnY}
+            L ${endX - dir2 * r} ${lowerTurnY}
+            Q ${endX} ${lowerTurnY} ${endX} ${lowerTurnY + r}
+            L ${endX} ${outTopY}
+          `;
+        } else if (idx === 2) {
+          // WebP Pipe: bottom of WebP -> right inner lane -> top-right of Output Box
+          const startX = (nRect.left - stageRect.left) + nRect.width * 0.5;
+          const startY = nRect.bottom - stageRect.top;
+          const upperTurnY = startY + 20;
+          const lowerTurnY = actBottomY + 18;
+          const endX = outCenterX + Math.min(outRect.width * 0.16, 65);
+          const dir1 = rightInnerLaneX < startX ? -1 : 1;
+          const dir2 = endX < rightInnerLaneX ? -1 : 1;
+          bottomD = `
+            M ${startX} ${startY}
+            L ${startX} ${upperTurnY - r}
+            Q ${startX} ${upperTurnY} ${startX + dir1 * r} ${upperTurnY}
+            L ${rightInnerLaneX - dir1 * r} ${upperTurnY}
+            Q ${rightInnerLaneX} ${upperTurnY} ${rightInnerLaneX} ${upperTurnY + r}
+            L ${rightInnerLaneX} ${lowerTurnY - r}
+            Q ${rightInnerLaneX} ${lowerTurnY} ${rightInnerLaneX + dir2 * r} ${lowerTurnY}
+            L ${endX - dir2 * r} ${lowerTurnY}
+            Q ${endX} ${lowerTurnY} ${endX} ${lowerTurnY + r}
+            L ${endX} ${outTopY}
+          `;
+        }
+
+        createPipeLayers(bottomPipesGroup, bottomD, `bottom-pipe-${idx}`, idx === selectedIndex);
+      });
+
+      updateArmedPorts();
+    }
+
+    function createPipeLayers(container, pathData, idPrefix, isArmed) {
+      const ns = 'http://www.w3.org/2000/svg';
+
+      const shadow = document.createElementNS(ns, 'path');
+      shadow.setAttribute('d', pathData);
+      shadow.setAttribute('class', 'pipe-tube-shadow');
+
+      const glass = document.createElementNS(ns, 'path');
+      glass.setAttribute('d', pathData);
+      glass.setAttribute('class', 'pipe-tube-glass');
+
+      const core = document.createElementNS(ns, 'path');
+      core.setAttribute('d', pathData);
+      core.setAttribute('id', `${idPrefix}-core`);
+      core.setAttribute('class', `pipe-tube-core ${isArmed ? 'is-armed' : ''}`);
+
+      const wave1 = document.createElementNS(ns, 'path');
+      wave1.setAttribute('d', pathData);
+      wave1.setAttribute('pathLength', '100');
+      wave1.setAttribute('id', `${idPrefix}-wave1`);
+      wave1.setAttribute('class', 'pipe-wave-primary');
+
+      const wave2 = document.createElementNS(ns, 'path');
+      wave2.setAttribute('d', pathData);
+      wave2.setAttribute('pathLength', '100');
+      wave2.setAttribute('id', `${idPrefix}-wave2`);
+      wave2.setAttribute('class', 'pipe-wave-secondary');
+
+      container.append(shadow, glass, core, wave1, wave2);
+    }
+
+    function updateArmedPorts() {
+      leftOutputPort.classList.toggle('is-armed', selectedIndex === 0);
+      rightOutputPort.classList.toggle('is-armed', selectedIndex === 3);
+    }
+
+    /* Trigger wave animation ONLY when Convert Now is clicked */
+    function setPipeFlowActive(idx, active) {
+      const topW1 = document.getElementById(`top-pipe-${idx}-wave1`);
+      const topW2 = document.getElementById(`top-pipe-${idx}-wave2`);
+      const botW1 = document.getElementById(`bottom-pipe-${idx}-wave1`);
+      const botW2 = document.getElementById(`bottom-pipe-${idx}-wave2`);
+
+      [topW1, topW2, botW1, botW2].forEach(el => {
+        if (el) el.classList.toggle('is-flowing', active);
+      });
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(drawPipes, 70);
+    });
+
+    /* ============================================================
+       3. FORMAT SELECTION & TARGET SIZE (KB / MB) CONTROLS
+       ============================================================ */
+    const targetSizeRange = document.getElementById('targetSizeRange');
+    const targetSizeInput = document.getElementById('targetSizeInput');
+    const targetSizeUnit = document.getElementById('targetSizeUnit');
+
+    targetSizeRange.addEventListener('input', () => {
+      targetSizeInput.value = targetSizeRange.value;
+    });
+
+    targetSizeInput.addEventListener('input', () => {
+      const val = parseFloat(targetSizeInput.value);
+      if (!isNaN(val) && val >= parseFloat(targetSizeRange.min) && val <= parseFloat(targetSizeRange.max)) {
+        targetSizeRange.value = val;
+      }
+    });
+
+    targetSizeUnit.addEventListener('change', () => {
+      if (targetSizeUnit.value === 'MB') {
+        targetSizeRange.min = '0.1';
+        targetSizeRange.max = '10';
+        targetSizeRange.step = '0.1';
+        targetSizeRange.value = '1.0';
+        targetSizeInput.min = '0.05';
+        targetSizeInput.max = '50';
+        targetSizeInput.step = '0.1';
+        targetSizeInput.value = '1.0';
+      } else {
+        targetSizeRange.min = '10';
+        targetSizeRange.max = '1000';
+        targetSizeRange.step = '5';
+        targetSizeRange.value = '200';
+        targetSizeInput.min = '5';
+        targetSizeInput.max = '5000';
+        targetSizeInput.step = '5';
+        targetSizeInput.value = '200';
+      }
+    });
+
+    function getTargetBytes() {
+      const val = Math.max(1, parseFloat(targetSizeInput.value) || 200);
+      return targetSizeUnit.value === 'MB'
+        ? Math.round(val * 1024 * 1024)
+        : Math.round(val * 1024);
+    }
+
+    formatNodes.forEach((node, idx) => {
+      node.addEventListener('click', () => {
+        formatNodes.forEach(n => n.classList.remove('selected'));
+        node.classList.add('selected');
+        selectedIndex = idx;
+        selectedFormat = node.dataset.format;
+
+        formatNodes.forEach((_, i) => {
+          const isMatch = (i === selectedIndex);
+          document.getElementById(`top-pipe-${i}-core`)?.classList.toggle('is-armed', isMatch);
+          document.getElementById(`bottom-pipe-${i}-core`)?.classList.toggle('is-armed', isMatch);
+        });
+        updateArmedPorts();
+      });
+    });
+
+    /* ============================================================
+       4. NON-BLOCKING EXACT TARGET SIZE (KB/MB) ENGINE
+       ============================================================ */
+    const nextFrame = () => new Promise(res => requestAnimationFrame(res));
+
+    function createSmallThumb(sourceCanvas) {
+      const maxDim = 96;
+      const ratio = Math.min(maxDim / sourceCanvas.width, maxDim / sourceCanvas.height, 1);
+      const c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(sourceCanvas.width * ratio));
+      c.height = Math.max(1, Math.round(sourceCanvas.height * ratio));
+      c.getContext('2d').drawImage(sourceCanvas, 0, 0, c.width, c.height);
+      return c.toDataURL('image/jpeg', 0.72);
+    }
+
+    function renderScaledCanvas(sourceCanvas, scale, fillWhiteBg) {
+      const w = Math.max(16, Math.round(sourceCanvas.width * scale));
+      const h = Math.max(16, Math.round(sourceCanvas.height * scale));
+      const c = document.createElement('canvas');
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      if (fillWhiteBg) {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+      }
+      ctx.drawImage(sourceCanvas, 0, 0, w, h);
+      return c;
+    }
+
+    function canvasToBlobAsync(canvas, mime, quality) {
+      return new Promise(res => canvas.toBlob(res, mime, quality));
+    }
+
+    async function generateExactTargetBlob(sourceCanvas, format, targetBytes) {
+      if (format === 'pdf') {
+        const { jsPDF } = window.jspdf;
+        let scale = 1.0;
+        let bestBlob = null;
+
+        for (let sAttempt = 0; sAttempt < 4; sAttempt++) {
+          const scaled = renderScaledCanvas(sourceCanvas, scale, true);
+          let low = 0.08, high = 0.96;
+
+          for (let i = 0; i < 5; i++) {
+            await nextFrame();
+            const mid = (low + high) / 2;
+            const pdf = new jsPDF({
+              orientation: scaled.width > scaled.height ? 'l' : 'p',
+              unit: 'px',
+              format: [scaled.width, scaled.height]
+            });
+            pdf.addImage(scaled.toDataURL('image/jpeg', mid), 'JPEG', 0, 0, scaled.width, scaled.height);
+            const blob = pdf.output('blob');
+
+            if (blob.size <= targetBytes) {
+              bestBlob = blob;
+              low = mid;
+            } else {
+              high = mid;
+            }
+          }
+          if (bestBlob) return bestBlob;
+          scale *= 0.65;
+        }
+        const minCanvas = renderScaledCanvas(sourceCanvas, 0.35, true);
+        const fallbackPdf = new jsPDF({
+          orientation: minCanvas.width > minCanvas.height ? 'l' : 'p',
+          unit: 'px',
+          format: [minCanvas.width, minCanvas.height]
+        });
+        fallbackPdf.addImage(minCanvas.toDataURL('image/jpeg', 0.1), 'JPEG', 0, 0, minCanvas.width, minCanvas.height);
+        return fallbackPdf.output('blob');
+      }
+
+      const mimeMap = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp' };
+      const mime = mimeMap[format];
+      const fillWhite = (format === 'jpg');
+
+      if (format === 'png') {
+        const fullCanvas = renderScaledCanvas(sourceCanvas, 1.0, false);
+        const fullBlob = await canvasToBlobAsync(fullCanvas, mime);
+        if (fullBlob.size <= targetBytes) return fullBlob;
+
+        let lowScale = 0.08, highScale = 1.0;
+        let bestBlob = null;
+
+        for (let i = 0; i < 6; i++) {
+          await nextFrame();
+          const midScale = (lowScale + highScale) / 2;
+          const c = renderScaledCanvas(sourceCanvas, midScale, false);
+          const b = await canvasToBlobAsync(c, mime);
+          if (b.size <= targetBytes) {
+            bestBlob = b;
+            lowScale = midScale;
+          } else {
+            highScale = midScale;
+          }
+        }
+        return bestBlob || await canvasToBlobAsync(renderScaledCanvas(sourceCanvas, 0.08, false), mime);
+      }
+
+      let scale = 1.0;
+      for (let scaleStep = 0; scaleStep < 5; scaleStep++) {
+        await nextFrame();
+        const canvas = renderScaledCanvas(sourceCanvas, scale, fillWhite);
+
+        const highBlob = await canvasToBlobAsync(canvas, mime, 0.96);
+        if (highBlob.size <= targetBytes) return highBlob;
+
+        const lowBlob = await canvasToBlobAsync(canvas, mime, 0.06);
+        if (lowBlob.size <= targetBytes) {
+          let lowQ = 0.06, highQ = 0.96;
+          let bestBlob = lowBlob;
+
+          for (let iter = 0; iter < 5; iter++) {
+            await nextFrame();
+            const midQ = (lowQ + highQ) / 2;
+            const testBlob = await canvasToBlobAsync(canvas, mime, midQ);
+            if (testBlob.size <= targetBytes) {
+              bestBlob = testBlob;
+              lowQ = midQ;
+            } else {
+              highQ = midQ;
+            }
+          }
+          return bestBlob;
+        }
+        scale *= 0.65;
+      }
+
+      return await canvasToBlobAsync(renderScaledCanvas(sourceCanvas, 0.12, fillWhite), mime, 0.1);
+    }
+
+    /* ============================================================
+       5. MULTI-FILE BATCH QUEUE & CONVERSION WORKFLOW
+       ============================================================ */
+    const fileInput = document.getElementById('fileInput');
+    const uploadEmptyState = document.getElementById('uploadEmptyState');
+    const batchHeader = document.getElementById('batchHeader');
+    const batchCountText = document.getElementById('batchCountText');
+    const addMoreBtn = document.getElementById('addMoreBtn');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const fileListEl = document.getElementById('fileList');
+    const convertBtn = document.getElementById('convertBtn');
+    const convertBtnLabel = document.getElementById('convertBtnLabel');
+
+    const outputPlaceholder = document.getElementById('outputPlaceholder');
+    const outputResultsWrapper = document.getElementById('outputResultsWrapper');
+    const outputSummaryText = document.getElementById('outputSummaryText');
+    const downloadAllBtn = document.getElementById('downloadAllBtn');
+    const outputListEl = document.getElementById('outputList');
+
+    let uploadedItems = [];
+    let convertedResults = [];
+
+    uploadBox.addEventListener('click', () => {
+      if (uploadedItems.length === 0) fileInput.click();
+    });
+    addMoreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput.click();
+    });
+    clearAllBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      uploadedItems = [];
+      convertedResults.forEach(r => URL.revokeObjectURL(r.url));
+      convertedResults = [];
+      renderUploadList();
+      resetOutputBox();
+      drawPipes();
+    });
+
+    uploadBox.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadBox.classList.add('drag-over');
+    });
+    uploadBox.addEventListener('dragleave', () => uploadBox.classList.remove('drag-over'));
+    uploadBox.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadBox.classList.remove('drag-over');
+      if (e.dataTransfer.files.length) addFilesToQueue(e.dataTransfer.files);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) {
+        addFilesToQueue(fileInput.files);
+        fileInput.value = '';
+      }
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    }
+
+    async function addFilesToQueue(fileList) {
+      const files = Array.from(fileList);
+      for (const file of files) {
+        if (file.type === 'application/pdf') {
+          if (!window.pdfjsLib) {
+            alert('Internet connection is required to load the PDF engine.');
+            continue;
+          }
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          const arrayBuffer = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+          const page = await pdf.getPage(1);
+          const viewport = page.getViewport({ scale: 2.0 });
+
+          const canvas = document.createElement('canvas');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+
+          uploadedItems.push({
+            id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+            name: file.name,
+            baseName: file.name.replace(/\.[^/.]+$/, ''),
+            size: file.size,
+            width: Math.round(viewport.width),
+            height: Math.round(viewport.height),
+            thumbUrl: createSmallThumb(canvas),
+            canvas
+          });
+        } else if (file.type.startsWith('image/')) {
+          const item = await decodeImageFile(file);
+          if (item) uploadedItems.push(item);
+        }
+      }
+
+      renderUploadList();
+      drawPipes();
+    }
+
+    function decodeImageFile(file) {
+      return new Promise((resolve) => {
+        const objectUrl = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          canvas.getContext('2d').drawImage(img, 0, 0);
+          const thumbUrl = createSmallThumb(canvas);
+          URL.revokeObjectURL(objectUrl);
+          resolve({
+            id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+            name: file.name,
+            baseName: file.name.replace(/\.[^/.]+$/, ''),
+            size: file.size,
+            width: img.naturalWidth,
+            height: img.naturalHeight,
+            thumbUrl,
+            canvas
+          });
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          resolve(null);
+        };
+        img.src = objectUrl;
+      });
+    }
+
+    function renderUploadList() {
+      const count = uploadedItems.length;
+      if (count === 0) {
+        uploadBox.classList.remove('has-files');
+        uploadEmptyState.style.display = 'block';
+        batchHeader.classList.remove('active');
+        fileListEl.classList.remove('active');
+        fileListEl.innerHTML = '';
+        convertBtn.disabled = true;
+        convertBtnLabel.textContent = 'Convert Now';
+        return;
+      }
+
+      uploadBox.classList.add('has-files');
+      uploadEmptyState.style.display = 'none';
+      batchHeader.classList.add('active');
+      fileListEl.classList.add('active');
+
+      batchCountText.textContent = `${count} ${count === 1 ? 'File' : 'Files'} Ready`;
+      convertBtn.disabled = false;
+      convertBtnLabel.textContent = count > 1 ? `Convert ${count} Files` : 'Convert Now';
+
+      fileListEl.innerHTML = '';
+      uploadedItems.forEach((item) => {
+        const row = document.createElement('div');
+        row.className = 'file-item-row';
+        row.innerHTML = `
+          <div class="thumb-frame"><img src="${item.thumbUrl}" alt="${item.name}" /></div>
+          <div class="file-meta">
+            <div class="file-name">${item.name}</div>
+            <div class="file-stats">${item.width} × ${item.height} • ${formatBytes(item.size)}</div>
+          </div>
+          <button type="button" class="remove-item-btn" title="Remove file" aria-label="Remove file">×</button>
+        `;
+        row.querySelector('.remove-item-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          uploadedItems = uploadedItems.filter(x => x.id !== item.id);
+          renderUploadList();
+          drawPipes();
+        });
+        fileListEl.appendChild(row);
+      });
+    }
+
+    function resetOutputBox() {
+      outputBox.classList.remove('has-results', 'energy-received');
+      outputResultsWrapper.classList.remove('active');
+      outputPlaceholder.style.display = 'flex';
+      outputListEl.innerHTML = '';
+    }
+
+    convertBtn.addEventListener('click', async () => {
+      if (uploadedItems.length === 0) return;
+      convertBtn.disabled = true;
+      const prevLabel = convertBtnLabel.textContent;
+      convertBtnLabel.textContent = 'Converting...';
+
+      // Start wave animation ONLY now on Convert click
+      const activeIdx = selectedIndex;
+      setPipeFlowActive(activeIdx, true);
+      formatNodes[activeIdx]?.classList.add('pulse-hit');
+
+      convertedResults.forEach(r => URL.revokeObjectURL(r.url));
+      convertedResults = [];
+
+      const targetBytes = getTargetBytes();
+      const minVisualFlow = new Promise(res => setTimeout(res, 850));
+
+      for (const item of uploadedItems) {
+        await nextFrame();
+        if (selectedFormat === 'pdf' && !window.jspdf) {
+          alert('Internet connection is required to generate PDF files.');
+          break;
+        }
+
+        const blob = await generateExactTargetBlob(item.canvas, selectedFormat, targetBytes);
+        convertedResults.push({
+          name: `${item.baseName}.${selectedFormat}`,
+          blob,
+          url: URL.createObjectURL(blob),
+          thumbUrl: item.thumbUrl,
+          sizeBytes: blob.size,
+          origSize: item.size,
+          isPdf: selectedFormat === 'pdf'
+        });
+      }
+
+      await minVisualFlow;
+
+      // Stop wave animation cleanly once conversion completes
+      setPipeFlowActive(activeIdx, false);
+      formatNodes[activeIdx]?.classList.remove('pulse-hit');
+
+      renderConvertedOutputs();
+      convertBtn.disabled = false;
+      convertBtnLabel.textContent = prevLabel;
+      drawPipes();
+    });
+
+    function renderConvertedOutputs() {
+      if (convertedResults.length === 0) return;
+
+      const totalBytes = convertedResults.reduce((acc, r) => acc + r.sizeBytes, 0);
+      outputSummaryText.innerHTML = `Converted <span>${convertedResults.length} ${convertedResults.length === 1 ? 'File' : 'Files'}</span> • Total: ${formatBytes(totalBytes)}`;
+      downloadAllBtn.style.display = convertedResults.length > 1 ? 'inline-flex' : 'none';
+
+      outputListEl.innerHTML = '';
+      convertedResults.forEach((res) => {
+        const sizeFormatted = formatBytes(res.sizeBytes);
+        let badgeText = `Output: ${sizeFormatted}`;
+        if (res.sizeBytes < res.origSize) {
+          const savedPct = Math.round(((res.origSize - res.sizeBytes) / res.origSize) * 100);
+          badgeText = `${sizeFormatted} • ${savedPct}% Smaller`;
+        }
+
+        const thumbHtml = res.isPdf
+          ? `<span>PDF</span>`
+          : `<img src="${res.thumbUrl}" alt="${res.name}" />`;
+
+        const row = document.createElement('div');
+        row.className = 'output-item-row';
+        row.innerHTML = `
+          <div class="result-info">
+            <div class="thumb-frame">${thumbHtml}</div>
+            <div class="file-meta">
+              <div class="file-name">${res.name}</div>
+              <div class="file-stats">${selectedFormat.toUpperCase()} • ${sizeFormatted}</div>
+              <span class="size-pill">${badgeText}</span>
+            </div>
+          </div>
+          <a href="${res.url}" download="${res.name}" class="download-btn">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            <span>Download</span>
+          </a>
+        `;
+        outputListEl.appendChild(row);
+      });
+
+      outputPlaceholder.style.display = 'none';
+      outputBox.classList.add('has-results', 'energy-received');
+      outputResultsWrapper.classList.add('active');
+    }
+
+    /* Batch ZIP Download */
+    downloadAllBtn.addEventListener('click', async () => {
+      if (convertedResults.length < 2) return;
+      if (!window.JSZip) {
+        convertedResults.forEach((r, idx) => {
+          setTimeout(() => {
+            const a = document.createElement('a');
+            a.href = r.url;
+            a.download = r.name;
+            a.click();
+          }, idx * 200);
+        });
+        return;
+      }
+
+      const zip = new JSZip();
+      convertedResults.forEach((r) => zip.file(r.name, r.blob));
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const zipUrl = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = zipUrl;
+      a.download = `X-Converter-${selectedFormat.toUpperCase()}.zip`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(zipUrl), 3000);
+    });
+  </script>
+</body>
+</html>

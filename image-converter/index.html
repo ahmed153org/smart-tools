@@ -6,19 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Master-Level Primary SEO Meta Tags -->
-  <title>Image Converter // Convert Your Image & Target Your Size — JPG, PNG, WebP, PDF</title>
+  <title>Image Converter // Convert Your Image & Target Your Size — Smart Tools</title>
   <meta name="description" content="Convert single or multiple images between JPG, PNG, WebP, and PDF to an exact target KB or MB file size directly in your browser. 100% free and private." />
-  <meta name="keywords" content="Image Converter, image converter, compress image to exact kb, jpg to webp, png to jpg, image to pdf, pdf to jpg, batch photo converter" />
+  <meta name="keywords" content="smart tools, image converter, compress image to exact kb, jpg to webp, png to jpg, image to pdf, pdf to jpg, batch photo converter" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="author" content="Image Converter" />
-  <meta name="theme-color" content="#e0f2fe" />
+  <meta name="author" content="Smart Tools" />
+  <meta name="theme-color" content="#dff1ff" />
+
+  <!-- Site Favicon (Browser Tab Icon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='50%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Crect x='14' y='14' width='15' height='15' rx='4' fill='%23ffffff'/%3E%3Crect x='35' y='14' width='15' height='15' rx='4' fill='%23ffffff' fill-opacity='0.85'/%3E%3Crect x='14' y='35' width='15' height='15' rx='4' fill='%23ffffff' fill-opacity='0.85'/%3E%3Cpath d='M42.5 33L44.8 40.2L52 42.5L44.8 44.8L42.5 52L40.2 44.8L33 42.5L40.2 40.2L42.5 33Z' fill='%23ffffff'/%3E%3C/svg%3E" />
 
   <!-- Dynamic Canonical URL -->
   <link rel="canonical" id="canonicalLink" href="https://example.com/image-converter/" />
 
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Image Converter" />
+  <meta property="og:site_name" content="Smart Tools" />
   <meta property="og:title" content="Image Converter // Convert Your Image & Target Your Size" />
   <meta property="og:description" content="Convert multiple photos and PDFs between JPG, PNG, WebP, and PDF with exact KB/MB file size targeting inside your browser." />
   <meta property="og:locale" content="en_US" />
@@ -41,7 +44,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "Image Converter — Image & PDF Format Converter",
+        "name": "Image Converter — Smart Tools",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
@@ -135,7 +138,7 @@
       padding: 14px 16px 56px;
     }
 
-    /* GPU-Optimized Lush Blurred 3D Spheres (Zero filter lag, full vibrant color) */
+    /* GPU-Optimized Lush Blurred 3D Spheres */
     .ambient-bg {
       position: fixed;
       inset: 0;
@@ -171,7 +174,7 @@
       transform: translate(-50%, -50%);
     }
 
-    /* Main Luminous Frosted Glass Shell (Single hardware-accelerated blur pass) */
+    /* Main Luminous Frosted Glass Shell */
     .studio-shell {
       position: relative;
       z-index: 5;
@@ -187,7 +190,7 @@
       transform: translateZ(0);
     }
 
-    /* Compact Top Bar: Image Converter // + Convert your image and target your size */
+    /* Compact Top Bar with Brand Icon */
     header {
       width: 100%;
       display: flex;
@@ -201,12 +204,22 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 9px;
       text-decoration: none;
       color: var(--text-dark);
       font-weight: 800;
       font-size: 1.15rem;
       letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      display: inline-grid;
+      place-items: center;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.45);
       flex-shrink: 0;
     }
     .brand-slash {
@@ -311,7 +324,7 @@
       to { stroke-dashoffset: -58; }
     }
 
-    /* Luminous Frosted Glass Cards (Layered smoothly over studio-shell without nested blur overhead) */
+    /* Luminous Frosted Glass Cards */
     .glass-card {
       position: relative;
       z-index: 3;
@@ -517,7 +530,7 @@
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
     }
 
-    /* Top Pipe Connector Nozzle (All 4 buttons receive top pipes from top) */
+    /* Top Pipe Connector Nozzle */
     .format-node::before {
       content: '';
       position: absolute;
@@ -532,11 +545,7 @@
       transition: background 0.2s ease;
     }
 
-    /* Outgoing Pipe Connector Nozzles:
-       - JPG (#node-0): Left side
-       - PNG (#node-1) & WebP (#node-2): Bottom
-       - PDF (#node-3): Right side
-    */
+    /* Outgoing Pipe Connector Nozzles */
     .format-node::after {
       content: '';
       position: absolute;
@@ -1073,7 +1082,15 @@
   <!-- Main Luminous Frosted Glass Studio -->
   <div class="studio-shell">
     <header>
-      <a href="../" class="brand" aria-label="Image Converter Home">
+      <a href="../" class="brand" aria-label="Smart Tools Home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="12" width="17" height="17" rx="4.5" fill="#ffffff"/>
+            <rect x="35" y="12" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+            <rect x="12" y="35" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+            <path d="M43.5 33L46 41L54 43.5L46 46L43.5 54L41 46L33 43.5L41 41L43.5 33Z" fill="#ffffff"/>
+          </svg>
+        </span>
         <span>Image Converter</span>
         <span class="brand-slash">//</span>
       </a>
@@ -1093,10 +1110,10 @@
           </linearGradient>
         </defs>
 
-        <!-- 4 Top Pipes (Upload Box -> JPG, PNG, WebP, PDF) -->
+        <!-- 4 Top Pipes -->
         <g id="topPipesGroup"></g>
 
-        <!-- 4 Bottom Pipes (JPG Left Side -> Output Left Side, PNG/WebP -> Output Top, PDF Right Side -> Output Right Side) -->
+        <!-- 4 Bottom Pipes -->
         <g id="bottomPipesGroup"></g>
       </svg>
 
@@ -1160,7 +1177,6 @@
 
       <!-- BOTTOM BOX: Converted Output Box -->
       <section class="glass-card output-box" id="outputBox" aria-live="polite">
-        <!-- Left & Right Pipe Connection Nozzles for JPG and PDF -->
         <span class="side-port left" id="leftOutputPort" aria-hidden="true"></span>
         <span class="side-port right" id="rightOutputPort" aria-hidden="true"></span>
 
@@ -1196,7 +1212,7 @@
     <article class="seo-card">
       <h1>Free Batch Image &amp; PDF Format Converter with Exact Target File Size</h1>
       <p>
-        Need to optimize an image under <strong>50 KB</strong>, <strong>100 KB</strong>, or <strong>2 MB</strong> for a website, form, or document? Image Converter automatically calibrates compression and resolution in your browser so your converted <strong>JPG</strong>, <strong>PNG</strong>, <strong>WebP</strong>, or <strong>PDF</strong> files match your exact target size.
+        Need to optimize an image under <strong>50 KB</strong>, <strong>100 KB</strong>, or <strong>2 MB</strong> for a website, form, or document? Smart Tools automatically calibrates compression and resolution in your browser so your converted <strong>JPG</strong>, <strong>PNG</strong>, <strong>WebP</strong>, or <strong>PDF</strong> files match your exact target size.
       </p>
       <div class="feature-grid">
         <div class="feature-item">
@@ -1226,13 +1242,13 @@
       </details>
       <details class="faq-item">
         <summary>Are my files uploaded to a server?</summary>
-        <p>No. Image Converter runs 100% inside your web browser. Your files never leave your computer or smartphone.</p>
+        <p>No. Smart Tools runs 100% inside your web browser. Your files never leave your computer or smartphone.</p>
       </details>
     </article>
   </section>
 
   <footer>
-    <p>&copy; 2026 Image Converter // — Fast, Private &amp; Free Browser Utilities.</p>
+    <p>&copy; 2026 Smart Tools // — Fast, Private &amp; Free Browser Utilities.</p>
   </footer>
 
   <script>
@@ -1262,10 +1278,7 @@
     });
 
     /* ============================================================
-       2. PIPE GEOMETRY:
-          - JPG pipe plugs into LEFT SIDE of JPG button -> LEFT SIDE of Output Box
-          - PDF pipe plugs into RIGHT SIDE of PDF button -> RIGHT SIDE of Output Box
-          - PNG & WebP pipes plug into BOTTOM of buttons -> TOP of Output Box
+       2. PIPE GEOMETRY
        ============================================================ */
     const stage = document.getElementById('pipelineStage');
     const uploadBox = document.getElementById('uploadBox');
@@ -1289,7 +1302,7 @@
       topPipesGroup.innerHTML = '';
       bottomPipesGroup.innerHTML = '';
 
-      /* --- PART A: 4 Top Pipes (Upload Box Bottom -> 4 Format Nodes Top) --- */
+      /* --- PART A: 4 Top Pipes --- */
       const upBottomY = upRect.bottom - stageRect.top;
       const upCenterX = (upRect.left - stageRect.left) + upRect.width / 2;
       const upSpread = Math.min(upRect.width * 0.54, 240);
@@ -1333,7 +1346,6 @@
         let bottomD = '';
 
         if (idx === 0) {
-          // JPG Pipe: starts directly from LEFT SIDE of JPG button -> goes left -> down -> plugs into LEFT SIDE of Output Box
           const startX = nRect.left - stageRect.left;
           const startY = (nRect.top - stageRect.top) + nRect.height * 0.5;
           bottomD = `
@@ -1345,7 +1357,6 @@
             L ${outLeftX} ${outMidY}
           `;
         } else if (idx === 3) {
-          // PDF Pipe: starts directly from RIGHT SIDE of PDF button -> goes right -> down -> plugs into RIGHT SIDE of Output Box
           const startX = nRect.right - stageRect.left;
           const startY = (nRect.top - stageRect.top) + nRect.height * 0.5;
           bottomD = `
@@ -1357,7 +1368,6 @@
             L ${outRightX} ${outMidY}
           `;
         } else if (idx === 1) {
-          // PNG Pipe: bottom of PNG -> left inner lane -> top-left of Output Box
           const startX = (nRect.left - stageRect.left) + nRect.width * 0.5;
           const startY = nRect.bottom - stageRect.top;
           const upperTurnY = startY + 20;
@@ -1378,7 +1388,6 @@
             L ${endX} ${outTopY}
           `;
         } else if (idx === 2) {
-          // WebP Pipe: bottom of WebP -> right inner lane -> top-right of Output Box
           const startX = (nRect.left - stageRect.left) + nRect.width * 0.5;
           const startY = nRect.bottom - stageRect.top;
           const upperTurnY = startY + 20;
@@ -1442,7 +1451,6 @@
       rightOutputPort.classList.toggle('is-armed', selectedIndex === 3);
     }
 
-    /* Trigger wave animation ONLY when Convert Now is clicked */
     function setPipeFlowActive(idx, active) {
       const topW1 = document.getElementById(`top-pipe-${idx}-wave1`);
       const topW2 = document.getElementById(`top-pipe-${idx}-wave2`);
@@ -1848,7 +1856,6 @@
       const prevLabel = convertBtnLabel.textContent;
       convertBtnLabel.textContent = 'Converting...';
 
-      // Start wave animation ONLY now on Convert click
       const activeIdx = selectedIndex;
       setPipeFlowActive(activeIdx, true);
       formatNodes[activeIdx]?.classList.add('pulse-hit');
@@ -1880,7 +1887,6 @@
 
       await minVisualFlow;
 
-      // Stop wave animation cleanly once conversion completes
       setPipeFlowActive(activeIdx, false);
       formatNodes[activeIdx]?.classList.remove('pulse-hit');
 
@@ -1957,7 +1963,7 @@
       const zipUrl = URL.createObjectURL(zipBlob);
       const a = document.createElement('a');
       a.href = zipUrl;
-      a.download = `X-Converter-${selectedFormat.toUpperCase()}.zip`;
+      a.download = `SmartTools-${selectedFormat.toUpperCase()}.zip`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(zipUrl), 3000);
     });

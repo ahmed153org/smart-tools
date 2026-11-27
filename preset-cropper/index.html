@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Master-Level Primary SEO Meta Tags -->
-  <title>Preset Size Cropper // Custom &amp; Social Media Image Cropper — Smart Tools</title>
+  <title>Image Cropper // Custom &amp; Social Media Image Cropper — Smart Tools</title>
   <meta name="description" content="Crop images to exact pixel dimensions or social media presets (YouTube, Instagram, Reels, Facebook Cover, App Icon, Passport) directly in your browser. 100% free and private." />
-  <meta name="keywords" content="smart tools, image cropper, preset size cropper, custom photo crop, youtube thumbnail cropper, instagram aspect ratio crop, passport photo cropper" />
+  <meta name="keywords" content="smart tools, image cropper, Image Cropper, custom photo crop, youtube thumbnail cropper, instagram aspect ratio crop, passport photo cropper" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Smart Tools" />
   <meta name="theme-color" content="#dff1ff" />
@@ -22,13 +22,13 @@
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Smart Tools" />
-  <meta property="og:title" content="Preset Size Cropper // Exact Pixel &amp; Social Aspect Ratio Cropper" />
+  <meta property="og:title" content="Image Cropper // Exact Pixel &amp; Social Aspect Ratio Cropper" />
   <meta property="og:description" content="Crop photos to custom pixel dimensions or popular presets like 1:1, 16:9, 9:16, FB Cover, and App Icons locally in your browser." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card Meta -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Preset Size Cropper // Smart Tools" />
+  <meta name="twitter:title" content="Image Cropper // Smart Tools" />
   <meta name="twitter:description" content="Fast, private browser-based image cropper with presets and custom pixel sizing." />
 
   <!-- Performance Preconnects -->
@@ -43,7 +43,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "Preset Size Cropper — Smart Tools",
+        "name": "Image Cropper — Smart Tools",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
@@ -63,7 +63,7 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
-          { "@type": "ListItem", "position": 2, "name": "Preset Size Cropper", "item": "/preset-cropper/" }
+          { "@type": "ListItem", "position": 2, "name": "Image Cropper", "item": "/preset-cropper/" }
         ]
       },
       {
@@ -124,14 +124,20 @@
       padding: 14px 16px 56px;
     }
 
-    /* Vibrant Luminous 3D Spheres */
+    /* Locked Full-Height Ambient Spheres (Prevents mobile URL-bar scroll jump) */
     .ambient-bg {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100lvh;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
-      transform: translateZ(0);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      backface-visibility: hidden;
     }
     .orb {
       position: absolute;
@@ -141,23 +147,23 @@
       width: 440px;
       height: 440px;
       background: radial-gradient(circle at 38% 38%, rgba(253, 224, 71, 0.95) 0%, rgba(249, 115, 22, 0.74) 48%, rgba(249, 115, 22, 0) 73%);
-      top: 1%;
+      top: 10px;
       left: 2%;
     }
     .orb-2 {
       width: 500px;
       height: 500px;
       background: radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.92) 0%, rgba(99, 102, 241, 0.72) 50%, rgba(99, 102, 241, 0) 74%);
-      bottom: 0%;
+      top: 42%;
       right: 1%;
     }
     .orb-3 {
       width: 540px;
       height: 540px;
       background: radial-gradient(circle, rgba(245, 158, 11, 0.34) 0%, rgba(192, 132, 252, 0.30) 45%, transparent 72%);
-      top: 42%;
+      top: 260px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
     }
 
     /* Luminous Saturated Frosted Glass Studio */
@@ -613,10 +619,10 @@
     /* 8 Interactive Drag Handles (Touch & Mouse Friendly) */
     .crop-handle {
       position: absolute;
-      width: 22px;
-      height: 22px;
-      margin-left: -11px;
-      margin-top: -11px;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      margin-top: -12px;
       z-index: 7;
       touch-action: none;
     }
@@ -1107,7 +1113,7 @@
 </head>
 <body>
 
-  <!-- Vibrant Luminous 3D Spheres -->
+  <!-- Locked Luminous 3D Spheres -->
   <div class="ambient-bg" aria-hidden="true">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -1135,7 +1141,7 @@
               <path d="M43.5 33L46 41L54 43.5L46 46L43.5 54L41 46L33 43.5L41 41L43.5 33Z" fill="#ffffff"/>
             </svg>
           </span>
-          <span>Preset Size Cropper</span>
+          <span>Image Cropper</span>
           <span class="brand-slash">//</span>
         </a>
         <span class="header-tagline">Crop icons, thumbnails, banners &amp; custom sizes</span>
@@ -1322,11 +1328,11 @@
   </div>
 
   <!-- On-Page SEO Content & FAQ -->
-  <section class="seo-content-wrapper" aria-label="Preset Size Cropper Features and FAQ">
+  <section class="seo-content-wrapper" aria-label="Image Cropper Features and FAQ">
     <article class="seo-card">
       <h1>Free Preset Size &amp; Custom Image Cropper Online</h1>
       <p>
-        Need to crop photos to exact social media dimensions, YouTube thumbnails, app icons, or custom pixel sizes? Smart Tools provides a precision browser-based <strong>Preset Size Cropper</strong> with live aspect-ratio locking, rotation, and instant PNG, JPG, or WebP export.
+        Need to crop photos to exact social media dimensions, YouTube thumbnails, app icons, or custom pixel sizes? Smart Tools provides a precision browser-based <strong>Image Cropper</strong> with live aspect-ratio locking, rotation, and instant PNG, JPG, or WebP export.
       </p>
       <div class="feature-grid">
         <div class="feature-item">
@@ -1529,13 +1535,35 @@
       ro.observe(outputBox);
     }
 
+    /* Ignore mobile URL-bar vertical scroll resizes; only rescale crop box proportionally if horizontal width changes */
+    let lastWindowWidth = window.innerWidth;
+    let lastStageSize = { w: 0, h: 0 };
     let resizeTimer;
+
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         drawPipes();
-        if (workingCanvas) fitCropBoxToStage(false);
-      }, 70);
+        const currentWidth = window.innerWidth;
+        if (currentWidth !== lastWindowWidth) {
+          lastWindowWidth = currentWidth;
+          if (workingCanvas && lastStageSize.w > 0 && lastStageSize.h > 0) {
+            const newW = cropStageInner.clientWidth;
+            const newH = cropStageInner.clientHeight;
+            if (newW > 0 && newH > 0) {
+              const rx = newW / lastStageSize.w;
+              const ry = newH / lastStageSize.h;
+              crop = {
+                x: crop.x * rx,
+                y: crop.y * ry,
+                w: crop.w * rx,
+                h: crop.h * ry
+              };
+              renderCropBox(false);
+            }
+          }
+        }
+      }, 80);
     });
 
     /* ============================================================
@@ -1568,17 +1596,16 @@
     const downloadCropBtn = document.getElementById('downloadCropBtn');
 
     let baseFileName = 'photo';
-    let workingCanvas = null; // Holds current rotated/flipped full-res image
+    let workingCanvas = null;
     let previewImgUrl = null;
     let outputImgUrl = null;
 
-    let lockedAspectRatio = 0; // 0 = freeform, >0 = width / height
+    let lockedAspectRatio = 0;
     let presetTargetW = 0;
     let presetTargetH = 0;
     let selectedMime = 'image/png';
     let selectedExt = 'png';
 
-    // Displayed crop rectangle in stage pixels
     let crop = { x: 0, y: 0, w: 100, h: 100 };
 
     workspaceBox.addEventListener('click', () => {
@@ -1658,7 +1685,6 @@
       drawPipes();
     }
 
-    /* Rotate 90° Clockwise */
     rotateBtn.addEventListener('click', async () => {
       if (!workingCanvas) return;
       const next = document.createElement('canvas');
@@ -1672,7 +1698,6 @@
       await refreshStageFromWorkingCanvas(false);
     });
 
-    /* Flip Horizontal */
     flipBtn.addEventListener('click', async () => {
       if (!workingCanvas) return;
       const next = document.createElement('canvas');
@@ -1686,7 +1711,6 @@
       await refreshStageFromWorkingCanvas(false);
     });
 
-    /* Preset Pills Handler */
     function setActivePresetPill(presetKey) {
       document.querySelectorAll('.preset-pill').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.preset === presetKey);
@@ -1705,7 +1729,6 @@
       });
     });
 
-    /* Aspect Ratio Lock Button */
     function updateLockUI() {
       const isLocked = lockedAspectRatio > 0;
       lockRatioBtn.classList.toggle('is-locked', isLocked);
@@ -1727,7 +1750,6 @@
       updateLockUI();
     });
 
-    /* Custom Width & Height Manual Input */
     function applyManualDimensions() {
       if (!workingCanvas) return;
       const wVal = Math.max(16, Math.min(8000, parseInt(customWidthInput.value, 10) || 100));
@@ -1742,7 +1764,6 @@
     customWidthInput.addEventListener('change', applyManualDimensions);
     customHeightInput.addEventListener('change', applyManualDimensions);
 
-    /* Export Format Selector */
     document.querySelectorAll('.fmt-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('active'));
@@ -1752,7 +1773,6 @@
       });
     });
 
-    /* Fit Crop Box Centered Inside Displayed Image */
     function fitCropBoxToStage(animate = false) {
       const stageW = cropStageInner.clientWidth;
       const stageH = cropStageInner.clientHeight;
@@ -1784,13 +1804,14 @@
       const stageH = cropStageInner.clientHeight;
       if (!stageW || !stageH || !workingCanvas) return;
 
+      lastStageSize = { w: stageW, h: stageH };
+
       cropBox.classList.toggle('is-animating', animate);
       cropBox.style.left = `${crop.x}px`;
       cropBox.style.top = `${crop.y}px`;
       cropBox.style.width = `${crop.w}px`;
       cropBox.style.height = `${crop.h}px`;
 
-      // Calculate exact pixel dimensions
       const scaleX = workingCanvas.width / stageW;
       const scaleY = workingCanvas.height / stageH;
       const outW = presetTargetW > 0 ? presetTargetW : Math.max(1, Math.round(crop.w * scaleX));
@@ -1833,7 +1854,6 @@
       const { mode, orig, stageW, stageH } = dragState;
       const minS = 28;
 
-      // If user manually drags handles, clear fixed preset pixel override so native pixels reflect drag
       if (mode !== 'move' && presetTargetW > 0 && lockedAspectRatio === 0) {
         presetTargetW = 0;
         presetTargetH = 0;
@@ -1859,7 +1879,6 @@
       let newW = right - left;
       let newH = bottom - top;
 
-      // Enforce locked aspect ratio cleanly within image bounds
       if (lockedAspectRatio > 0) {
         if (mode === 'n' || mode === 's') {
           newW = newH * lockedAspectRatio;
@@ -1895,7 +1914,6 @@
         h: Math.max(minS, Math.min(stageH, newH))
       };
 
-      // Update live custom pixel values when dragging freely
       if (lockedAspectRatio === 0) {
         presetTargetW = 0;
         presetTargetH = 0;
@@ -1920,7 +1938,6 @@
       cropActionBtn.disabled = true;
       cropActionBtn.classList.add('is-working');
 
-      // Trigger Laser Aperture Scan inside Crop Box + Golden Pipe Light Surge
       cropBox.classList.remove('is-scanning');
       void cropBox.offsetWidth;
       cropBox.classList.add('is-scanning');

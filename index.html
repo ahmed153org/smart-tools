@@ -777,18 +777,38 @@
       canonicalEl.href = window.location.origin + window.location.pathname;
     }
 
-    /* 1. Smart Threshold Skeleton Shimmer (120ms Rule) */
+    /* 1. Smart Threshold Skeleton Shimmer & Back-Button (bfcache) Fix */
     const skeletonOverlay = document.getElementById('skeletonOverlay');
     let skeletonShown = false;
+    let navTimer = null;
+
     const loaderTimer = setTimeout(() => {
       skeletonOverlay.classList.add('visible');
       skeletonShown = true;
     }, 120);
 
+    function resetSkeletonLoader() {
+      clearTimeout(loaderTimer);
+      clearTimeout(navTimer);
+      skeletonOverlay.classList.remove('visible');
+      skeletonShown = false;
+    }
+
     window.addEventListener('load', () => {
       clearTimeout(loaderTimer);
       if (skeletonShown) {
-        setTimeout(() => skeletonOverlay.classList.remove('visible'), 280);
+        setTimeout(resetSkeletonLoader, 240);
+      } else {
+        resetSkeletonLoader();
+      }
+    });
+
+    /* Immediately dismiss skeleton when returning via mobile Back button (bfcache) */
+    window.addEventListener('pageshow', resetSkeletonLoader);
+    window.addEventListener('pagehide', resetSkeletonLoader);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        resetSkeletonLoader();
       }
     });
 
@@ -811,7 +831,8 @@
         }
 
         // Trigger smart 120ms threshold shimmer if navigation takes >120ms
-        setTimeout(() => {
+        clearTimeout(navTimer);
+        navTimer = setTimeout(() => {
           skeletonOverlay.classList.add('visible');
         }, 120);
       });

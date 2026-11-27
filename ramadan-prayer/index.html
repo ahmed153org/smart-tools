@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Master-Level Primary SEO Meta Tags -->
+  <title>Ramadan &amp; Prayer // সেহরি, ইফতার, নামাজের সময়সূচি ও দোয়া — Smart Tools</title>
+  <meta name="description" content="বাংলাদেশের সকল জেলার সেহরি ও ইফতারের লাইভ কাউন্টডাউন, ৫ ওয়াক্ত নামাজের সময়সূচি, সেহরি ও ইফতারের আরবি-বাংলা দোয়া এবং ডিজিটাল তাসবিহ কাউন্টার।" />
+  <meta name="keywords" content="smart tools, ramadan calendar, sehri iftar time bangladesh, namaz time dhaka, sehri dua, iftar dua, ramadan timetable" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Smart Tools" />
+  <meta name="theme-color" content="#dff1ff" />
+
+  <!-- Site Favicon (Browser Tab Icon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='50%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Crect x='14' y='14' width='15' height='15' rx='4' fill='%23ffffff'/%3E%3Crect x='35' y='14' width='15' height='15' rx='4' fill='%23ffffff' fill-opacity='0.85'/%3E%3Crect x='14' y='35' width='15' height='15' rx='4' fill='%23ffffff' fill-opacity='0.85'/%3E%3Cpath d='M42.5 33L44.8 40.2L52 42.5L44.8 44.8L42.5 52L40.2 44.8L33 42.5L40.2 40.2L42.5 33Z' fill='%23ffffff'/%3E%3C/svg%3E" />
+
+  <!-- Dynamic Canonical URL -->
+  <link rel="canonical" id="canonicalLink" href="https://example.com/ramadan-prayer/" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Smart Tools" />
+  <meta property="og:title" content="Ramadan &amp; Prayer // সেহরি, ইফতার ও নামাজের সময়সূচি" />
+  <meta property="og:description" content="লাইভ সেহরি ও ইফতার কাউন্টডাউন, ৫ ওয়াক্ত নামাজের সময়সূচি এবং সেহরি ও ইফতারের দোয়া।" />
+  <meta property="og:locale" content="bn_BD" />
+
+  <!-- Performance Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: WebApplication + BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Ramadan & Prayer Timetable — Smart Tools",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Live Sehri and Iftar countdown timer with Bangladesh district offsets",
+          "Dynamic Day & Night sky animation synchronized with local prayer times",
+          "Daily 5-waqt Prayer (Namaz) schedule with active waqt highlight",
+          "Authentic Arabic & Bengali Duas for Sehri, Iftar, and Laylatul Qadr",
+          "Interactive Digital Tasbih counter"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+          { "@type": "ListItem", "position": 2, "name": "Ramadan & Prayer", "item": "/ramadan-prayer/" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --glass-border: rgba(255, 255, 255, 0.96);
+      --glass-shadow: 0 16px 40px rgba(30, 58, 138, 0.09), 0 4px 12px rgba(15, 23, 42, 0.05);
+      --primary-blue: #2563eb;
+      --electric-cyan: #06b6d4;
+      --vivid-violet: #7c3aed;
+      --royal-indigo: #4f46e5;
+      --celestial-gold: #f59e0b;
+      --gold-light: #fde047;
+      --emerald: #059669;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #d8eeff 0%, #eae2ff 48%, #ffe9d6 100%);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 16px 56px;
+    }
+
+    /* Locked Full-Height Ambient Spheres */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100lvh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .orb-1 {
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle at 38% 38%, rgba(253, 224, 71, 0.95) 0%, rgba(249, 115, 22, 0.74) 48%, rgba(249, 115, 22, 0) 73%);
+      top: 10px;
+      left: 2%;
+    }
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.92) 0%, rgba(99, 102, 241, 0.72) 50%, rgba(99, 102, 241, 0) 74%);
+      top: 42%;
+      right: 1%;
+    }
+    .orb-3 {
+      width: 540px;
+      height: 540px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.34) 0%, rgba(245, 158, 11, 0.24) 45%, transparent 72%);
+      top: 260px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Luminous Saturated Frosted Glass Studio */
+    .studio-shell {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(28px) saturate(185%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 16px 24px 30px;
+      box-shadow: 0 24px 60px rgba(30, 41, 59, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.98);
+      transform: translateZ(0);
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    }
+    .brand-group {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      gap: 9px;
+      width: 100%;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: clamp(1rem, 2.6vw, 1.15rem);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .brand-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      display: inline-grid;
+      place-items: center;
+      box-shadow: 0 5px 12px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      flex-shrink: 0;
+    }
+    .brand-slash {
+      background: linear-gradient(135deg, var(--vivid-violet), #ec4899, var(--celestial-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .header-tagline {
+      font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.2;
+      padding-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============================================================
+       AUTO DAY & NIGHT CELESTIAL HERO CARD
+       - Night (Maghrib -> Fajr): Deep Violet Sky, Crescent Moon & Twinkling Stars
+       - Morning/Day (Fajr -> Maghrib): Bright Sky Blue & Warm Sunlight with Drifting Clouds
+       ============================================================ */
+    .sanctuary-hero {
+      position: relative;
+      width: 100%;
+      border-radius: 24px;
+      padding: 20px 22px 22px;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 48%, #4c1d95 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.88);
+      color: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 20px 44px rgba(49, 46, 129, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.40);
+      margin-bottom: 18px;
+      transition: background 0.8s ease, box-shadow 0.8s ease;
+    }
+
+    /* Morning & Daytime Sky Theme (Automatically activates from Fajr to Maghrib) */
+    .sanctuary-hero.is-day {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 52%, #0ea5e9 100%);
+      box-shadow: 0 20px 44px rgba(2, 132, 199, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+    .sanctuary-hero.is-morning {
+      background: linear-gradient(135deg, #0369a1 0%, #2563eb 48%, #f59e0b 115%);
+      box-shadow: 0 20px 44px rgba(37, 99, 235, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .celestial-sky {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* Night Elements: Twinkling Stars & Crescent Moon */
+    .night-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+    .sanctuary-hero.is-day .night-layer,
+    .sanctuary-hero.is-morning .night-layer {
+      opacity: 0;
+    }
+
+    .star-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 8px #fde047;
+      animation: twinkleStar 2.8s ease-in-out infinite;
+    }
+    .star-1 { width: 4px; height: 4px; top: 18%; left: 12%; animation-delay: 0s; }
+    .star-2 { width: 3px; height: 3px; top: 28%; left: 26%; animation-delay: 0.7s; }
+    .star-3 { width: 5px; height: 5px; top: 15%; right: 24%; animation-delay: 1.3s; }
+    .star-4 { width: 3px; height: 3px; top: 44%; right: 32%; animation-delay: 2.0s; }
+    .star-5 { width: 4px; height: 4px; bottom: 24%; left: 18%; animation-delay: 0.4s; }
+
+    @keyframes twinkleStar {
+      0%, 100% { opacity: 0.25; transform: scale(0.8); }
+      50%      { opacity: 1; transform: scale(1.25); }
+    }
+
+    .floating-crescent {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      width: 54px;
+      height: 54px;
+      opacity: 0.26;
+      filter: drop-shadow(0 0 16px rgba(253, 224, 71, 0.85));
+      animation: floatCrescent 4.8s ease-in-out infinite;
+    }
+    @keyframes floatCrescent {
+      0%, 100% { transform: translateY(0px) rotate(-8deg); }
+      50%      { transform: translateY(-6px) rotate(-2deg); }
+    }
+
+    /* Day Elements: Radiant Golden Sun & Soft Drifting Clouds */
+    .day-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .sanctuary-hero.is-day .day-layer,
+    .sanctuary-hero.is-morning .day-layer {
+      opacity: 1;
+    }
+
+    .day-sun {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 15%, #fde047 55%, rgba(251, 191, 36, 0) 75%);
+      box-shadow: 0 0 36px 10px rgba(253, 224, 71, 0.55);
+      animation: sunPulse 4s ease-in-out infinite;
+    }
+    @keyframes sunPulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50%      { transform: scale(1.1); opacity: 1; }
+    }
+
+    .day-cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      filter: blur(1px);
+      animation: driftCloud 16s linear infinite;
+    }
+    .cloud-1 { width: 72px; height: 20px; top: 22%; left: 10%; animation-duration: 18s; }
+    .cloud-2 { width: 54px; height: 15px; top: 38%; right: 24%; animation-duration: 14s; animation-direction: reverse; }
+    @keyframes driftCloud {
+      0%, 100% { transform: translateX(0px); }
+      50%      { transform: translateX(22px); }
+    }
+
+    /* Top Location & Date Bar */
+    .hero-top-controls {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #fef08a;
+    }
+
+    .district-select-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+    .district-select-wrap label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .district-select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .district-select option {
+      background: #1e1b4b;
+      color: #ffffff;
+    }
+
+    /* Live Countdown Core */
+    .countdown-center {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      margin: 4px auto 16px;
+    }
+    .countdown-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fde047;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .live-beacon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fbbf24;
+      box-shadow: 0 0 10px #fbbf24;
+      animation: beaconPulse 1.4s infinite;
+    }
+    @keyframes beaconPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.45); opacity: 0.55; }
+    }
+
+    .countdown-digits {
+      font-size: clamp(2rem, 6vw, 2.95rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(180deg, #ffffff 15%, #fde68a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 14px rgba(15, 23, 42, 0.25));
+      line-height: 1.1;
+    }
+    .countdown-sub {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.90);
+      margin-top: 4px;
+    }
+
+    /* Sehri & Iftar Highlight Twin Pills */
+    .sehri-iftar-row {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .si-box {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .si-box.is-next {
+      background: rgba(251, 191, 36, 0.24);
+      border-color: #fde047;
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.18);
+    }
+    .si-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .si-sub {
+      font-size: 0.66rem;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .si-time {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #fde047;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Animated Solar Energy Progress Bar */
+    .solar-progress-wrap {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+    .solar-track {
+      width: 100%;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.20);
+      overflow: hidden;
+      position: relative;
+    }
+    .solar-fill {
+      height: 100%;
+      width: 45%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #bae6fd, #fde047, #ffffff);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.8);
+      transition: width 0.6s ease;
+    }
+    .solar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+      margin-top: 5px;
+    }
+
+    /* ============================================================
+       5 WAQT NAMAZ TIMETABLE (Luminous Glass Cards)
+       ============================================================ */
+    .section-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .section-heading-row h2 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .live-clock-chip {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--vivid-violet);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .prayer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .prayer-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72));
+      border: 1.5px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 12px 8px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .prayer-card.is-active {
+      background: linear-gradient(145deg, #ffffff, rgba(237, 233, 254, 0.95));
+      border-color: var(--vivid-violet);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(124, 58, 237, 0.20);
+    }
+    .prayer-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 1.5px 7px;
+      border-radius: 999px;
+      margin-bottom: 5px;
+      background: rgba(124, 58, 237, 0.12);
+      color: var(--vivid-violet);
+    }
+    .prayer-card.is-active .prayer-badge {
+      background: var(--vivid-violet);
+      color: #ffffff;
+    }
+    .prayer-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .prayer-time {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ============================================================
+       TAB SWITCHER: SEHRI & IFTAR DUAS + 30 RAMADAN SCHEDULE + TASBIH
+       ============================================================ */
+    .studio-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.65);
+      padding: 5px;
+      border-radius: 16px;
+      border: 1.5px solid #ffffff;
+      margin-bottom: 14px;
+    }
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 9px 10px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(124, 58, 237, 0.28);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+      animation: fadeSlideUp 0.25s ease forwards;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dua Cards */
+    .dua-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .dua-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.78));
+      border: 1.5px solid #ffffff;
+      border-radius: 20px;
+      padding: 16px 18px;
+      box-shadow: 0 10px 26px rgba(30, 41, 59, 0.06);
+    }
+    .dua-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .dua-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--vivid-violet);
+      background: rgba(124, 58, 237, 0.11);
+      padding: 4px 11px;
+      border-radius: 999px;
+    }
+    .copy-dua-btn {
+      background: rgba(37, 99, 235, 0.10);
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      color: var(--primary-blue);
+      padding: 5px 11px;
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .copy-dua-btn:hover,
+    .copy-dua-btn.copied {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #ffffff;
+    }
+    .dua-arabic {
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.85;
+      text-align: right;
+      direction: rtl;
+      color: #1e1b4b;
+      background: rgba(237, 233, 254, 0.45);
+      padding: 10px 14px;
+      border-radius: 13px;
+      margin-bottom: 9px;
+    }
+    .dua-pronunciation {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+    .dua-meaning {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* 30-Day Ramadan Timetable Table */
+    .table-glass-wrap {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1.5px solid #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(30, 41, 59, 0.06);
+    }
+    .table-scroll {
+      max-height: 340px;
+      overflow-y: auto;
+    }
+    table.ramadan-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+    table.ramadan-table th {
+      position: sticky;
+      top: 0;
+      background: #312e81;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 10px 8px;
+      z-index: 2;
+    }
+    table.ramadan-table td {
+      padding: 9px 8px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    table.ramadan-table tr:nth-child(even) {
+      background: rgba(237, 233, 254, 0.28);
+    }
+    table.ramadan-table tr.is-today {
+      background: rgba(254, 240, 138, 0.55);
+      font-weight: 800;
+    }
+
+    /* Interactive Digital Tasbih Counter */
+    .tasbih-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.78));
+      border: 1.5px solid #ffffff;
+      border-radius: 22px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(30, 41, 59, 0.06);
+    }
+    .zikr-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .zikr-pill {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(124, 58, 237, 0.24);
+      color: var(--text-dark);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .zikr-pill.active {
+      background: var(--vivid-violet);
+      color: #ffffff;
+      border-color: var(--vivid-violet);
+    }
+    .tasbih-tap-ring {
+      width: 146px;
+      height: 146px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+      border: 4px solid #ffffff;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 16px 34px rgba(124, 58, 237, 0.34), inset 0 2px 4px rgba(255, 255, 255, 0.45);
+      transition: transform 0.1s ease;
+    }
+    .tasbih-tap-ring:active {
+      transform: scale(0.94);
+    }
+    .tasbih-count-num {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .tasbih-tap-hint {
+      font-size: 0.72rem;
+      font-weight: 700;
+      opacity: 0.88;
+      margin-top: 4px;
+    }
+    .tasbih-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* ============================================================
+       ON-PAGE SEO CONTENT
+       ============================================================ */
+    .seo-content-wrapper {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 26px;
+    }
+    .seo-card {
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 20px 22px;
+      box-shadow: 0 14px 36px rgba(30, 41, 59, 0.05);
+    }
+    .seo-card h1 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .seo-card p {
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    footer {
+      position: relative;
+      z-index: 5;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Smart Threshold Skeleton Loader (bfcache-Safe) */
+    .skeleton-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(238, 244, 255, 0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .skeleton-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .skel-box {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1.5px solid #ffffff;
+      border-radius: 22px;
+    }
+    .skel-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.24), transparent);
+      animation: shimmerSweep 1.15s infinite ease-in-out;
+    }
+    @keyframes shimmerSweep {
+      100% { transform: translateX(100%); }
+    }
+    .skel-header { width: 100%; max-width: 800px; height: 46px; margin-bottom: 18px; border-radius: 14px; }
+    .skel-hero { width: 100%; max-width: 800px; height: 220px; margin-bottom: 16px; }
+    .skel-grid { width: 100%; max-width: 800px; height: 90px; }
+
+    @media (max-width: 640px) {
+      .studio-shell {
+        padding: 14px 12px 24px;
+        border-radius: 24px;
+      }
+      .sanctuary-hero {
+        padding: 16px 14px 18px;
+      }
+      .prayer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .dua-arabic {
+        font-size: 1.18rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Locked Luminous 3D Spheres -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Automatic Smart Skeleton Loader -->
+  <div class="skeleton-overlay" id="skeletonOverlay" aria-hidden="true">
+    <div class="skel-box skel-header"></div>
+    <div class="skel-box skel-hero"></div>
+    <div class="skel-box skel-grid"></div>
+  </div>
+
+  <!-- Main Luminous Saturated Frosted Glass Studio -->
+  <div class="studio-shell">
+    <header>
+      <div class="brand-group">
+        <a href="../" class="brand" aria-label="Smart Tools Home">
+          <span class="brand-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+              <rect x="12" y="12" width="17" height="17" rx="4.5" fill="#ffffff"/>
+              <rect x="35" y="12" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+              <rect x="12" y="35" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+              <path d="M43.5 33L46 41L54 43.5L46 46L43.5 54L41 46L33 43.5L41 41L43.5 33Z" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span>Ramadan &amp; Prayer</span>
+          <span class="brand-slash">//</span>
+        </a>
+        <span class="header-tagline">সেহরি, ইফতার, নামাজের সময়সূচি ও দোয়া</span>
+      </div>
+    </header>
+
+    <!-- AUTO DAY & NIGHT CELESTIAL HERO -->
+    <section class="sanctuary-hero" id="sanctuaryHero" aria-label="Sehri and Iftar Live Countdown">
+      <div class="celestial-sky" aria-hidden="true">
+        <!-- Night Sky: Twinkling Stars + Crescent Moon -->
+        <div class="night-layer">
+          <span class="star-dot star-1"></span>
+          <span class="star-dot star-2"></span>
+          <span class="star-dot star-3"></span>
+          <span class="star-dot star-4"></span>
+          <span class="star-dot star-5"></span>
+          <svg class="floating-crescent" viewBox="0 0 64 64" fill="#fde047">
+            <path d="M44 46A22 22 0 0 1 25 11a22 22 0 1 0 26 31 21.8 21.8 0 0 1-7 4z"/>
+          </svg>
+        </div>
+
+        <!-- Day Sky: Glowing Sun + Soft Drifting Clouds -->
+        <div class="day-layer">
+          <div class="day-sun"></div>
+          <div class="day-cloud cloud-1"></div>
+          <div class="day-cloud cloud-2"></div>
+        </div>
+      </div>
+
+      <div class="hero-top-controls">
+        <div class="date-pill" id="todayDateDisplay">আজকের তারিখ লোড হচ্ছে...</div>
+        <div class="district-select-wrap">
+          <label for="districtSelect">জেলা:</label>
+          <select id="districtSelect" class="district-select" aria-label="Select District">
+            <option value="0" selected>ঢাকা (Dhaka)</option>
+            <option value="-5">চট্টগ্রাম (Chattogram)</option>
+            <option value="-7">সিলেট (Sylhet)</option>
+            <option value="6">রাজশাহী (Rajshahi)</option>
+            <option value="4">খুলনা (Khulna)</option>
+            <option value="1">বরিশাল (Barishal)</option>
+            <option value="5">রংপুর (Rangpur)</option>
+            <option value="1">ময়মনসিংহ (Mymensingh)</option>
+            <option value="-3">কুমিল্লা (Cumilla)</option>
+            <option value="-4">কক্সবাজার (Cox's Bazar)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="countdown-center">
+        <div class="countdown-label">
+          <span class="live-beacon"></span>
+          <span id="countdownTitle">ইফতারের বাকি সময়</span>
+        </div>
+        <div class="countdown-digits" id="countdownClock">00:00:00</div>
+        <div class="countdown-sub" id="countdownSubtitle">সময় হিসাব করা হচ্ছে...</div>
+      </div>
+
+      <div class="sehri-iftar-row">
+        <div class="si-box" id="sehriCard">
+          <div>
+            <div class="si-title">সেহরির শেষ সময়</div>
+            <div class="si-sub">ফজরের পূর্বে</div>
+          </div>
+          <div class="si-time" id="sehriTimeText">04:52 AM</div>
+        </div>
+        <div class="si-box" id="iftarCard">
+          <div>
+            <div class="si-title">ইফতারের সময়</div>
+            <div class="si-sub">মাগরিবের আজান</div>
+          </div>
+          <div class="si-time" id="iftarTimeText">06:08 PM</div>
+        </div>
+      </div>
+
+      <div class="solar-progress-wrap">
+        <div class="solar-track">
+          <div class="solar-fill" id="solarProgressFill"></div>
+        </div>
+        <div class="solar-labels">
+          <span>সেহরি শুরু</span>
+          <span id="solarPercentLabel">দিনের অগ্রগতি</span>
+          <span>ইফতার</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 WAQT NAMAZ SCHEDULE -->
+    <div class="section-heading-row">
+      <h2>🕌 আজকের ৫ ওয়াক্ত নামাজের সময়সূচি</h2>
+      <span class="live-clock-chip" id="liveDigitalClock">12:00:00 PM</span>
+    </div>
+
+    <section class="prayer-grid" id="prayerGrid" aria-label="Daily Prayer Times">
+      <div class="prayer-card" data-waqt="fajr">
+        <span class="prayer-badge">ফজর</span>
+        <div class="prayer-name">Fajr</div>
+        <div class="prayer-time" id="timeFajr">04:58 AM</div>
+      </div>
+      <div class="prayer-card" data-waqt="dhuhr">
+        <span class="prayer-badge">যোহর</span>
+        <div class="prayer-name">Dhuhr</div>
+        <div class="prayer-time" id="timeDhuhr">12:05 PM</div>
+      </div>
+      <div class="prayer-card" data-waqt="asr">
+        <span class="prayer-badge">আসর</span>
+        <div class="prayer-name">Asr</div>
+        <div class="prayer-time" id="timeAsr">04:18 PM</div>
+      </div>
+      <div class="prayer-card" data-waqt="maghrib">
+        <span class="prayer-badge">মাগরিব</span>
+        <div class="prayer-name">Maghrib</div>
+        <div class="prayer-time" id="timeMaghrib">06:08 PM</div>
+      </div>
+      <div class="prayer-card" data-waqt="isha">
+        <span class="prayer-badge">এশা</span>
+        <div class="prayer-name">Isha</div>
+        <div class="prayer-time" id="timeIsha">07:24 PM</div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE TABS: DUAS, 30-DAY RAMADAN SCHEDULE, DIGITAL TASBIH -->
+    <nav class="studio-tabs" role="tablist" aria-label="Ramadan Studio Sections">
+      <button type="button" class="tab-btn active" data-tab="duasPanel">🤲 সেহরি ও ইফতারের দোয়া</button>
+      <button type="button" class="tab-btn" data-tab="calendarPanel">📅 ৩০ রমজানের সূচি</button>
+      <button type="button" class="tab-btn" data-tab="tasbihPanel">📿 ডিজিটাল তাসবিহ</button>
+    </nav>
+
+    <!-- PANEL 1: SEHRI, IFTAR & ESSENTIAL DUAS -->
+    <section class="tab-panel active" id="duasPanel">
+      <div class="dua-stack">
+        <!-- Sehri Dua -->
+        <article class="dua-card">
+          <div class="dua-header">
+            <span class="dua-tag">🌙 সেহরির নিয়ত (রোজার নিয়ত)</span>
+            <button type="button" class="copy-dua-btn" data-copy-target="sehriDuaText">কপি করুন</button>
+          </div>
+          <div id="sehriDuaText">
+            <div class="dua-arabic">نَوَيْتُ اَنْ اَصُوْمَ غَدًا مِّنْ شَهْرِ رَمَضَانَ الْمُبَارَكِ فَرْضًا لَكَ يَا اَللهُ فَتَقَبَّلْ مِنِّى اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْمُ</div>
+            <div class="dua-pronunciation">উচ্চারণ: নাওয়াইতু আন আছুমা গাদাম মিন শাহরি রামাদানাল মুবারাকি ফারদাল্লাকা ইয়া আল্লাহু ফাতাকাব্বাল মিন্নি ইন্নাকা আনতাস সামিউল আলিম।</div>
+            <div class="dua-meaning">অর্থ: হে আল্লাহ! আগামীকাল পবিত্র রমজান মাসের তোমার পক্ষ থেকে নির্ধারিত ফরজ রোজা রাখার ইচ্ছা (নিয়ত) করলাম। অতএব তুমি আমার পক্ষ থেকে তা কবুল করো, নিশ্চয়ই তুমি সর্বশ্রোতা ও সর্বজ্ঞানী।</div>
+          </div>
+        </article>
+
+        <!-- Iftar Dua -->
+        <article class="dua-card">
+          <div class="dua-header">
+            <span class="dua-tag">🌅 ইফতারের দোয়া</span>
+            <button type="button" class="copy-dua-btn" data-copy-target="iftarDuaText">কপি করুন</button>
+          </div>
+          <div id="iftarDuaText">
+            <div class="dua-arabic">اَللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ اَفْطَرْتُ</div>
+            <div class="dua-pronunciation">উচ্চারণ: আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযকিকা আফতারতু।</div>
+            <div class="dua-meaning">অর্থ: হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেওয়া রিজিক দ্বারা ইফতার করছি।</div>
+          </div>
+        </article>
+
+        <!-- After Iftar / Thirst Quenched Dua -->
+        <article class="dua-card">
+          <div class="dua-header">
+            <span class="dua-tag">💧 ইফতারের পরের মাসনুন দোয়া</span>
+            <button type="button" class="copy-dua-btn" data-copy-target="afterIftarDuaText">কপি করুন</button>
+          </div>
+          <div id="afterIftarDuaText">
+            <div class="dua-arabic">ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوْقُ وَثَبَتَ الْاَجْرُ اِنْ شَاءَ اللهُ</div>
+            <div class="dua-pronunciation">উচ্চারণ: যাহাবায যামাউ ওয়াবতাল্লাতিল উরুকু ওয়া ছাবাতাল আজরু ইনশাআল্লাহ।</div>
+            <div class="dua-meaning">অর্থ: পিপাসা দূর হয়েছে, শিরা-উপশিরা সিক্ত হয়েছে এবং ইনশাআল্লাহ রোজার সওয়াব নির্ধারিত হয়ে গেছে। (আবু দাউদ)</div>
+          </div>
+        </article>
+
+        <!-- Laylatul Qadr Dua -->
+        <article class="dua-card">
+          <div class="dua-header">
+            <span class="dua-tag">✨ শবে কদর ও ক্ষমা প্রার্থনার শ্রেষ্ঠ দোয়া</span>
+            <button type="button" class="copy-dua-btn" data-copy-target="qadrDuaText">কপি করুন</button>
+          </div>
+          <div id="qadrDuaText">
+            <div class="dua-arabic">اَللَّهُمَّ اِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّيْ</div>
+            <div class="dua-pronunciation">উচ্চারণ: আল্লাহুম্মা ইন্নাকা আফুউয়ুন তুহিব্বুল আফওয়া ফা’ফু আন্নি।</div>
+            <div class="dua-meaning">অর্থ: হে আল্লাহ! নিশ্চয়ই তুমি ক্ষমাশীল, তুমি ক্ষমা করতে ভালোবাসো; অতএব আমাকে ক্ষমা করে দাও। (তিরমিজি)</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PANEL 2: 30-DAY RAMADAN TIMETABLE -->
+    <section class="tab-panel" id="calendarPanel">
+      <div class="table-glass-wrap">
+        <div class="table-scroll">
+          <table class="ramadan-table" aria-label="30 Days Ramadan Sehri and Iftar Schedule">
+            <thead>
+              <tr>
+                <th>রমজান</th>
+                <th>সেহরির শেষ</th>
+                <th>ফজর</th>
+                <th>ইফতার (মাগরিব)</th>
+              </tr>
+            </thead>
+            <tbody id="ramadanTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: DIGITAL TASBIH COUNTER -->
+    <section class="tab-panel" id="tasbihPanel">
+      <div class="tasbih-card">
+        <div class="zikr-pills" id="zikrPills">
+          <button type="button" class="zikr-pill active" data-zikr="সুবহানাল্লাহ (SubhanAllah)">সুবহানাল্লাহ</button>
+          <button type="button" class="zikr-pill" data-zikr="আলহামদুলিল্লাহ (Alhamdulillah)">আলহামদুলিল্লাহ</button>
+          <button type="button" class="zikr-pill" data-zikr="আল্লাহু আকবার (Allahu Akbar)">আল্লাহু আকবার</button>
+          <button type="button" class="zikr-pill" data-zikr="আস্তাগফিরুল্লাহ (Astaghfirullah)">আস্তাগফিরুল্লাহ</button>
+        </div>
+
+        <button type="button" class="tasbih-tap-ring" id="tasbihTapBtn" aria-label="Tap to count Tasbih">
+          <span class="tasbih-count-num" id="tasbihCountDisplay">0</span>
+          <span class="tasbih-tap-hint" id="activeZikrLabel">সুবহানাল্লাহ</span>
+        </button>
+
+        <div class="tasbih-controls">
+          <button type="button" class="copy-dua-btn" id="tasbihResetBtn">রিসেট (Reset)</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- On-Page SEO Content -->
+  <section class="seo-content-wrapper" aria-label="Ramadan and Prayer Guide">
+    <article class="seo-card">
+      <h1>রমজান ক্যালেন্ডার, নামাজের সময়সূচি এবং সেহরি ও ইফতারের দোয়া</h1>
+      <p>
+        প্রতিদিনের সেহরি ও ইফতারের সঠিক সময়, লাইভ কাউন্টডাউন ঘড়ি, ৫ ওয়াক্ত নামাজের সময়সূচি এবং সেহরি, ইফতার ও লাইলাতুল কদরের প্রয়োজনীয় আরবি-বাংলা দোয়া এক জায়গায় পেতে Smart Tools-এর <strong>Ramadan &amp; Prayer</strong> স্টুডিও ব্যবহার করুন।
+      </p>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Smart Tools // — Fast, Private &amp; Free Browser Utilities.</p>
+  </footer>
+
+  <script>
+    const canonicalEl = document.getElementById('canonicalLink');
+    if (canonicalEl && window.location.protocol.startsWith('http')) {
+      canonicalEl.href = window.location.origin + window.location.pathname;
+    }
+
+    /* ============================================================
+       1. SMART THRESHOLD SKELETON LOADER (bfcache-Safe)
+       ============================================================ */
+    const skeletonOverlay = document.getElementById('skeletonOverlay');
+    let skeletonShown = false;
+
+    const loaderTimer = setTimeout(() => {
+      skeletonOverlay.classList.add('visible');
+      skeletonShown = true;
+    }, 120);
+
+    function resetSkeletonLoader() {
+      clearTimeout(loaderTimer);
+      skeletonOverlay.classList.remove('visible');
+      skeletonShown = false;
+    }
+
+    window.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      if (skeletonShown) setTimeout(resetSkeletonLoader, 240);
+    });
+    window.addEventListener('pageshow', resetSkeletonLoader);
+    window.addEventListener('pagehide', resetSkeletonLoader);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resetSkeletonLoader();
+    });
+
+    /* ============================================================
+       2. SOLAR ASTRONOMICAL & AUTO DAY/NIGHT SKY ENGINE
+       ============================================================ */
+    const sanctuaryHero = document.getElementById('sanctuaryHero');
+    const districtSelect = document.getElementById('districtSelect');
+    const todayDateDisplay = document.getElementById('todayDateDisplay');
+    const liveDigitalClock = document.getElementById('liveDigitalClock');
+
+    const countdownTitle = document.getElementById('countdownTitle');
+    const countdownClock = document.getElementById('countdownClock');
+    const countdownSubtitle = document.getElementById('countdownSubtitle');
+    const sehriCard = document.getElementById('sehriCard');
+    const iftarCard = document.getElementById('iftarCard');
+    const sehriTimeText = document.getElementById('sehriTimeText');
+    const iftarTimeText = document.getElementById('iftarTimeText');
+    const solarProgressFill = document.getElementById('solarProgressFill');
+    const solarPercentLabel = document.getElementById('solarPercentLabel');
+
+    const timeFajrEl = document.getElementById('timeFajr');
+    const timeDhuhrEl = document.getElementById('timeDhuhr');
+    const timeAsrEl = document.getElementById('timeAsr');
+    const timeMaghribEl = document.getElementById('timeMaghrib');
+    const timeIshaEl = document.getElementById('timeIsha');
+
+    function getDhakaScheduleMinutes(dateObj) {
+      const start = new Date(dateObj.getFullYear(), 0, 0);
+      const dayOfYear = Math.floor((dateObj - start) / 86400000);
+      const seasonalWave = Math.sin(((dayOfYear - 80) / 365) * 2 * Math.PI);
+
+      const sehriEnd = Math.round(288 - seasonalWave * 46);
+      const fajr = sehriEnd + 6;
+      const dhuhr = Math.round(724 - Math.sin(((dayOfYear - 120) / 365) * 2 * Math.PI) * 14);
+      const asr = Math.round(978 + seasonalWave * 28);
+      const maghrib = Math.round(1088 + seasonalWave * 48);
+      const isha = maghrib + 76;
+
+      return { sehriEnd, fajr, dhuhr, asr, maghrib, isha };
+    }
+
+    function formatMinutes12h(totalMins) {
+      let mins = ((totalMins % 1440) + 1440) % 1440;
+      const h24 = Math.floor(mins / 60);
+      const m = mins % 60;
+      const ampm = h24 >= 12 ? 'PM' : 'AM';
+      const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+      return `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${ampm}`;
+    }
+
+    function formatDurationHMS(diffSec) {
+      const s = Math.max(0, Math.floor(diffSec));
+      const hh = Math.floor(s / 3600);
+      const mm = Math.floor((s % 3600) / 60);
+      const ss = s % 60;
+      return `${String(hh).padStart(2, '0')}:${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+    }
+
+    function updateLivePrayerAndCountdown() {
+      const now = new Date();
+      const offsetMins = parseInt(districtSelect.value, 10) || 0;
+
+      try {
+        todayDateDisplay.textContent = now.toLocaleDateString('bn-BD', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      } catch (_) {
+        todayDateDisplay.textContent = now.toDateString();
+      }
+
+      liveDigitalClock.textContent = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      const base = getDhakaScheduleMinutes(now);
+      const sched = {
+        sehriEnd: base.sehriEnd + offsetMins,
+        fajr: base.fajr + offsetMins,
+        dhuhr: base.dhuhr + offsetMins,
+        asr: base.asr + offsetMins,
+        maghrib: base.maghrib + offsetMins,
+        isha: base.isha + offsetMins
+      };
+
+      sehriTimeText.textContent = formatMinutes12h(sched.sehriEnd);
+      iftarTimeText.textContent = formatMinutes12h(sched.maghrib);
+      timeFajrEl.textContent = formatMinutes12h(sched.fajr);
+      timeDhuhrEl.textContent = formatMinutes12h(sched.dhuhr);
+      timeAsrEl.textContent = formatMinutes12h(sched.asr);
+      timeMaghribEl.textContent = formatMinutes12h(sched.maghrib);
+      timeIshaEl.textContent = formatMinutes12h(sched.isha);
+
+      const nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+      const sehriSec = sched.sehriEnd * 60;
+      const fajrSec = sched.fajr * 60;
+      const iftarSec = sched.maghrib * 60;
+
+      /* Auto Switch Sky Weather/Time Theme (Night Stars <-> Morning Sunrise <-> Bright Day) */
+      sanctuaryHero.classList.remove('is-morning', 'is-day');
+      if (nowSec >= fajrSec && nowSec < 11 * 3600) {
+        sanctuaryHero.classList.add('is-morning');
+      } else if (nowSec >= 11 * 3600 && nowSec < iftarSec) {
+        sanctuaryHero.classList.add('is-day');
+      }
+
+      sehriCard.classList.remove('is-next');
+      iftarCard.classList.remove('is-next');
+
+      if (nowSec < sehriSec) {
+        sehriCard.classList.add('is-next');
+        countdownTitle.textContent = 'সেহরির শেষ হতে বাকি';
+        countdownClock.textContent = formatDurationHMS(sehriSec - nowSec);
+        countdownSubtitle.textContent = `আজকের সেহরির শেষ সময় ${formatMinutes12h(sched.sehriEnd)}`;
+        solarProgressFill.style.width = '8%';
+        solarPercentLabel.textContent = 'সেহরির সময় চলছে';
+      } else if (nowSec < iftarSec) {
+        iftarCard.classList.add('is-next');
+        countdownTitle.textContent = 'ইফতারের বাকি সময়';
+        countdownClock.textContent = formatDurationHMS(iftarSec - nowSec);
+        countdownSubtitle.textContent = `আজকের ইফতার ঠিক ${formatMinutes12h(sched.maghrib)}-এ`;
+        const pct = Math.min(100, Math.max(4, Math.round(((nowSec - sehriSec) / (iftarSec - sehriSec)) * 100)));
+        solarProgressFill.style.width = `${pct}%`;
+        solarPercentLabel.textContent = `রোজার সময় ${pct}% সম্পন্ন`;
+      } else {
+        sehriCard.classList.add('is-next');
+        const tomorrow = new Date(now.getTime() + 86400000);
+        const tomSched = getDhakaScheduleMinutes(tomorrow);
+        const nextSehriSec = (tomSched.sehriEnd + offsetMins) * 60;
+        const remainSec = (86400 - nowSec) + nextSehriSec;
+
+        countdownTitle.textContent = 'আগামীকাল সেহরির বাকি';
+        countdownClock.textContent = formatDurationHMS(remainSec);
+        countdownSubtitle.textContent = `আগামীকাল সেহরির শেষ সময় ${formatMinutes12h(tomSched.sehriEnd + offsetMins)}`;
+        solarProgressFill.style.width = '100%';
+        solarPercentLabel.textContent = 'আজকের ইফতার সম্পন্ন';
+      }
+
+      const nowMin = Math.floor(nowSec / 60);
+      let activeWaqt = 'isha';
+      if (nowMin >= sched.fajr && nowMin < sched.dhuhr) activeWaqt = 'fajr';
+      else if (nowMin >= sched.dhuhr && nowMin < sched.asr) activeWaqt = 'dhuhr';
+      else if (nowMin >= sched.asr && nowMin < sched.maghrib) activeWaqt = 'asr';
+      else if (nowMin >= sched.maghrib && nowMin < sched.isha) activeWaqt = 'maghrib';
+
+      document.querySelectorAll('.prayer-card').forEach(card => {
+        card.classList.toggle('is-active', card.dataset.waqt === activeWaqt);
+      });
+    }
+
+    function render30DayRamadanTable() {
+      const tbody = document.getElementById('ramadanTableBody');
+      const offsetMins = parseInt(districtSelect.value, 10) || 0;
+      const today = new Date();
+      tbody.innerHTML = '';
+
+      for (let day = 1; day <= 30; day++) {
+        const rowDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (day - 1));
+        const base = getDhakaScheduleMinutes(rowDate);
+        const tr = document.createElement('tr');
+        if (day === 1) tr.className = 'is-today';
+
+        const bnDay = day.toLocaleString('bn-BD');
+        tr.innerHTML = `
+          <td>${bnDay} রমজান</td>
+          <td>${formatMinutes12h(base.sehriEnd + offsetMins)}</td>
+          <td>${formatMinutes12h(base.fajr + offsetMins)}</td>
+          <td>${formatMinutes12h(base.maghrib + offsetMins)}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    districtSelect.addEventListener('change', () => {
+      updateLivePrayerAndCountdown();
+      render30DayRamadanTable();
+    });
+
+    updateLivePrayerAndCountdown();
+    render30DayRamadanTable();
+    setInterval(updateLivePrayerAndCountdown, 1000);
+
+    /* ============================================================
+       3. TABS, COPY DUA & DIGITAL TASBIH COUNTER
+       ============================================================ */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab)?.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.copy-dua-btn[data-copy-target]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetEl = document.getElementById(btn.dataset.copyTarget);
+        if (!targetEl) return;
+        const text = targetEl.innerText.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          const orig = btn.textContent;
+          btn.textContent = '✓ কপি হয়েছে';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.classList.remove('copied');
+          }, 1600);
+        } catch (_) {}
+      });
+    });
+
+    let tasbihCount = 0;
+    const tasbihTapBtn = document.getElementById('tasbihTapBtn');
+    const tasbihCountDisplay = document.getElementById('tasbihCountDisplay');
+    const activeZikrLabel = document.getElementById('activeZikrLabel');
+    const tasbihResetBtn = document.getElementById('tasbihResetBtn');
+
+    document.querySelectorAll('.zikr-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.zikr-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeZikrLabel.textContent = pill.dataset.zikr.split(' ')[0];
+      });
+    });
+
+    tasbihTapBtn.addEventListener('click', () => {
+      tasbihCount++;
+      tasbihCountDisplay.textContent = tasbihCount;
+      if (navigator.vibrate) navigator.vibrate(18);
+    });
+
+    tasbihResetBtn.addEventListener('click', () => {
+      tasbihCount = 0;
+      tasbihCountDisplay.textContent = '0';
+    });
+  </script>
+</body>
+</html>

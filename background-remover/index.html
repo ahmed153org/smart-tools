@@ -35,6 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://storage.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Structured Data: WebApplication + BreadcrumbList + FAQPage (JSON-LD) -->
@@ -242,7 +243,6 @@
       align-items: center;
     }
 
-    /* Static 3D Glass Pipes SVG */
     #pipeSvg {
       position: absolute;
       inset: 0;
@@ -439,7 +439,6 @@
       justify-content: center;
     }
 
-    /* Vibrant Glossy Emerald-Teal Remove Background Button */
     .remove-bg-btn {
       position: relative;
       width: 224px;
@@ -480,7 +479,6 @@
       box-shadow: 0 8px 20px rgba(71, 85, 105, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
 
-    /* Pipe Connector Nozzles Locked on Remove Background Button */
     .btn-nozzle {
       position: absolute;
       width: 11px;
@@ -524,7 +522,6 @@
       z-index: 6;
     }
 
-    /* 100% GPU-Composited Continuous Scrap Stream inside Dustbin Station */
     .scrap-layer {
       position: absolute;
       top: 5px;
@@ -561,7 +558,6 @@
       will-change: transform;
     }
 
-    /* Lid Hinged on RIGHT Edge so it Swings WIDE OPEN (82 deg) from the LEFT Side */
     .dustbin-lid {
       width: 50px;
       height: 9px;
@@ -1070,7 +1066,7 @@
             </svg>
           </div>
           <div class="upload-title">Click or Drag &amp; Drop Photo Here</div>
-          <div class="upload-sub">Supports JPG, PNG &amp; WebP — 100% browser-side AI</div>
+          <div class="upload-sub">Supports JPG, PNG &amp; WebP — Dual AI (People &amp; Objects)</div>
         </div>
 
         <div class="uploaded-preview-row" id="uploadedPreviewRow">
@@ -1101,7 +1097,6 @@
         <!-- Side Dustbin Station -->
         <div class="dustbin-station" id="dustbinStation" aria-hidden="true">
           <div class="pipe-drop-cuff" id="pipeDropCuff"></div>
-          <!-- Continuous GPU-Composited Cutout Scrap Stream -->
           <div class="scrap-layer" id="scrapLayer"></div>
           <div class="dustbin-unit" id="dustbinUnit">
             <div class="dustbin-lid"></div>
@@ -1223,6 +1218,9 @@
       clearTimeout(loaderTimer);
       if (skeletonShown) setTimeout(resetSkeletonLoader, 240);
       drawPipes();
+      // Pre-warm BOTH Portrait AI & General Object AI models in background
+      setTimeout(() => { getMediaPipeSegmenter().catch(() => {}); }, 350);
+      setTimeout(() => { prewarmImglyEngine(); }, 950);
     });
     window.addEventListener('pageshow', resetSkeletonLoader);
     window.addEventListener('pagehide', resetSkeletonLoader);
@@ -1256,7 +1254,6 @@
 
       const isArmed = !removeBgBtn.disabled || removeBgBtn.classList.contains('is-working');
 
-      /* --- PIPE 1: Upload Box Bottom -> Remove Background Button Top --- */
       const upBottomY = upRect.bottom - stageRect.top;
       const upCenterX = (upRect.left - stageRect.left) + upRect.width * 0.5;
       const btnCenterX = (btnRect.left - stageRect.left) + btnRect.width * 0.5;
@@ -1266,7 +1263,6 @@
       const pipeInD = `M ${upCenterX} ${upBottomY} C ${upCenterX} ${midInY}, ${btnCenterX} ${midInY}, ${btnCenterX} ${btnTopY}`;
       const pathInEl = createStaticPipeLayers(pipeInGroup, pipeInD, 'pipe-in', isArmed);
 
-      /* --- PIPE 2: Remove Background Button Bottom -> Output Box Top --- */
       const btnBottomY = btnRect.bottom - stageRect.top;
       const outCenterX = (outRect.left - stageRect.left) + outRect.width * 0.5;
       const outTopY = outRect.top - stageRect.top;
@@ -1275,7 +1271,6 @@
       const pipeOutD = `M ${btnCenterX} ${btnBottomY} C ${btnCenterX} ${midOutY}, ${outCenterX} ${midOutY}, ${outCenterX} ${outTopY}`;
       const pathOutEl = createStaticPipeLayers(pipeOutGroup, pipeOutD, 'pipe-out', isArmed);
 
-      /* --- PIPE 3: Remove Background Button Right -> Smooth Rounded Elbow Down to Dustbin Cuff --- */
       const btnRightX = btnRect.right - stageRect.left;
       const btnMidY = (btnRect.top - stageRect.top) + btnRect.height * 0.5;
       const cuffCenterX = (cuffRect.left - stageRect.left) + cuffRect.width * 0.5;
@@ -1385,8 +1380,6 @@
 
     /* ============================================================
        3. 100% GPU-COMPOSITED CONTINUOUS TRASH POUR -> DUSTBIN
-          - Synchronized 1:1 with the pipe light wave!
-          - Never pauses or stutters even while AI runs on main thread
        ============================================================ */
     const scrapLayer = document.getElementById('scrapLayer');
     const dustbinUnit = document.getElementById('dustbinUnit');
@@ -1418,24 +1411,10 @@
         el.style.marginLeft = `${-slabW / 2}px`;
 
         const keyframes = [
-          {
-            opacity: 0,
-            transform: `translate3d(${offsetX}px, 0px, 0) rotate(0deg) scale(0.78)`
-          },
-          {
-            opacity: 1,
-            offset: 0.16,
-            transform: `translate3d(${offsetX + dir * 2.5}px, 8px, 0) rotate(${dir * 18}deg) scale(1)`
-          },
-          {
-            opacity: 1,
-            offset: 0.80,
-            transform: `translate3d(${offsetX + dir * 1.5}px, 34px, 0) rotate(${dir * 54}deg) scale(0.92)`
-          },
-          {
-            opacity: 0,
-            transform: `translate3d(${offsetX + dir * 1}px, 46px, 0) rotate(${dir * 72}deg) scale(0.65)`
-          }
+          { opacity: 0, transform: `translate3d(${offsetX}px, 0px, 0) rotate(0deg) scale(0.78)` },
+          { opacity: 1, offset: 0.16, transform: `translate3d(${offsetX + dir * 2.5}px, 8px, 0) rotate(${dir * 18}deg) scale(1)` },
+          { opacity: 1, offset: 0.80, transform: `translate3d(${offsetX + dir * 1.5}px, 34px, 0) rotate(${dir * 54}deg) scale(0.92)` },
+          { opacity: 0, transform: `translate3d(${offsetX + dir * 1}px, 46px, 0) rotate(${dir * 72}deg) scale(0.65)` }
         ];
 
         frag.appendChild(el);
@@ -1462,11 +1441,7 @@
           { transform: 'translate3d(0, 1.5px, 0) rotate(3deg) scale(1.02, 0.98)' },
           { transform: 'translate3d(0, 0, 0) rotate(0deg) scale(1, 1)' }
         ],
-        {
-          duration: 280,
-          iterations: Infinity,
-          easing: 'ease-in-out'
-        }
+        { duration: 280, iterations: Infinity, easing: 'ease-in-out' }
       );
       dustbinWobbleAnim.pause();
     }
@@ -1570,7 +1545,7 @@
 
     async function encodeCutoutPNGRapid(origBitmap, maskCanvas) {
       const maskBitmap = await createImageBitmap(maskCanvas);
-      const maxOut = 1500;
+      const maxOut = 1600;
       const scale = Math.min(maxOut / origBitmap.width, maxOut / origBitmap.height, 1);
       const outW = Math.max(1, Math.round(origBitmap.width * scale));
       const outH = Math.max(1, Math.round(origBitmap.height * scale));
@@ -1582,7 +1557,7 @@
             pngJobs.set(id, { resolve });
             pngWorker.postMessage({ id, maskBitmap, origBitmap, outW, outH }, [maskBitmap, origBitmap]);
           }),
-          4500
+          3500
         ).catch(() => null);
         if (workerBlob) return workerBlob;
       }
@@ -1601,10 +1576,13 @@
     }
 
     /* ============================================================
-       5. MULTI-TIER AI BACKGROUND REMOVAL ENGINE (Zero Hang Guarantee)
+       5. HYBRID DUAL-ENGINE AI SEGMENTATION
+          - Human Photos: Fast MediaPipe GPU + isolatePrimarySubjectMask ON
+          - Objects / Notes / Products / Logos: General Object AI (ISNet) + Filter OFF
        ============================================================ */
     const yieldFrame = () => new Promise(res => requestAnimationFrame(res));
 
+    /* Used ONLY for human portraits to remove stray background noise */
     function isolatePrimarySubjectMask(alphaArr, w, h) {
       const total = w * h;
       const visited = new Uint8Array(total);
@@ -1676,54 +1654,7 @@
       return maskCanvas;
     }
 
-    let imglyModulePromise = null;
-    function getImglyModule() {
-      if (!imglyModulePromise) {
-        imglyModulePromise = import('https://esm.sh/@imgly/background-removal@1.5.5')
-          .catch(() => import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm'))
-          .catch((err) => { imglyModulePromise = null; throw err; });
-      }
-      return imglyModulePromise;
-    }
-
-    async function tryImglyMask(origBitmap) {
-      const mod = await getImglyModule();
-      const removeFn = mod.removeBackground || mod.default;
-      if (!removeFn) throw new Error('Imgly unavailable');
-
-      const maxDim = 512;
-      const ratio = Math.min(maxDim / origBitmap.width, maxDim / origBitmap.height, 1);
-      const sw = Math.max(1, Math.round(origBitmap.width * ratio));
-      const sh = Math.max(1, Math.round(origBitmap.height * ratio));
-
-      const workCanvas = document.createElement('canvas');
-      workCanvas.width = sw;
-      workCanvas.height = sh;
-      workCanvas.getContext('2d').drawImage(origBitmap, 0, 0, sw, sh);
-      const inputBlob = await new Promise(res => workCanvas.toBlob(res, 'image/jpeg', 0.90));
-
-      const cutBlob = await removeFn(inputBlob, {
-        model: 'isnet_quint8',
-        proxyToWorker: false,
-        output: { format: 'image/png', quality: 1 }
-      });
-
-      const cutBitmap = await createImageBitmap(cutBlob);
-      const c = document.createElement('canvas');
-      c.width = sw;
-      c.height = sh;
-      const ctx = c.getContext('2d');
-      ctx.drawImage(cutBitmap, 0, 0, sw, sh);
-      cutBitmap.close();
-
-      const d = ctx.getImageData(0, 0, sw, sh).data;
-      const rawAlpha = new Uint8ClampedArray(sw * sh);
-      for (let i = 0; i < rawAlpha.length; i++) rawAlpha[i] = d[i * 4 + 3];
-
-      isolatePrimarySubjectMask(rawAlpha, sw, sh);
-      return buildFeatheredMaskCanvas(rawAlpha, sw, sh);
-    }
-
+    /* ENGINE 1: Human Portrait AI (MediaPipe GPU + isolatePrimarySubjectMask ON) */
     let mpSegmenterPromise = null;
     function getMediaPipeSegmenter() {
       if (!mpSegmenterPromise) {
@@ -1756,7 +1687,7 @@
       const segmenter = await getMediaPipeSegmenter();
       await yieldFrame();
 
-      const maxDim = 540;
+      const maxDim = 512;
       const ratio = Math.min(maxDim / origBitmap.width, maxDim / origBitmap.height, 1);
       const sw = Math.max(1, Math.round(origBitmap.width * ratio));
       const sh = Math.max(1, Math.round(origBitmap.height * ratio));
@@ -1771,18 +1702,94 @@
 
       const total = sw * sh;
       const rawAlpha = new Uint8ClampedArray(total);
+      let confidentHumanPixels = 0;
+
       for (let i = 0; i < total; i++) {
         const c = confMask[i];
-        const norm = c <= 0.44 ? 0 : c >= 0.80 ? 1 : (c - 0.44) / 0.36;
-        rawAlpha[i] = Math.round(norm * 255);
+        const norm = c <= 0.45 ? 0 : c >= 0.82 ? 1 : (c - 0.45) / 0.37;
+        const val = Math.round(norm * 255);
+        rawAlpha[i] = val;
+        if (c > 0.78) confidentHumanPixels++;
       }
       if (result.close) result.close();
 
+      // If no human portrait is detected (< 4% high-confidence human pixels), delegate to General Object AI
+      if (confidentHumanPixels < total * 0.04) {
+        throw new Error('Non-human object detected, switching to General Object AI');
+      }
+
       await yieldFrame();
+      // Keep isolatePrimarySubjectMask ACTIVE for human portraits
       isolatePrimarySubjectMask(rawAlpha, sw, sh);
       return buildFeatheredMaskCanvas(rawAlpha, sw, sh);
     }
 
+    /* ENGINE 2: General Object AI (ISNet — for banknotes, products, logos, cars, animals; Filter OFF) */
+    let imglyModulePromise = null;
+    let imglyWarmedUp = false;
+
+    function getImglyModule() {
+      if (!imglyModulePromise) {
+        imglyModulePromise = import('https://esm.sh/@imgly/background-removal@1.5.5')
+          .catch(() => import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm'))
+          .catch((err) => { imglyModulePromise = null; throw err; });
+      }
+      return imglyModulePromise;
+    }
+
+    async function prewarmImglyEngine() {
+      if (imglyWarmedUp) return;
+      try {
+        const mod = await getImglyModule();
+        if (mod.preload) {
+          await mod.preload({ model: 'isnet_quint8' });
+          imglyWarmedUp = true;
+        }
+      } catch (_) {}
+    }
+
+    async function tryImglyMask(origBitmap) {
+      statusBadgeText.textContent = 'AI Detecting Object...';
+      statusSubText.textContent = 'Isolating object, product, or graphic cleanly';
+
+      const mod = await getImglyModule();
+      const removeFn = mod.removeBackground || mod.default;
+      if (!removeFn) throw new Error('Imgly unavailable');
+
+      const maxDim = 512;
+      const ratio = Math.min(maxDim / origBitmap.width, maxDim / origBitmap.height, 1);
+      const sw = Math.max(1, Math.round(origBitmap.width * ratio));
+      const sh = Math.max(1, Math.round(origBitmap.height * ratio));
+
+      const workCanvas = document.createElement('canvas');
+      workCanvas.width = sw;
+      workCanvas.height = sh;
+      workCanvas.getContext('2d').drawImage(origBitmap, 0, 0, sw, sh);
+      const inputBlob = await new Promise(res => workCanvas.toBlob(res, 'image/png'));
+
+      const cutBlob = await removeFn(inputBlob, {
+        model: 'isnet_quint8',
+        output: { format: 'image/png', quality: 1 }
+      });
+
+      imglyWarmedUp = true;
+      const cutBitmap = await createImageBitmap(cutBlob);
+      const c = document.createElement('canvas');
+      c.width = sw;
+      c.height = sh;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(cutBitmap, 0, 0, sw, sh);
+      cutBitmap.close();
+
+      const d = ctx.getImageData(0, 0, sw, sh).data;
+      const rawAlpha = new Uint8ClampedArray(sw * sh);
+      for (let i = 0; i < rawAlpha.length; i++) rawAlpha[i] = d[i * 4 + 3];
+
+      // NOTE: isolatePrimarySubjectMask is intentionally OFF here so text, logos, and multi-part objects stay 100% intact
+      return buildFeatheredMaskCanvas(rawAlpha, sw, sh);
+    }
+
+    /* ENGINE 3: Offline Solid-Backdrop Fallback (Filter OFF) */
     async function buildOfflineBorderMask(origBitmap) {
       const maxDim = 480;
       const ratio = Math.min(maxDim / origBitmap.width, maxDim / origBitmap.height, 1);
@@ -1797,17 +1804,16 @@
 
       const data = ctx.getImageData(0, 0, sw, sh).data;
       const total = sw * sh;
-      const palette = [];
-
-      for (let x = 0; x < sw; x += 4) {
-        for (const y of [0, sh - 1]) {
-          const i = (y * sw + x) * 4;
-          const r = data[i], g = data[i + 1], b = data[i + 2];
-          if (!palette.some(p => Math.hypot(r - p.r, g - p.g, b - p.b) < 34) && palette.length < 8) {
-            palette.push({ r, g, b });
-          }
-        }
-      }
+      const corners = [
+        [0, 0],
+        [sw - 1, 0],
+        [0, sh - 1],
+        [sw - 1, sh - 1]
+      ];
+      const palette = corners.map(([x, y]) => {
+        const i = (y * sw + x) * 4;
+        return { r: data[i], g: data[i + 1], b: data[i + 2] };
+      });
 
       const visited = new Uint8Array(total);
       const rawAlpha = new Uint8ClampedArray(total);
@@ -1815,13 +1821,8 @@
       const queue = new Int32Array(total);
       let head = 0, tail = 0;
 
-      for (let x = 0; x < sw; x++) {
-        queue[tail++] = x;
-        queue[tail++] = (sh - 1) * sw + x;
-      }
-      for (let y = 0; y < sh; y++) {
-        queue[tail++] = y * sw;
-        queue[tail++] = y * sw + (sw - 1);
+      for (const [cx, cy] of corners) {
+        queue[tail++] = cy * sw + cx;
       }
 
       while (head < tail) {
@@ -1830,7 +1831,7 @@
         visited[p] = 1;
         const idx = p * 4;
         const r = data[idx], g = data[idx + 1], b = data[idx + 2];
-        const isBg = palette.some(c0 => Math.hypot(r - c0.r, g - c0.g, b - c0.b) <= 44);
+        const isBg = palette.some(c0 => Math.hypot(r - c0.r, g - c0.g, b - c0.b) <= 28);
         if (isBg) {
           rawAlpha[p] = 0;
           const px = p % sw, py = (p / sw) | 0;
@@ -1841,7 +1842,6 @@
         }
       }
 
-      isolatePrimarySubjectMask(rawAlpha, sw, sh);
       return buildFeatheredMaskCanvas(rawAlpha, sw, sh);
     }
 
@@ -1849,12 +1849,15 @@
       const origBitmap = await createImageBitmap(file);
       let maskCanvas = null;
 
+      // Tier 1: Human Portrait AI (~1.2s, with isolatePrimarySubjectMask ON)
       try {
-        maskCanvas = await withTimeout(tryImglyMask(origBitmap), 8000);
+        maskCanvas = await withTimeout(tryMediaPipeMask(origBitmap), 3000);
       } catch (_) {
+        // Tier 2: General Object AI (ISNet, with isolatePrimarySubjectMask OFF)
         try {
-          maskCanvas = await withTimeout(tryMediaPipeMask(origBitmap), 6000);
+          maskCanvas = await withTimeout(tryImglyMask(origBitmap), 25000);
         } catch (__) {
+          // Tier 3: Offline Solid-Backdrop Edge Cutout
           maskCanvas = await buildOfflineBorderMask(origBitmap);
         }
       }
@@ -1950,10 +1953,11 @@
       removeBgBtn.disabled = false;
       drawPipes();
 
+      // Warm up both AI engines while user gets ready to click
       getMediaPipeSegmenter().catch(() => {});
+      prewarmImglyEngine();
     }
 
-    /* Backdrop Color Preview Switcher */
     document.querySelectorAll('.bg-dot-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.bg-dot-btn').forEach(b => b.classList.remove('active'));
@@ -1964,7 +1968,6 @@
       });
     });
 
-    /* Remove Background Click */
     removeBgBtn.addEventListener('click', async () => {
       if (!currentItem || removeBgBtn.classList.contains('is-working')) return;
 
@@ -1981,7 +1984,7 @@
       startScrapDropAnimation();
 
       try {
-        const minVisualDuration = new Promise(res => setTimeout(res, 1150));
+        const minVisualDuration = new Promise(res => setTimeout(res, 750));
         const pngBlob = await processBackgroundRemovalSafe(currentItem.file);
         await minVisualDuration;
 

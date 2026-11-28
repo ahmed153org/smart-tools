@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Master-Level Primary SEO Meta Tags -->
-  <title>Smart Tools // Free Online Image, PDF & Daily Utility Studio</title>
-  <meta name="description" content="Fast, private, and free browser-based utility tools. Convert JPG, PNG, WebP, and PDF to exact file sizes, crop photos, remove backgrounds, and more." />
-  <meta name="keywords" content="Smart Tools, free online tools, image converter, pdf converter, compress image kb, background remover, photo cropper, web utilities" />
+  <title>Smart Tools // Free Online Image, PDF, P2P File Share &amp; Daily Utility Studio</title>
+  <meta name="description" content="Fast, private, and free browser-based utility tools. Transfer files PC to mobile, Android to iPhone, convert JPG/PNG/WebP/PDF to exact KB sizes, crop photos, and remove backgrounds." />
+  <meta name="keywords" content="Smart Tools, free online tools, p2p file share, pc to mobile file transfer, android to iphone share, image converter, pdf converter, background remover, photo cropper" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Smart Tools" />
   <meta name="theme-color" content="#dff1ff" />
@@ -22,8 +22,8 @@
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Smart Tools" />
-  <meta property="og:title" content="Smart Tools // Fast & Private Browser Utility Tools" />
-  <meta property="og:description" content="Handy everyday tools for your daily tasks. Convert images, compress files to exact KB/MB sizes, and more directly in your browser." />
+  <meta property="og:title" content="Smart Tools // Fast &amp; Private Browser Utility Tools" />
+  <meta property="og:description" content="Handy everyday tools for your daily tasks. Share files PC to mobile, Android to iPhone, convert images, compress files to exact KB/MB sizes, and more." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card Meta -->
@@ -44,18 +44,17 @@
       {
         "@type": "WebSite",
         "name": "Smart Tools",
-        "description": "Free client-side multi-tool web studio for image conversion, file optimization, and daily utilities."
+        "description": "Free client-side multi-tool web studio for image conversion, P2P file sharing, and daily utilities."
       },
       {
         "@type": "ItemList",
         "name": "Available Web Tools",
         "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Image & PDF Format Converter",
-            "url": "/image-converter/"
-          }
+          { "@type": "ListItem", "position": 1, "name": "Image & PDF Format Converter", "url": "/image-converter/" },
+          { "@type": "ListItem", "position": 2, "name": "Preset Image Cropper", "url": "/preset-cropper/" },
+          { "@type": "ListItem", "position": 3, "name": "AI Background Remover", "url": "/background-remover/" },
+          { "@type": "ListItem", "position": 4, "name": "Ramadan & Prayer Timetable", "url": "/ramadan-prayer/" },
+          { "@type": "ListItem", "position": 5, "name": "Direct P2P File Share (PC, Android & iPhone)", "url": "/p2p-share/" }
         ]
       }
     ]
@@ -164,7 +163,7 @@
       flex-direction: column;
     }
 
-    /* Header: Tagline sits right next to Smart Tools, slightly lower than vertical center */
+    /* Header */
     header {
       width: 100%;
       display: flex;
@@ -320,11 +319,13 @@
     }
 
     .tool-card:nth-child(2)::before,
-    .tool-card:nth-child(2)::after { animation-delay: -0.95s; }
+    .tool-card:nth-child(2)::after { animation-delay: -0.76s; }
     .tool-card:nth-child(3)::before,
-    .tool-card:nth-child(3)::after { animation-delay: -1.9s; }
+    .tool-card:nth-child(3)::after { animation-delay: -1.52s; }
     .tool-card:nth-child(4)::before,
-    .tool-card:nth-child(4)::after { animation-delay: -2.85s; }
+    .tool-card:nth-child(4)::after { animation-delay: -2.28s; }
+    .tool-card:nth-child(5)::before,
+    .tool-card:nth-child(5)::after { animation-delay: -3.04s; }
 
     @keyframes orbitNeonBorder {
       to { --neon-angle: 360deg; }
@@ -382,6 +383,11 @@
     .icon-violet {
       background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(236, 72, 153, 0.20));
       color: var(--vivid-violet);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+    .icon-cyan {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.26), rgba(16, 185, 129, 0.22));
+      color: #0891b2;
       border: 1px solid rgba(255, 255, 255, 0.75);
     }
 
@@ -710,7 +716,7 @@
           <span class="card-cta">Open Tool &rarr;</span>
         </a>
 
-       <!-- LIVE TOOL 2: Image Cropper -->
+        <!-- LIVE TOOL 2: Image Cropper -->
         <a href="./preset-cropper/index.html" class="tool-card" data-ready="true">
           <div class="card-body">
             <div class="tool-icon icon-amber">
@@ -725,7 +731,7 @@
           <span class="card-cta">Open Tool &rarr;</span>
         </a>
 
-       <!-- LIVE TOOL 3: AI Background Remover -->
+        <!-- LIVE TOOL 3: AI Background Remover -->
         <a href="./background-remover/index.html" class="tool-card" data-ready="true">
           <div class="card-body">
             <div class="tool-icon icon-emerald">
@@ -740,7 +746,7 @@
           <span class="card-cta">Open Tool &rarr;</span>
         </a>
 
-       <!-- LIVE TOOL 4: Ramadan & Prayer Timetable -->
+        <!-- LIVE TOOL 4: Ramadan & Prayer Timetable -->
         <a href="./ramadan-prayer/index.html" class="tool-card" data-ready="true">
           <div class="card-body">
             <div class="tool-icon icon-violet">
@@ -751,6 +757,21 @@
             <span class="status-badge badge-live">Live Now</span>
             <h2>Ramadan &amp; Prayer</h2>
             <p>Sehri &amp; Iftar schedule, live countdown &amp; Duas.</p>
+          </div>
+          <span class="card-cta">Open Tool &rarr;</span>
+        </a>
+
+        <!-- LIVE TOOL 5: Direct P2P File Share -->
+        <a href="./p2p-share/index.html" class="tool-card" data-ready="true">
+          <div class="card-body">
+            <div class="tool-icon icon-cyan">
+              <svg width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+            </div>
+            <span class="status-badge badge-live">Live Now</span>
+            <h2>P2P File Share</h2>
+            <p>Send files PC to Mobile, Android &amp; iPhone directly.</p>
           </div>
           <span class="card-cta">Open Tool &rarr;</span>
         </a>
@@ -830,7 +851,6 @@
           return;
         }
 
-        // Trigger smart 120ms threshold shimmer if navigation takes >120ms
         clearTimeout(navTimer);
         navTimer = setTimeout(() => {
           skeletonOverlay.classList.add('visible');

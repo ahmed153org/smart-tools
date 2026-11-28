@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Master-Level Cross-Platform SEO Meta Tags (PC to Mobile, Android to iPhone, iPhone to PC) -->
+  <title>Direct P2P File Share // Transfer Files PC to Mobile, Android to iPhone &amp; iPhone to PC — Smart Tools</title>
+  <meta name="description" content="Transfer photos, videos, APKs, and large files directly from PC to Mobile, Android to iPhone, or iPhone to PC without any cables, apps, or server upload. 100% free WebRTC file sharing." />
+  <meta name="keywords" content="p2p file share, pc to mobile file transfer, mobile to pc transfer, android to iphone file share, iphone to android transfer, iphone to pc file transfer, shareit web online, wireless file transfer without server, Smart Tools" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Smart Tools" />
+  <meta name="theme-color" content="#dff1ff" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Smart Tools" />
+  <meta property="og:title" content="Direct P2P File Share // PC to Mobile, Android to iPhone &amp; iPhone to PC" />
+  <meta property="og:description" content="Send large files directly between PC, Android, and iPhone using a 6-digit code or 1-click friend transfer with zero cloud upload." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Structured Data: WebApplication + FAQPage + BreadcrumbList (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Direct P2P File Share (PC to Mobile, Android & iPhone) — Smart Tools",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Windows, macOS, Android, iOS, iPhone, iPad",
+        "browserRequirements": "Requires JavaScript and WebRTC support",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Direct PC to Mobile and Mobile to PC wireless file transfer",
+          "Cross-platform Android to iPhone and iPhone to Android file sharing",
+          "iPhone to PC original quality photo and video transfer without iTunes",
+          "Saved Friends list with real-time online status and 6-digit pairing code"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I transfer files from Android to iPhone or iPhone to PC without installing an app?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Smart Tools P2P File Share runs directly in Chrome, Safari, and Edge using WebRTC, allowing instant wireless file transfers between PC to Mobile, Android to iPhone, and iPhone to PC with zero server storage."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
+          { "@type": "ListItem", "position": 2, "name": "P2P File Share", "item": "/p2p-share/" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --glass-border: rgba(255, 255, 255, 0.96);
+      --glass-shadow: 0 16px 40px rgba(30, 58, 138, 0.09), 0 4px 12px rgba(15, 23, 42, 0.05);
+      --primary-blue: #2563eb;
+      --electric-cyan: #06b6d4;
+      --cyan-bright: #0891b2;
+      --vivid-violet: #7c3aed;
+      --emerald: #059669;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #d8eeff 0%, #eae2ff 48%, #ffe9d6 100%);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 16px 56px;
+    }
+
+    /* Locked Full-Height Ambient Spheres (Zero mobile scroll jump) */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100lvh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .orb-1 {
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle at 38% 38%, rgba(253, 224, 71, 0.95) 0%, rgba(249, 115, 22, 0.74) 48%, rgba(249, 115, 22, 0) 73%);
+      top: 10px;
+      left: 2%;
+    }
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.92) 0%, rgba(99, 102, 241, 0.72) 50%, rgba(99, 102, 241, 0) 74%);
+      top: 42%;
+      right: 1%;
+    }
+    .orb-3 {
+      width: 540px;
+      height: 540px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.36) 0%, rgba(192, 132, 252, 0.30) 45%, transparent 72%);
+      top: 260px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Luminous Saturated Frosted Glass Studio */
+    .studio-shell {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(28px) saturate(185%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 16px 24px 30px;
+      box-shadow: 0 24px 60px rgba(30, 41, 59, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.98);
+      transform: translateZ(0);
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    }
+    .brand-group {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      gap: 9px;
+      width: 100%;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: clamp(1rem, 2.6vw, 1.15rem);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .brand-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      display: inline-grid;
+      place-items: center;
+      box-shadow: 0 5px 12px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      flex-shrink: 0;
+    }
+    .brand-slash {
+      background: linear-gradient(135deg, var(--electric-cyan), var(--primary-blue), var(--vivid-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .header-tagline {
+      font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.2;
+      padding-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============================================================
+       UNIFIED PIPELINE STAGE
+       ============================================================ */
+    .pipeline-stage {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #pipeSvg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    .pipe-tube-shadow {
+      fill: none;
+      stroke: rgba(6, 182, 212, 0.16);
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pipe-tube-glass {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.96);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pipe-tube-core {
+      fill: none;
+      stroke: rgba(6, 182, 212, 0.34);
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s ease;
+    }
+    .pipe-tube-core.is-armed {
+      stroke: rgba(6, 182, 212, 0.66);
+    }
+    .pipe-tube-core.is-friend-core {
+      stroke: rgba(16, 185, 129, 0.36);
+    }
+    .pipe-tube-core.is-friend-core.is-armed {
+      stroke: rgba(16, 185, 129, 0.74);
+    }
+
+    /* GPU Data Beam Layers (Separate Friend Stream & Code Stream) */
+    .gpu-wave-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: visible;
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+    .gpu-wave-layer.is-flowing {
+      opacity: 1;
+    }
+    .gpu-wave-capsule {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 6.5px;
+      margin-left: -16px;
+      margin-top: -3.25px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0) 0%, #0284c7 20%, #06b6d4 46%, #ffffff 72%, #67e8f9 88%, rgba(103, 232, 249, 0) 100%);
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.78);
+      will-change: transform, opacity;
+      opacity: 0;
+    }
+    .gpu-wave-capsule.friend-beam {
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0) 0%, #059669 20%, #10b981 46%, #ffffff 72%, #6ee7b7 88%, rgba(110, 231, 183, 0) 100%);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.82);
+    }
+
+    /* ============================================================
+       SAVED FRIENDS & DEVICE PRESENCE DOCK (Clean Single Left Port)
+       ============================================================ */
+    .friends-dock {
+      position: relative;
+      z-index: 3;
+      width: calc(100% - 120px);
+      max-width: 500px;
+      margin: 0 auto 14px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72));
+      border: 1.5px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 12px 15px;
+      box-shadow: 0 10px 26px rgba(30, 58, 138, 0.06), inset 0 1px 0 #ffffff;
+    }
+
+    /* Single Clean Left Port Nozzle on Friends Card */
+    .dock-port-nozzle {
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #34d399;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+      z-index: 5;
+    }
+
+    .my-device-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      margin-bottom: 10px;
+    }
+    .my-identity-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .online-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.75);
+      flex-shrink: 0;
+    }
+    .my-id-chip {
+      background: rgba(37, 99, 235, 0.10);
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      color: var(--primary-blue);
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+    .icon-edit-btn {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .icon-edit-btn:hover {
+      color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+
+    .add-friend-form {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .friend-id-input {
+      width: 88px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(6, 182, 212, 0.38);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0 8px;
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+      outline: none;
+      text-align: center;
+    }
+    .friend-id-input:focus {
+      border-color: var(--primary-blue);
+    }
+    .add-friend-btn {
+      height: 28px;
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      border: none;
+      color: #ffffff;
+      padding: 0 10px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .friends-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .friends-strip::-webkit-scrollbar {
+      height: 4px;
+    }
+    .friends-strip::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.15);
+      border-radius: 99px;
+    }
+    .friends-empty-hint {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .friend-chip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid rgba(15, 23, 42, 0.08);
+      border-radius: 13px;
+      padding: 6px 11px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .friend-chip.is-online {
+      background: #ffffff;
+      border-color: rgba(16, 185, 129, 0.55);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.15);
+    }
+    .friend-chip.is-online:hover {
+      transform: translateY(-1px);
+      border-color: #059669;
+    }
+    .friend-chip.is-offline {
+      opacity: 0.65;
+    }
+    .friend-status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #94a3b8;
+      flex-shrink: 0;
+    }
+    .friend-chip.is-online .friend-status-dot {
+      background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.75);
+      animation: onlinePulse 1.6s infinite;
+    }
+    @keyframes onlinePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70%  { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .friend-chip-info {
+      text-align: left;
+    }
+    .friend-chip-name {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+    .friend-chip-sub {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .friend-chip.is-online .friend-chip-sub {
+      color: #059669;
+    }
+    .friend-del-x {
+      margin-left: 2px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #94a3b8;
+      padding: 0 3px;
+      border-radius: 5px;
+    }
+    .friend-del-x:hover {
+      color: #dc2626;
+      background: rgba(239, 68, 68, 0.10);
+    }
+
+    /* ============================================================
+       MODE TABS: SEND FILE vs RECEIVE FILE
+       ============================================================ */
+    .mode-switch-bar {
+      position: relative;
+      z-index: 3;
+      width: calc(100% - 120px);
+      max-width: 420px;
+      margin: 0 auto 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 5px;
+      border-radius: 16px;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.06);
+    }
+    .mode-tab {
+      border: none;
+      background: transparent;
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.30);
+    }
+
+    /* Luminous Crystal Glass Cards (Centered with wide left margin for Friend Pipe) */
+    .glass-card {
+      position: relative;
+      z-index: 3;
+      width: calc(100% - 120px);
+      max-width: 500px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.74));
+      border: 1.5px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 18px 20px;
+      box-shadow: var(--glass-shadow), inset 0 1px 0 #ffffff;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    /* ============================================================
+       TOP BOX: SEND FILE DROPZONE & QUEUE / RECEIVE 6-DIGIT INPUT
+       ============================================================ */
+    .drop-zone {
+      text-align: center;
+      cursor: pointer;
+      border: 2px dashed rgba(6, 182, 212, 0.45);
+      border-radius: 16px;
+      padding: 16px 14px;
+      transition: all 0.2s ease;
+    }
+    .drop-zone:hover,
+    .drop-zone.drag-over {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: var(--electric-cyan);
+    }
+    .upload-icon-wrap {
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 9px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(37, 99, 235, 0.20));
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      display: grid;
+      place-items: center;
+      color: var(--cyan-bright);
+    }
+    .upload-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+    .upload-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Selected Files List in Sender Mode */
+    .send-queue-wrap {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .send-queue-wrap.active {
+      display: flex;
+    }
+    .queue-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    }
+    .queue-count {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .queue-btns {
+      display: flex;
+      gap: 6px;
+    }
+    .mini-btn {
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.28);
+      color: var(--cyan-bright);
+      padding: 5px 10px;
+      border-radius: 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.18s ease;
+    }
+    .mini-btn:hover {
+      background: var(--electric-cyan);
+      color: #ffffff;
+    }
+    .mini-btn.danger {
+      background: rgba(239, 68, 68, 0.09);
+      border-color: rgba(239, 68, 68, 0.24);
+      color: #dc2626;
+    }
+    .mini-btn.danger:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      max-height: 185px;
+      overflow-y: auto;
+      padding-right: 3px;
+    }
+    .file-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid #ffffff;
+      padding: 7px 10px;
+      border-radius: 12px;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+    .file-item-row.is-previewable {
+      cursor: pointer;
+    }
+    .file-item-row.is-previewable:hover {
+      background: #ffffff;
+      border-color: rgba(6, 182, 212, 0.45);
+    }
+    .file-thumb {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      flex-shrink: 0;
+      background: #f1f5f9;
+    }
+    .file-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.16), rgba(37, 99, 235, 0.16));
+      color: var(--primary-blue);
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .file-meta {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+    .file-name {
+      font-weight: 700;
+      font-size: 0.84rem;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-stats {
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .row-actions-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .remove-file-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(239, 68, 68, 0.24);
+      background: rgba(239, 68, 68, 0.08);
+      color: #dc2626;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.16s ease;
+    }
+    .remove-file-btn:hover {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #dc2626;
+    }
+
+    /* Receive Mode 6-Digit Code Entry */
+    .receive-panel {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+    .receive-panel.active {
+      display: flex;
+    }
+    .code-input-box {
+      width: 100%;
+      max-width: 280px;
+      height: 54px;
+      border-radius: 16px;
+      border: 2px solid rgba(6, 182, 212, 0.42);
+      background: rgba(255, 255, 255, 0.96);
+      font-family: inherit;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-align: center;
+      color: var(--text-dark);
+      outline: none;
+      box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .code-input-box:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+    }
+    .code-input-box::placeholder {
+      letter-spacing: 0.14em;
+      font-size: 1.15rem;
+      color: #94a3b8;
+    }
+
+    /* ============================================================
+       MIDDLE DUAL-BUTTON HUB
+       ============================================================ */
+    .middle-dual-hub {
+      position: relative;
+      z-index: 4;
+      width: calc(100% - 120px);
+      max-width: 500px;
+      margin-top: 42px;
+      margin-bottom: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .hub-btn {
+      position: relative;
+      height: 48px;
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0 15px;
+      border-radius: 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      z-index: 4;
+    }
+    .hub-btn:disabled {
+      opacity: 0.56;
+      cursor: not-allowed;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Left Button: Friend Direct Channel */
+    .friend-hub-btn {
+      flex: 1;
+      max-width: 210px;
+      background: linear-gradient(135deg, #059669 0%, #10b981 55%, #0d9488 100%);
+      box-shadow: 0 12px 26px rgba(16, 185, 129, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    /* Right Button: Standard Code / Receive Channel */
+    .action-hub-btn {
+      flex: 1;
+      max-width: 222px;
+      background: linear-gradient(135deg, #0891b2 0%, #2563eb 55%, #4f46e5 100%);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    /* Flush Port Nozzles (Centered exactly on pipe endpoints) */
+    .btn-nozzle {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #a5f3fc;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(8, 145, 178, 0.28);
+      z-index: 6;
+    }
+    .btn-nozzle.top { top: -6px; left: 50%; transform: translateX(-50%); }
+    .btn-nozzle.bottom { bottom: -6px; left: 50%; transform: translateX(-50%); }
+    .btn-nozzle.left-side { left: -6px; top: 50%; transform: translateY(-50%); background: #34d399; }
+    .friend-hub-btn .btn-nozzle.bottom { background: #34d399; }
+    .action-hub-btn:not(:disabled) .btn-nozzle {
+      background: var(--electric-cyan);
+    }
+
+    /* ============================================================
+       BOTTOM BOX: 6-DIGIT PAIRING RADAR & LIVE TRANSFER PROGRESS
+       ============================================================ */
+    .status-box {
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .status-box.is-connected {
+      border-color: var(--electric-cyan);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 45px rgba(6, 182, 212, 0.18), inset 0 0 18px rgba(6, 182, 212, 0.08);
+    }
+    .status-box.is-declined {
+      border-color: #ef4444;
+      background: rgba(254, 242, 242, 0.96);
+      box-shadow: 0 18px 40px rgba(239, 68, 68, 0.16);
+    }
+
+    .top-port-dot {
+      position: absolute;
+      top: -6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #a5f3fc;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(8, 145, 178, 0.28);
+      z-index: 6;
+    }
+    .top-port-dot.friend-port {
+      left: 30%;
+      transform: translateX(-50%);
+      background: #34d399;
+    }
+    .top-port-dot.code-port {
+      left: 70%;
+      transform: translateX(-50%);
+    }
+    .status-box.is-connected .top-port-dot {
+      background: var(--electric-cyan);
+    }
+
+    .radar-code-stage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    .radar-code-stage.active {
+      display: flex;
+    }
+
+    .radar-ring-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 18px;
+      border: 1.5px solid rgba(103, 232, 249, 0.55);
+      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.24);
+    }
+    .radar-pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7);
+      animation: radarWave 1.6s infinite;
+    }
+    @keyframes radarWave {
+      0%   { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.75); }
+      70%  { box-shadow: 0 0 0 12px rgba(34, 211, 238, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+    }
+    .pairing-digits {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #67e8f9;
+      font-variant-numeric: tabular-nums;
+    }
+    .copy-code-btn {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 9px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .copy-code-btn:hover {
+      background: var(--electric-cyan);
+      border-color: var(--electric-cyan);
+    }
+
+    /* Live Transfer Progress & Speed Telemetry */
+    .transfer-progress-stage {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .transfer-progress-stage.active {
+      display: flex;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .speed-pill {
+      color: var(--primary-blue);
+      background: rgba(37, 99, 235, 0.10);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+    }
+    .beam-progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .beam-progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #06b6d4, #2563eb, #7c3aed);
+      transition: width 0.12s linear;
+    }
+
+    /* Received Files Download List */
+    .received-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+      text-align: left;
+    }
+    .download-btn {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .port-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.26);
+      padding: 4px 11px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    .port-indicator.is-error {
+      color: #dc2626;
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.30);
+    }
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--electric-cyan);
+      animation: pulseDot 1.4s infinite;
+    }
+    .port-indicator.is-error .dot-pulse {
+      background: #dc2626;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ============================================================
+       INCOMING FILE REQUEST POP-UP MODAL (1-Click Accept / Decline)
+       ============================================================ */
+    .incoming-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1050;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .incoming-modal-backdrop.open {
+      display: flex;
+      animation: modalFadeIn 0.22s ease forwards;
+    }
+    .incoming-card {
+      width: 100%;
+      max-width: 400px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+      border: 2px solid #ffffff;
+      border-radius: 26px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 28px 64px rgba(15, 23, 42, 0.32);
+    }
+    .incoming-icon-ring {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 12px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.32);
+    }
+    .incoming-title {
+      font-size: 1.06rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .incoming-desc {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .incoming-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-decline {
+      height: 44px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+      background: rgba(239, 68, 68, 0.08);
+      color: #dc2626;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-accept {
+      height: 44px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.34);
+    }
+
+    /* ============================================================
+       GLASS LIGHTBOX MODAL FOR CLICK-TO-PREVIEW (SEND & RECEIVE)
+       ============================================================ */
+    .preview-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .preview-modal-backdrop.open {
+      display: flex;
+      animation: modalFadeIn 0.2s ease forwards;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .preview-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid #ffffff;
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .preview-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .preview-modal-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .preview-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #ffffff;
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .preview-close-btn:hover {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+    }
+    .preview-media-stage {
+      position: relative;
+      width: 100%;
+      min-height: 240px;
+      max-height: 62vh;
+      background: #0f172a;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 8px;
+    }
+    .preview-media-stage img,
+    .preview-media-stage video {
+      max-width: 100%;
+      max-height: 58vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .preview-fallback-box {
+      color: #e2e8f0;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .preview-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .nav-arrow-btn {
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: var(--primary-blue);
+      padding: 7px 14px;
+      border-radius: 11px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .nav-arrow-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .preview-counter-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       BENGALI USER GUIDE & ON-PAGE SEO CONTENT
+       ============================================================ */
+    .seo-content-wrapper {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .seo-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 14px 36px rgba(30, 41, 59, 0.05);
+    }
+    .seo-card h1, .seo-card h2 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .seo-card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 12px;
+    }
+    .guide-step-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #ffffff;
+      border-radius: 16px;
+      padding: 15px;
+    }
+    .guide-step-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    .guide-step-badge.green {
+      background: linear-gradient(135deg, #059669, #10b981);
+    }
+    .guide-step-card h3 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+    .guide-step-card p {
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    footer {
+      position: relative;
+      z-index: 5;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Smart Threshold Skeleton Loader (bfcache-Safe) */
+    .skeleton-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(238, 244, 255, 0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .skeleton-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .skel-box {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1.5px solid #ffffff;
+      border-radius: 22px;
+    }
+    .skel-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.26), transparent);
+      animation: shimmerSweep 1.15s infinite ease-in-out;
+    }
+    @keyframes shimmerSweep {
+      100% { transform: translateX(100%); }
+    }
+    .skel-header { width: 100%; max-width: 800px; height: 46px; margin-bottom: 18px; border-radius: 14px; }
+    .skel-upload { width: calc(100% - 120px); max-width: 500px; height: 132px; }
+    .skel-btn { width: 226px; height: 48px; border-radius: 16px; margin: 42px 0; }
+    .skel-output { width: calc(100% - 120px); max-width: 500px; height: 140px; }
+
+    @media (max-width: 640px) {
+      .studio-shell {
+        padding: 14px 12px 24px;
+        border-radius: 24px;
+      }
+      .friends-dock,
+      .mode-switch-bar,
+      .glass-card,
+      .middle-dual-hub {
+        width: calc(100% - 46px);
+        margin-left: 26px;
+      }
+      .hub-btn {
+        font-size: 0.76rem;
+        padding: 0 9px;
+      }
+      .pairing-digits {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Locked Luminous 3D Spheres -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Automatic Smart Skeleton Loader -->
+  <div class="skeleton-overlay" id="skeletonOverlay" aria-hidden="true">
+    <div class="skel-box skel-header"></div>
+    <div class="skel-box skel-upload"></div>
+    <div class="skel-box skel-btn"></div>
+    <div class="skel-box skel-output"></div>
+  </div>
+
+  <!-- Incoming Friend File Request Pop-up Modal -->
+  <div class="incoming-modal-backdrop" id="incomingRequestModal" role="dialog" aria-modal="true" aria-label="Incoming File Transfer Request">
+    <div class="incoming-card">
+      <div class="incoming-icon-ring">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </div>
+      <div class="incoming-title" id="incomingSenderTitle">Friend wants to send files</div>
+      <div class="incoming-desc" id="incomingFilesDesc">2 Files (14.2 MB) • Direct P2P</div>
+      <div class="incoming-actions">
+        <button type="button" class="btn-decline" id="declineIncomingBtn">Decline</button>
+        <button type="button" class="btn-accept" id="acceptIncomingBtn">Accept &amp; Receive</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass Lightbox Preview Modal -->
+  <div class="preview-modal-backdrop" id="previewModal" role="dialog" aria-modal="true" aria-label="File Preview">
+    <div class="preview-modal-card">
+      <div class="preview-modal-header">
+        <div class="preview-modal-title" id="previewModalTitle">image.jpg</div>
+        <button type="button" class="preview-close-btn" id="previewCloseBtn" aria-label="Close Preview">&times;</button>
+      </div>
+      <div class="preview-media-stage" id="previewMediaStage"></div>
+      <div class="preview-nav-bar">
+        <button type="button" class="nav-arrow-btn" id="previewPrevBtn">&lsaquo; Prev</button>
+        <span class="preview-counter-label" id="previewCounterLabel">1 of 1</span>
+        <button type="button" class="nav-arrow-btn" id="previewNextBtn">Next &rsaquo;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Luminous Saturated Frosted Glass Studio -->
+  <div class="studio-shell">
+    <header>
+      <div class="brand-group">
+        <a href="../" class="brand" aria-label="Smart Tools Home">
+          <span class="brand-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+              <rect x="12" y="12" width="17" height="17" rx="4.5" fill="#ffffff"/>
+              <rect x="35" y="12" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+              <rect x="12" y="35" width="17" height="17" rx="4.5" fill="#ffffff" fill-opacity="0.85"/>
+              <path d="M43.5 33L46 41L54 43.5L46 46L43.5 54L41 46L33 43.5L41 41L43.5 33Z" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span>P2P File Share</span>
+          <span class="brand-slash">//</span>
+        </a>
+        <span class="header-tagline">1-Click Friend Transfer &amp; 6-Digit Code</span>
+      </div>
+    </header>
+
+    <!-- Main Interactive Pipeline Stage -->
+    <main class="pipeline-stage" id="pipelineStage">
+
+      <!-- Static 3D Glass Pipes SVG (Clean Friend Pipeline + Code Pipeline ONLY) -->
+      <svg id="pipeSvg" aria-hidden="true">
+        <g id="pipeFriendGroup"></g>
+        <g id="pipeCodeGroup"></g>
+      </svg>
+
+      <!-- Separate GPU Light Wave Layers for Friend Transfer vs Code Transfer -->
+      <div class="gpu-wave-layer" id="friendWaveLayer" aria-hidden="true"></div>
+      <div class="gpu-wave-layer" id="codeWaveLayer" aria-hidden="true"></div>
+
+      <!-- SAVED FRIENDS & LIVE ONLINE STATUS DOCK (Single Clean Left Port) -->
+      <section class="friends-dock" id="friendsDockBox" aria-label="Saved Friends and Device ID">
+        <span class="dock-port-nozzle" id="dockLeftNozzle" aria-hidden="true"></span>
+
+        <div class="my-device-bar">
+          <div class="my-identity-pill">
+            <span class="online-status-dot" title="Online"></span>
+            <span id="myDeviceNameLabel">My Device</span>
+            <span class="my-id-chip" id="myDeviceIdBadge" title="Click to copy your ID">------</span>
+            <button type="button" class="icon-edit-btn" id="editMyNameBtn">Rename</button>
+          </div>
+
+          <form class="add-friend-form" id="addFriendForm">
+            <input type="text" id="friendIdInput" class="friend-id-input" inputmode="numeric" maxlength="6" placeholder="Friend ID" aria-label="Friend 6-Digit ID" />
+            <button type="submit" class="add-friend-btn">+ Add</button>
+          </form>
+        </div>
+
+        <div class="friends-strip" id="friendsStrip">
+          <span class="friends-empty-hint" id="friendsEmptyHint">Add a friend's 6-digit ID once — tap their online badge anytime to send files directly!</span>
+        </div>
+      </section>
+
+      <!-- Mode Switcher: Send vs Receive -->
+      <div class="mode-switch-bar" role="tablist" aria-label="Transfer Mode">
+        <button type="button" class="mode-tab active" id="sendModeTab" role="tab" aria-selected="true">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          <span>Send Files</span>
+        </button>
+        <button type="button" class="mode-tab" id="receiveModeTab" role="tab" aria-selected="false">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>Receive Files</span>
+        </button>
+      </div>
+
+      <!-- TOP CARD: Sender File Picker OR Receiver 6-Digit Input -->
+      <section class="glass-card" id="topCardBox">
+        <input type="file" id="fileInput" multiple hidden />
+
+        <!-- SEND PANEL -->
+        <div id="sendPanel">
+          <div class="drop-zone" id="dropZone">
+            <div class="upload-icon-wrap">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
+            </div>
+            <div class="upload-title">Select or Drop Any Files to Send</div>
+            <div class="upload-sub">Send directly to an Online Friend or generate a 6-digit code</div>
+          </div>
+
+          <div class="send-queue-wrap" id="sendQueueWrap">
+            <div class="queue-top-row">
+              <span class="queue-count" id="queueCountText">0 Files Selected</span>
+              <div class="queue-btns">
+                <button type="button" class="mini-btn" id="addMoreFilesBtn">+ Add More</button>
+                <button type="button" class="mini-btn danger" id="clearFilesBtn">Clear All</button>
+              </div>
+            </div>
+            <div class="file-list" id="sendFileList"></div>
+          </div>
+        </div>
+
+        <!-- RECEIVE PANEL -->
+        <div class="receive-panel" id="receivePanel">
+          <div class="upload-title">Enter 6-Digit Share Code</div>
+          <div class="upload-sub">Or simply stay on this page to auto-receive requests from Saved Friends</div>
+          <input type="text" id="receiveCodeInput" class="code-input-box" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="6-Digit Share Code" />
+        </div>
+      </section>
+
+      <!-- MIDDLE DUAL-BUTTON HUB -->
+      <div class="middle-dual-hub">
+        <button type="button" class="hub-btn friend-hub-btn" id="friendActionBtn" title="Send selected files to an online saved friend">
+          <span class="btn-nozzle left-side" id="friendBtnLeftNozzle" aria-hidden="true"></span>
+          <span class="btn-nozzle bottom" id="friendBtnBottomNozzle" aria-hidden="true"></span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span id="friendActionLabel">Send to Friend</span>
+        </button>
+
+        <button type="button" class="hub-btn action-hub-btn" id="primaryActionBtn" disabled>
+          <span class="btn-nozzle top" id="codeBtnTopNozzle" aria-hidden="true"></span>
+          <span class="btn-nozzle bottom" id="codeBtnBottomNozzle" aria-hidden="true"></span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span id="primaryActionLabel">Create Share Code</span>
+        </button>
+      </div>
+
+      <!-- BOTTOM CARD: Live Radar Pairing Code & Transfer Telemetry -->
+      <section class="glass-card status-box" id="bottomStatusBox" aria-live="polite">
+        <span class="top-port-dot friend-port" id="outFriendNozzle" aria-hidden="true"></span>
+        <span class="top-port-dot code-port" id="outCodeNozzle" aria-hidden="true"></span>
+
+        <!-- Idle / Status Alert Stage -->
+        <div id="idleStatusStage">
+          <div class="port-indicator" id="idleBadgeBox">
+            <span class="dot-pulse"></span>
+            <span id="idleBadgeText">P2P Engine Ready</span>
+          </div>
+          <div class="upload-sub" id="idleSubText">Use Send to Friend (left pipe) or Create Share Code (right pipe)</div>
+        </div>
+
+        <!-- Active 6-Digit Radar Code Stage (Sender Waiting) -->
+        <div class="radar-code-stage" id="radarCodeStage">
+          <div class="port-indicator">
+            <span class="radar-pulse-dot"></span>
+            <span id="radarStatusHeadline">Waiting for Receiver to Enter Code...</span>
+          </div>
+          <div class="radar-ring-badge" id="radarCodePillBox">
+            <span class="pairing-digits" id="generatedCodeDisplay">------</span>
+            <button type="button" class="copy-code-btn" id="copyCodeBtn">Copy</button>
+          </div>
+          <div class="upload-sub">Keep this page open on both devices until transfer completes</div>
+        </div>
+
+        <!-- Live Transfer Progress & Received Downloads -->
+        <div class="transfer-progress-stage" id="transferProgressStage">
+          <div class="progress-header">
+            <span id="transferStatusLabel">Connected • Transferring...</span>
+            <span class="speed-pill" id="transferSpeedText">0.0 MB/s</span>
+          </div>
+          <div class="beam-progress-track">
+            <div class="beam-progress-fill" id="beamProgressFill"></div>
+          </div>
+          <div class="received-list" id="receivedFileList"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- BENGALI HOW-TO-USE GUIDE & ON-PAGE SEO CONTENT -->
+  <section class="seo-content-wrapper" aria-label="P2P File Share User Guide">
+    <article class="seo-card">
+      <h1>কীভাবে ব্যবহার করবেন? (সহজ ব্যবহারবিধি)</h1>
+      <p>
+        কোনো সার্ভার স্টোরেজ বা কেবল ছাড়াই মোবাইল থেকে পিসি, অ্যান্ড্রয়েড থেকে আইফোন কিংবা দূরের বন্ধুর কাছে সরাসরি ফাইল পাঠানোর দুটি সহজ পদ্ধতি নিচে দেওয়া হলো:
+      </p>
+
+      <div class="guide-grid">
+        <div class="guide-step-card">
+          <span class="guide-step-badge green">পদ্ধতি ১ • Saved Friends (সবচেয়ে দ্রুত)</span>
+          <h3>১. বন্ধুকে সেভ করুন ও ১-ক্লিকে পাঠান</h3>
+          <p>
+            প্রথমে ওপরের বক্স থেকে তোমার ৬ ডিজিটের <strong>My ID</strong> বন্ধুকে দাও অথবা বন্ধুর ID-টি <strong>Friend ID</strong> ঘরে লিখে <strong>+ Add</strong> চাপো। বন্ধু সাইটে ঢুকলেই সবুজ বাতি (<strong>Online</strong>) জ্বলবে। এবার ফাইল সিলেক্ট করে বাম পাশের সবুজ <strong>Send to Friend</strong> বাটনে (বা বন্ধুর নামে) ক্লিক করলেই বন্ধুর স্ক্রিনে <strong>Accept / Decline</strong> পপ-আপ যাবে!
+          </p>
+        </div>
+
+        <div class="guide-step-card">
+          <span class="guide-step-badge">পদ্ধতি ২ • 6-Digit Share Code</span>
+          <h3>২. যেকোনো নতুন ডিভাইসে ফাইল পাঠানো</h3>
+          <p>
+            বন্ধু সেভ করা না থাকলে ফাইল সিলেক্ট করে ডান পাশের নীল <strong>Create Share Code</strong> বাটনে চাপো—স্ক্রিনে একটি ৬ ডিজিটের কোড দেখাবে। রিসিভার <strong>Receive Files</strong> ট্যাবে গিয়ে ওই কোডটি বসিয়ে <strong>Connect &amp; Receive</strong> চাপলেই সরাসরি ফাইল ট্রান্সফার শুরু হয়ে যাবে।
+          </p>
+        </div>
+
+        <div class="guide-step-card">
+          <span class="guide-step-badge">টিপস • প্রিভিউ ও অটো-সেভ</span>
+          <h3>৩. ফাইল দেখা, ডিলিট ও অটো-ডাউনলোড</h3>
+          <p>
+            ফাইল সিলেক্ট করার পর লিস্টের যেকোনো ছবির ওপর ক্লিক করলে বড় করে প্রিভিউ দেখা যাবে, আর ডান পাশের <strong>&times;</strong> বাটনে চেপে নির্দিষ্ট ফাইল বাদ দেওয়া যাবে। ট্রান্সফার শেষ হলে ফাইল অটোমেটিক ফোনের <strong>Downloads</strong> ফোল্ডারে সেভ হয়ে যাবে।
+          </p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Smart Tools // — Fast, Private &amp; Free Browser Utilities.</p>
+  </footer>
+
+  <!-- Firebase Modular SDK (Realtime Database Presence + Signaling) + WebRTC P2P Engine -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      set,
+      get,
+      update,
+      onValue,
+      onChildAdded,
+      onDisconnect,
+      remove
+    } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+    const canonicalEl = document.getElementById('canonicalLink');
+    if (canonicalEl && window.location.protocol.startsWith('http')) {
+      canonicalEl.href = window.location.origin + window.location.pathname;
+    }
+
+    /* ============================================================
+       1. SMART THRESHOLD SKELETON LOADER (bfcache-Safe)
+       ============================================================ */
+    const skeletonOverlay = document.getElementById('skeletonOverlay');
+    let skeletonShown = false;
+
+    const loaderTimer = setTimeout(() => {
+      skeletonOverlay.classList.add('visible');
+      skeletonShown = true;
+    }, 120);
+
+    function resetSkeletonLoader() {
+      clearTimeout(loaderTimer);
+      skeletonOverlay.classList.remove('visible');
+      skeletonShown = false;
+    }
+
+    window.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      if (skeletonShown) setTimeout(resetSkeletonLoader, 240);
+      drawPipes();
+    });
+    window.addEventListener('pageshow', resetSkeletonLoader);
+    window.addEventListener('pagehide', resetSkeletonLoader);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resetSkeletonLoader();
+    });
+
+    /* ============================================================
+       2. FIREBASE REALTIME DATABASE CONFIG
+       ============================================================ */
+    const firebaseConfig = {
+      apiKey: "AIzaSyDpcpX86swlVXXPT6WW0Vssf2Z-0ctxE8Q",
+      authDomain: "smart-tools-share.firebaseapp.com",
+      databaseURL: "https://smart-tools-share-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "smart-tools-share",
+      storageBucket: "smart-tools-share.firebasestorage.app",
+      messagingSenderId: "635789401182",
+      appId: "1:635789401182:web:2a8e74d37a76a849b668cf"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    /* ============================================================
+       3. PRECISION NOZZLE-TO-NOZZLE 3D GLASS PIPES
+          - Outer Left Lane: Dock Left Nozzle -> Friend Btn Left Nozzle
+          - Friend Out: Friend Btn Bottom Nozzle -> Output Left Nozzle
+          - Code In: Top File Box Bottom -> Code Btn Top Nozzle
+          - Code Out: Code Btn Bottom Nozzle -> Output Right Nozzle
+       ============================================================ */
+    const stage = document.getElementById('pipelineStage');
+    const friendsDockBox = document.getElementById('friendsDockBox');
+    const topCardBox = document.getElementById('topCardBox');
+    const friendActionBtn = document.getElementById('friendActionBtn');
+    const primaryActionBtn = document.getElementById('primaryActionBtn');
+    const bottomStatusBox = document.getElementById('bottomStatusBox');
+
+    // Exact Nozzle DOM Elements for 100% Flush Alignment
+    const dockLeftNozzle = document.getElementById('dockLeftNozzle');
+    const friendBtnLeftNozzle = document.getElementById('friendBtnLeftNozzle');
+    const friendBtnBottomNozzle = document.getElementById('friendBtnBottomNozzle');
+    const outFriendNozzle = document.getElementById('outFriendNozzle');
+
+    const codeBtnTopNozzle = document.getElementById('codeBtnTopNozzle');
+    const codeBtnBottomNozzle = document.getElementById('codeBtnBottomNozzle');
+    const outCodeNozzle = document.getElementById('outCodeNozzle');
+
+    const pipeFriendGroup = document.getElementById('pipeFriendGroup');
+    const pipeCodeGroup = document.getElementById('pipeCodeGroup');
+
+    const friendWaveLayer = document.getElementById('friendWaveLayer');
+    const codeWaveLayer = document.getElementById('codeWaveLayer');
+
+    let friendAnimations = [];
+    let codeAnimations = [];
+
+    function getNozzleCenter(el, stageRect) {
+      const r = el.getBoundingClientRect();
+      return {
+        x: (r.left - stageRect.left) + r.width * 0.5,
+        y: (r.top - stageRect.top) + r.height * 0.5
+      };
+    }
+
+    function drawPipes() {
+      const stageRect = stage.getBoundingClientRect();
+      const upRect = topCardBox.getBoundingClientRect();
+
+      pipeFriendGroup.innerHTML = '';
+      pipeCodeGroup.innerHTML = '';
+
+      const isCodeArmed = !primaryActionBtn.disabled;
+      const isFriendArmed = !friendActionBtn.disabled;
+
+      /* --- A. FRIEND CHANNEL PIPELINE (Pushed further left into clean outer lane) --- */
+      const pDockLeft = getNozzleCenter(dockLeftNozzle, stageRect);
+      const pFriendLeft = getNozzleCenter(friendBtnLeftNozzle, stageRect);
+      const pFriendBottom = getNozzleCenter(friendBtnBottomNozzle, stageRect);
+      const pOutFriend = getNozzleCenter(outFriendNozzle, stageRect);
+
+      // Push vertical lane 34px outside the left edge of cards so it never touches any box
+      const outerLaneX = Math.max(10, Math.min(pDockLeft.x, pFriendLeft.x) - 34);
+      const rCorner = 14;
+
+      const pipeFriendInD = [
+        `M ${pDockLeft.x} ${pDockLeft.y}`,
+        `H ${outerLaneX + rCorner}`,
+        `Q ${outerLaneX} ${pDockLeft.y} ${outerLaneX} ${pDockLeft.y + rCorner}`,
+        `V ${pFriendLeft.y - rCorner}`,
+        `Q ${outerLaneX} ${pFriendLeft.y} ${outerLaneX + rCorner} ${pFriendLeft.y}`,
+        `H ${pFriendLeft.x}`
+      ].join(' ');
+
+      const pathFriendIn = createStaticPipeLayers(pipeFriendGroup, pipeFriendInD, 'pipe-friend-in', isFriendArmed, 'is-friend-core');
+
+      const midFriendOutY = pFriendBottom.y + (pOutFriend.y - pFriendBottom.y) * 0.5;
+      const pipeFriendOutD = `M ${pFriendBottom.x} ${pFriendBottom.y} C ${pFriendBottom.x} ${midFriendOutY}, ${pOutFriend.x} ${midFriendOutY}, ${pOutFriend.x} ${pOutFriend.y}`;
+      const pathFriendOut = createStaticPipeLayers(pipeFriendGroup, pipeFriendOutD, 'pipe-friend-out', isFriendArmed, 'is-friend-core');
+
+      friendAnimations = buildGpuWaveCapsules(friendWaveLayer, friendAnimations, [
+        { pathEl: pathFriendIn, count: 5, duration: 960 },
+        { pathEl: pathFriendOut, count: 4, duration: 640 }
+      ], true);
+
+      /* --- B. STANDARD CODE/RECEIVE CHANNEL PIPELINE --- */
+      const upBottomY = upRect.bottom - stageRect.top;
+      const upCenterX = (upRect.left - stageRect.left) + upRect.width * 0.5;
+      const pCodeTop = getNozzleCenter(codeBtnTopNozzle, stageRect);
+      const pCodeBottom = getNozzleCenter(codeBtnBottomNozzle, stageRect);
+      const pOutCode = getNozzleCenter(outCodeNozzle, stageRect);
+
+      const midCodeInY = upBottomY + (pCodeTop.y - upBottomY) * 0.5;
+      const pipeCodeInD = `M ${upCenterX} ${upBottomY} C ${upCenterX} ${midCodeInY}, ${pCodeTop.x} ${midCodeInY}, ${pCodeTop.x} ${pCodeTop.y}`;
+      const pathCodeIn = createStaticPipeLayers(pipeCodeGroup, pipeCodeInD, 'pipe-code-in', isCodeArmed, '');
+
+      const midCodeOutY = pCodeBottom.y + (pOutCode.y - pCodeBottom.y) * 0.5;
+      const pipeCodeOutD = `M ${pCodeBottom.x} ${pCodeBottom.y} C ${pCodeBottom.x} ${midCodeOutY}, ${pOutCode.x} ${midCodeOutY}, ${pOutCode.x} ${pOutCode.y}`;
+      const pathCodeOut = createStaticPipeLayers(pipeCodeGroup, pipeCodeOutD, 'pipe-code-out', isCodeArmed, '');
+
+      codeAnimations = buildGpuWaveCapsules(codeWaveLayer, codeAnimations, [
+        { pathEl: pathCodeIn, count: 4, duration: 640 },
+        { pathEl: pathCodeOut, count: 4, duration: 640 }
+      ], false);
+    }
+
+    function createStaticPipeLayers(container, pathData, idPrefix, isArmed, extraCoreClass) {
+      const ns = 'http://www.w3.org/2000/svg';
+
+      const shadow = document.createElementNS(ns, 'path');
+      shadow.setAttribute('d', pathData);
+      shadow.setAttribute('class', 'pipe-tube-shadow');
+
+      const glass = document.createElementNS(ns, 'path');
+      glass.setAttribute('d', pathData);
+      glass.setAttribute('class', 'pipe-tube-glass');
+
+      const core = document.createElementNS(ns, 'path');
+      core.setAttribute('d', pathData);
+      core.setAttribute('id', `${idPrefix}-core`);
+      core.setAttribute('class', `pipe-tube-core ${extraCoreClass} ${isArmed ? 'is-armed' : ''}`);
+
+      container.append(shadow, glass, core);
+      return core;
+    }
+
+    function buildGpuWaveCapsules(layerEl, existingAnims, specs, isFriendStyle) {
+      const wasFlowing = layerEl.classList.contains('is-flowing');
+      existingAnims.forEach(anim => anim.cancel());
+      layerEl.innerHTML = '';
+
+      const newAnims = [];
+      const frag = document.createDocumentFragment();
+
+      specs.forEach(({ pathEl, count, duration }) => {
+        const totalLen = pathEl.getTotalLength();
+        if (totalLen <= 0) return;
+
+        const steps = 32;
+        const keyframes = [];
+        for (let s = 0; s <= steps; s++) {
+          const dist = (s / steps) * totalLen;
+          const pt = pathEl.getPointAtLength(dist);
+          const p1 = pathEl.getPointAtLength(Math.max(0, dist - 1.5));
+          const p2 = pathEl.getPointAtLength(Math.min(totalLen, dist + 1.5));
+          const deg = Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+
+          let op = 1;
+          if (s <= 2) op = s / 2;
+          else if (s >= steps - 2) op = (steps - s) / 2;
+
+          keyframes.push({
+            transform: `translate3d(${pt.x.toFixed(1)}px, ${pt.y.toFixed(1)}px, 0) rotate(${deg.toFixed(1)}deg)`,
+            opacity: op
+          });
+        }
+
+        for (let i = 0; i < count; i++) {
+          const cap = document.createElement('div');
+          cap.className = `gpu-wave-capsule ${isFriendStyle ? 'friend-beam' : ''}`;
+          frag.appendChild(cap);
+
+          const anim = cap.animate(keyframes, {
+            duration,
+            iterations: Infinity,
+            delay: -(duration / count) * i,
+            easing: 'linear'
+          });
+          if (!wasFlowing) anim.pause();
+          newAnims.push(anim);
+        }
+      });
+
+      layerEl.appendChild(frag);
+      return newAnims;
+    }
+
+    function setActiveBeamChannel(channel) {
+      const friendOn = channel === 'friend';
+      const codeOn = channel === 'code';
+
+      friendWaveLayer.classList.toggle('is-flowing', friendOn);
+      friendAnimations.forEach(anim => (friendOn ? anim.play() : anim.pause()));
+
+      codeWaveLayer.classList.toggle('is-flowing', codeOn);
+      codeAnimations.forEach(anim => (codeOn ? anim.play() : anim.pause()));
+    }
+
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(() => drawPipes());
+      ro.observe(friendsDockBox);
+      ro.observe(topCardBox);
+      ro.observe(bottomStatusBox);
+    }
+    window.addEventListener('resize', drawPipes);
+
+    /* ============================================================
+       4. PERMANENT DEVICE ID, LIVE PRESENCE & SAVED FRIENDS SYSTEM
+       ============================================================ */
+    let myDeviceId = localStorage.getItem('st_p2p_device_id');
+    if (!myDeviceId || !/^\d{6}$/.test(myDeviceId)) {
+      myDeviceId = String(Math.floor(100000 + Math.random() * 900000));
+      localStorage.setItem('st_p2p_device_id', myDeviceId);
+    }
+
+    let myDeviceName = localStorage.getItem('st_p2p_device_name');
+    if (!myDeviceName) {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      myDeviceName = isMobile ? `Mobile-${myDeviceId.slice(-3)}` : `PC-${myDeviceId.slice(-3)}`;
+      localStorage.setItem('st_p2p_device_name', myDeviceName);
+    }
+
+    const myDeviceNameLabel = document.getElementById('myDeviceNameLabel');
+    const myDeviceIdBadge = document.getElementById('myDeviceIdBadge');
+    const editMyNameBtn = document.getElementById('editMyNameBtn');
+    const addFriendForm = document.getElementById('addFriendForm');
+    const friendIdInput = document.getElementById('friendIdInput');
+    const friendsStrip = document.getElementById('friendsStrip');
+    const friendsEmptyHint = document.getElementById('friendsEmptyHint');
+    const friendActionLabel = document.getElementById('friendActionLabel');
+
+    myDeviceNameLabel.textContent = myDeviceName;
+    myDeviceIdBadge.textContent = myDeviceId;
+
+    const myUserRef = ref(db, `p2p_users/${myDeviceId}`);
+    const connectedRef = ref(db, '.info/connected');
+
+    onValue(connectedRef, (snap) => {
+      if (snap.val() === true) {
+        onDisconnect(myUserRef).update({
+          online: false,
+          lastSeen: Date.now()
+        });
+        update(myUserRef, {
+          name: myDeviceName,
+          online: true,
+          lastSeen: Date.now()
+        });
+      }
+    });
+
+    editMyNameBtn.addEventListener('click', () => {
+      const nextName = prompt('Enter your device name (e.g., Hasan Phone):', myDeviceName);
+      if (nextName && nextName.trim()) {
+        myDeviceName = nextName.trim().slice(0, 22);
+        localStorage.setItem('st_p2p_device_name', myDeviceName);
+        myDeviceNameLabel.textContent = myDeviceName;
+        update(myUserRef, { name: myDeviceName }).catch(() => {});
+      }
+    });
+
+    myDeviceIdBadge.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(myDeviceId);
+        const old = myDeviceIdBadge.textContent;
+        myDeviceIdBadge.textContent = 'Copied!';
+        setTimeout(() => (myDeviceIdBadge.textContent = old), 1300);
+      } catch (_) {}
+    });
+
+    let savedFriends = [];
+    try {
+      savedFriends = JSON.parse(localStorage.getItem('st_p2p_friends') || '[]');
+    } catch (_) {
+      savedFriends = [];
+    }
+
+    const friendLiveMap = {};
+    let selectedFriendId = null;
+
+    function saveFriendsToStorage() {
+      localStorage.setItem('st_p2p_friends', JSON.stringify(savedFriends));
+    }
+
+    function watchFriendPresence(friendId) {
+      if (friendLiveMap[friendId]?.watching) return;
+      friendLiveMap[friendId] = { name: null, online: false, watching: true };
+
+      onValue(ref(db, `p2p_users/${friendId}`), (snap) => {
+        const val = snap.val();
+        if (val) {
+          friendLiveMap[friendId].name = val.name || `User-${friendId.slice(-3)}`;
+          friendLiveMap[friendId].online = Boolean(val.online);
+          const entry = savedFriends.find(f => f.id === friendId);
+          if (entry && val.name && entry.name !== val.name) {
+            entry.name = val.name;
+            saveFriendsToStorage();
+          }
+        } else {
+          friendLiveMap[friendId].online = false;
+        }
+        renderFriendsStrip();
+      });
+    }
+
+    function updateFriendButtonState() {
+      const onlineFriends = savedFriends.filter(f => friendLiveMap[f.id]?.online);
+      if (onlineFriends.length === 0) {
+        friendActionBtn.disabled = savedFriends.length === 0;
+        friendActionLabel.textContent = 'Send to Friend';
+      } else {
+        friendActionBtn.disabled = false;
+        const target = onlineFriends.find(f => f.id === selectedFriendId) || onlineFriends[0];
+        selectedFriendId = target.id;
+        const targetName = friendLiveMap[target.id]?.name || target.name || 'Friend';
+        friendActionLabel.textContent = `Send: ${targetName}`;
+      }
+      drawPipes();
+    }
+
+    function renderFriendsStrip() {
+      friendsStrip.innerHTML = '';
+      if (savedFriends.length === 0) {
+        friendsStrip.appendChild(friendsEmptyHint);
+        friendsEmptyHint.style.display = 'inline';
+        updateFriendButtonState();
+        return;
+      }
+
+      savedFriends.forEach((friend, idx) => {
+        watchFriendPresence(friend.id);
+        const live = friendLiveMap[friend.id] || {};
+        const isOnline = Boolean(live.online);
+        const displayName = live.name || friend.name || `Friend-${friend.id.slice(-3)}`;
+
+        const chip = document.createElement('div');
+        chip.className = `friend-chip ${isOnline ? 'is-online' : 'is-offline'}`;
+        chip.title = isOnline
+          ? `Click to send selected files directly to ${displayName}`
+          : `${displayName} is currently offline`;
+
+        chip.innerHTML = `
+          <span class="friend-status-dot"></span>
+          <div class="friend-chip-info">
+            <div class="friend-chip-name">${displayName}</div>
+            <div class="friend-chip-sub">${isOnline ? 'Online • Tap to Send' : 'Offline • ID ' + friend.id}</div>
+          </div>
+          <span class="friend-del-x" title="Remove friend">&times;</span>
+        `;
+
+        chip.querySelector('.friend-del-x').addEventListener('click', (e) => {
+          e.stopPropagation();
+          savedFriends.splice(idx, 1);
+          saveFriendsToStorage();
+          renderFriendsStrip();
+        });
+
+        chip.addEventListener('click', async () => {
+          selectedFriendId = friend.id;
+          updateFriendButtonState();
+          if (!isOnline) {
+            alert(`${displayName} is currently offline. Ask them to open this page on their browser first!`);
+            return;
+          }
+          if (sendItems.length === 0) {
+            switchToSendMode();
+            fileInput.click();
+            return;
+          }
+          await sendDirectRequestToFriend(friend.id, displayName);
+        });
+
+        friendsStrip.appendChild(chip);
+      });
+
+      updateFriendButtonState();
+    }
+
+    friendActionBtn.addEventListener('click', async () => {
+      const onlineFriends = savedFriends.filter(f => friendLiveMap[f.id]?.online);
+      if (onlineFriends.length === 0) {
+        alert('No saved friend is currently online. Add their 6-digit ID or ask them to open this page!');
+        return;
+      }
+      const target = onlineFriends.find(f => f.id === selectedFriendId) || onlineFriends[0];
+      const displayName = friendLiveMap[target.id]?.name || target.name || 'Friend';
+
+      if (sendItems.length === 0) {
+        switchToSendMode();
+        fileInput.click();
+        return;
+      }
+      await sendDirectRequestToFriend(target.id, displayName);
+    });
+
+    friendIdInput.addEventListener('input', () => {
+      friendIdInput.value = friendIdInput.value.replace(/\D/g, '').slice(0, 6);
+    });
+
+    addFriendForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const targetId = friendIdInput.value.trim();
+      if (targetId.length !== 6) return;
+      if (targetId === myDeviceId) {
+        alert('You cannot add your own Device ID.');
+        return;
+      }
+      if (savedFriends.some(f => f.id === targetId)) {
+        friendIdInput.value = '';
+        return;
+      }
+
+      let fetchedName = `Friend-${targetId.slice(-3)}`;
+      try {
+        const snap = await get(ref(db, `p2p_users/${targetId}`));
+        if (snap.exists() && snap.val().name) {
+          fetchedName = snap.val().name;
+        }
+      } catch (_) {}
+
+      savedFriends.push({ id: targetId, name: fetchedName });
+      selectedFriendId = targetId;
+      saveFriendsToStorage();
+      friendIdInput.value = '';
+      renderFriendsStrip();
+    });
+
+    renderFriendsStrip();
+
+    /* ============================================================
+       5. INCOMING FRIEND FILE REQUEST LISTENER & DECLINE FEEDBACK
+       ============================================================ */
+    const incomingRequestModal = document.getElementById('incomingRequestModal');
+    const incomingSenderTitle = document.getElementById('incomingSenderTitle');
+    const incomingFilesDesc = document.getElementById('incomingFilesDesc');
+    const acceptIncomingBtn = document.getElementById('acceptIncomingBtn');
+    const declineIncomingBtn = document.getElementById('declineIncomingBtn');
+
+    let pendingIncomingInvite = null;
+    const myInboxRef = ref(db, `p2p_inbox/${myDeviceId}`);
+
+    onValue(myInboxRef, (snap) => {
+      const invite = snap.val();
+      if (!invite || !invite.roomCode) {
+        incomingRequestModal.classList.remove('open');
+        pendingIncomingInvite = null;
+        return;
+      }
+      if (Date.now() - (invite.timestamp || 0) > 120000) {
+        remove(myInboxRef).catch(() => {});
+        return;
+      }
+
+      pendingIncomingInvite = invite;
+      incomingSenderTitle.textContent = `${invite.senderName || 'A Friend'} wants to send files`;
+      incomingFilesDesc.textContent = `${invite.fileCount} ${invite.fileCount === 1 ? 'File' : 'Files'} (${formatBytes(invite.totalBytes || 0)}) • Direct P2P`;
+      incomingRequestModal.classList.add('open');
+    });
+
+    /* Receiver clicks Decline -> Notify Sender immediately! */
+    declineIncomingBtn.addEventListener('click', async () => {
+      if (pendingIncomingInvite && pendingIncomingInvite.roomCode) {
+        const declineRoomRef = ref(db, `p2p_rooms/${pendingIncomingInvite.roomCode}`);
+        try {
+          await update(declineRoomRef, {
+            status: 'declined',
+            declinedBy: myDeviceName
+          });
+        } catch (_) {}
+      }
+      remove(myInboxRef).catch(() => {});
+      incomingRequestModal.classList.remove('open');
+      pendingIncomingInvite = null;
+    });
+
+    acceptIncomingBtn.addEventListener('click', async () => {
+      if (!pendingIncomingInvite) return;
+      const invite = { ...pendingIncomingInvite };
+      remove(myInboxRef).catch(() => {});
+      incomingRequestModal.classList.remove('open');
+
+      if (invite.senderId && invite.senderId !== myDeviceId && !savedFriends.some(f => f.id === invite.senderId)) {
+        savedFriends.push({ id: invite.senderId, name: invite.senderName || `Friend-${invite.senderId.slice(-3)}` });
+        saveFriendsToStorage();
+        renderFriendsStrip();
+      }
+
+      switchToReceiveMode();
+      receiveCodeInput.value = invite.roomCode;
+      await startReceiverSession(invite.roomCode, 'friend');
+    });
+
+    /* ============================================================
+       6. LIGHTBOX MODAL PREVIEWER
+       ============================================================ */
+    const previewModal = document.getElementById('previewModal');
+    const previewModalTitle = document.getElementById('previewModalTitle');
+    const previewMediaStage = document.getElementById('previewMediaStage');
+    const previewCloseBtn = document.getElementById('previewCloseBtn');
+    const previewPrevBtn = document.getElementById('previewPrevBtn');
+    const previewNextBtn = document.getElementById('previewNextBtn');
+    const previewCounterLabel = document.getElementById('previewCounterLabel');
+
+    let activeGalleryItems = [];
+    let activeGalleryIndex = 0;
+
+    function openGalleryPreview(items, index) {
+      if (!items || !items.length) return;
+      activeGalleryItems = items;
+      activeGalleryIndex = Math.max(0, Math.min(items.length - 1, index));
+      renderModalSlide();
+      previewModal.classList.add('open');
+    }
+
+    function renderModalSlide() {
+      const item = activeGalleryItems[activeGalleryIndex];
+      if (!item) return;
+
+      previewModalTitle.textContent = `${item.name} (${formatBytes(item.size)})`;
+      previewCounterLabel.textContent = `${activeGalleryIndex + 1} of ${activeGalleryItems.length}`;
+      previewPrevBtn.disabled = activeGalleryIndex <= 0;
+      previewNextBtn.disabled = activeGalleryIndex >= activeGalleryItems.length - 1;
+
+      previewMediaStage.innerHTML = '';
+      if (item.mime.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = item.url;
+        img.alt = item.name;
+        previewMediaStage.appendChild(img);
+      } else if (item.mime.startsWith('video/')) {
+        const vid = document.createElement('video');
+        vid.src = item.url;
+        vid.controls = true;
+        vid.autoplay = true;
+        previewMediaStage.appendChild(vid);
+      } else if (item.mime.startsWith('audio/')) {
+        const aud = document.createElement('audio');
+        aud.src = item.url;
+        aud.controls = true;
+        aud.autoplay = true;
+        previewMediaStage.appendChild(aud);
+      } else {
+        previewMediaStage.innerHTML = `<div class="preview-fallback-box">📄 ${item.name}<br><small style="opacity:0.75">File Size: ${formatBytes(item.size)}</small></div>`;
+      }
+    }
+
+    function closeGalleryPreview() {
+      previewModal.classList.remove('open');
+      previewMediaStage.innerHTML = '';
+    }
+
+    previewCloseBtn.addEventListener('click', closeGalleryPreview);
+    previewModal.addEventListener('click', (e) => {
+      if (e.target === previewModal) closeGalleryPreview();
+    });
+    previewPrevBtn.addEventListener('click', () => {
+      if (activeGalleryIndex > 0) { activeGalleryIndex--; renderModalSlide(); }
+    });
+    previewNextBtn.addEventListener('click', () => {
+      if (activeGalleryIndex < activeGalleryItems.length - 1) { activeGalleryIndex++; renderModalSlide(); }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!previewModal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeGalleryPreview();
+      if (e.key === 'ArrowLeft' && activeGalleryIndex > 0) { activeGalleryIndex--; renderModalSlide(); }
+      if (e.key === 'ArrowRight' && activeGalleryIndex < activeGalleryItems.length - 1) { activeGalleryIndex++; renderModalSlide(); }
+    });
+
+    /* ============================================================
+       7. UI STATE, INDIVIDUAL REMOVE & MODE SWITCHING
+       ============================================================ */
+    const sendModeTab = document.getElementById('sendModeTab');
+    const receiveModeTab = document.getElementById('receiveModeTab');
+    const sendPanel = document.getElementById('sendPanel');
+    const receivePanel = document.getElementById('receivePanel');
+
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const sendQueueWrap = document.getElementById('sendQueueWrap');
+    const queueCountText = document.getElementById('queueCountText');
+    const addMoreFilesBtn = document.getElementById('addMoreFilesBtn');
+    const clearFilesBtn = document.getElementById('clearFilesBtn');
+    const sendFileList = document.getElementById('sendFileList');
+
+    const receiveCodeInput = document.getElementById('receiveCodeInput');
+    const primaryActionLabel = document.getElementById('primaryActionLabel');
+
+    const idleStatusStage = document.getElementById('idleStatusStage');
+    const idleBadgeBox = document.getElementById('idleBadgeBox');
+    const idleBadgeText = document.getElementById('idleBadgeText');
+    const idleSubText = document.getElementById('idleSubText');
+    const radarCodeStage = document.getElementById('radarCodeStage');
+    const radarStatusHeadline = document.getElementById('radarStatusHeadline');
+    const generatedCodeDisplay = document.getElementById('generatedCodeDisplay');
+    const copyCodeBtn = document.getElementById('copyCodeBtn');
+
+    const transferProgressStage = document.getElementById('transferProgressStage');
+    const transferStatusLabel = document.getElementById('transferStatusLabel');
+    const transferSpeedText = document.getElementById('transferSpeedText');
+    const beamProgressFill = document.getElementById('beamProgressFill');
+    const receivedFileList = document.getElementById('receivedFileList');
+
+    let currentMode = 'send';
+    let sendItems = [];
+    let receivedItems = [];
+
+    let activePeer = null;
+    let activeRoomRef = null;
+    let activeRoomCode = null;
+    let activeFriendInboxRef = null;
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      if (bytes < 1024 * 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+      return `${(bytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+    }
+
+    function resetStatusStyles() {
+      bottomStatusBox.classList.remove('is-connected', 'is-declined');
+      idleBadgeBox.classList.remove('is-error');
+    }
+
+    function cleanupSession() {
+      setActiveBeamChannel('none');
+      if (activePeer) {
+        try { activePeer.close(); } catch (_) {}
+        activePeer = null;
+      }
+      if (activeRoomRef) {
+        remove(activeRoomRef).catch(() => {});
+        activeRoomRef = null;
+      }
+      if (activeFriendInboxRef) {
+        remove(activeFriendInboxRef).catch(() => {});
+        activeFriendInboxRef = null;
+      }
+      activeRoomCode = null;
+      resetStatusStyles();
+      radarCodeStage.classList.remove('active');
+      transferProgressStage.classList.remove('active');
+      idleStatusStage.style.display = 'block';
+    }
+
+    window.addEventListener('beforeunload', cleanupSession);
+
+    function switchToSendMode() {
+      if (currentMode === 'send') return;
+      currentMode = 'send';
+      cleanupSession();
+      sendModeTab.classList.add('active');
+      receiveModeTab.classList.remove('active');
+      sendPanel.style.display = 'block';
+      receivePanel.classList.remove('active');
+      primaryActionLabel.textContent = 'Create Share Code';
+      primaryActionBtn.disabled = sendItems.length === 0;
+      idleBadgeText.textContent = 'P2P Engine Ready';
+      idleSubText.textContent = 'Use Send to Friend (left pipe) or Create Share Code (right pipe)';
+      drawPipes();
+    }
+
+    function switchToReceiveMode() {
+      if (currentMode === 'receive') return;
+      currentMode = 'receive';
+      cleanupSession();
+      receiveModeTab.classList.add('active');
+      sendModeTab.classList.remove('active');
+      sendPanel.style.display = 'none';
+      receivePanel.classList.add('active');
+      primaryActionLabel.textContent = 'Connect & Receive';
+      primaryActionBtn.disabled = receiveCodeInput.value.trim().length !== 6;
+      idleBadgeText.textContent = 'Receiver Ready';
+      idleSubText.textContent = 'Enter a 6-digit code or accept an incoming friend request';
+      drawPipes();
+    }
+
+    sendModeTab.addEventListener('click', switchToSendMode);
+    receiveModeTab.addEventListener('click', switchToReceiveMode);
+
+    function addFilesToSendQueue(fileListObj) {
+      Array.from(fileListObj).forEach((file) => {
+        sendItems.push({
+          id: `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+          file,
+          url: URL.createObjectURL(file),
+          name: file.name,
+          size: file.size,
+          mime: file.type || 'application/octet-stream'
+        });
+      });
+      renderSendQueue();
+      drawPipes();
+    }
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    addMoreFilesBtn.addEventListener('click', () => fileInput.click());
+    clearFilesBtn.addEventListener('click', () => {
+      cleanupSession();
+      sendItems.forEach(item => URL.revokeObjectURL(item.url));
+      sendItems = [];
+      renderSendQueue();
+      drawPipes();
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('drag-over');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length) addFilesToSendQueue(e.dataTransfer.files);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) {
+        addFilesToSendQueue(fileInput.files);
+        fileInput.value = '';
+      }
+    });
+
+    function renderSendQueue() {
+      if (sendItems.length === 0) {
+        dropZone.style.display = 'block';
+        sendQueueWrap.classList.remove('active');
+        primaryActionBtn.disabled = true;
+        return;
+      }
+
+      dropZone.style.display = 'none';
+      sendQueueWrap.classList.add('active');
+      primaryActionBtn.disabled = false;
+
+      const totalBytes = sendItems.reduce((s, item) => s + item.size, 0);
+      queueCountText.textContent = `${sendItems.length} ${sendItems.length === 1 ? 'File' : 'Files'} (${formatBytes(totalBytes)})`;
+
+      sendFileList.innerHTML = '';
+      sendItems.forEach((item, idx) => {
+        const ext = (item.name.split('.').pop() || 'FILE').toUpperCase().slice(0, 4);
+        const isImg = item.mime.startsWith('image/');
+        const row = document.createElement('div');
+        row.className = 'file-item-row is-previewable';
+        row.title = 'Click to preview';
+
+        const thumbHtml = isImg
+          ? `<img src="${item.url}" alt="${item.name}" class="file-thumb" />`
+          : `<div class="file-icon-badge">${ext}</div>`;
+
+        row.innerHTML = `
+          ${thumbHtml}
+          <div class="file-meta">
+            <div class="file-name">${item.name}</div>
+            <div class="file-stats">${formatBytes(item.size)} • Tap to View</div>
+          </div>
+          <div class="row-actions-group">
+            <button type="button" class="remove-file-btn" title="Remove this file" aria-label="Remove ${item.name}">&times;</button>
+          </div>
+        `;
+
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('.remove-file-btn')) return;
+          openGalleryPreview(sendItems, idx);
+        });
+
+        row.querySelector('.remove-file-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          URL.revokeObjectURL(item.url);
+          sendItems.splice(idx, 1);
+          renderSendQueue();
+          drawPipes();
+        });
+
+        sendFileList.appendChild(row);
+      });
+    }
+
+    receiveCodeInput.addEventListener('input', () => {
+      receiveCodeInput.value = receiveCodeInput.value.replace(/\D/g, '').slice(0, 6);
+      if (currentMode === 'receive') {
+        primaryActionBtn.disabled = receiveCodeInput.value.length !== 6;
+        drawPipes();
+      }
+    });
+
+    copyCodeBtn.addEventListener('click', async () => {
+      if (!activeRoomCode) return;
+      try {
+        await navigator.clipboard.writeText(activeRoomCode);
+        copyCodeBtn.textContent = 'Copied!';
+        setTimeout(() => (copyCodeBtn.textContent = 'Copy'), 1500);
+      } catch (_) {}
+    });
+
+    /* ============================================================
+       8. WEBRTC P2P ENGINE (Dual-Channel Routing + Decline Alert)
+       ============================================================ */
+    const rtcConfig = {
+      iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' }
+      ]
+    };
+
+    const CHUNK_SIZE = 65536;
+
+    primaryActionBtn.addEventListener('click', async () => {
+      if (currentMode === 'send') {
+        if (sendItems.length === 0) return;
+        await startSenderSession(null, 'code');
+      } else {
+        const code = receiveCodeInput.value.trim();
+        if (code.length !== 6) return;
+        await startReceiverSession(code, 'code');
+      }
+    });
+
+    async function sendDirectRequestToFriend(friendId, friendName) {
+      switchToSendMode();
+      const roomCode = await startSenderSession(friendName, 'friend');
+      const totalBytes = sendItems.reduce((sum, item) => sum + item.size, 0);
+
+      activeFriendInboxRef = ref(db, `p2p_inbox/${friendId}`);
+      await set(activeFriendInboxRef, {
+        roomCode,
+        senderId: myDeviceId,
+        senderName: myDeviceName,
+        fileCount: sendItems.length,
+        totalBytes,
+        timestamp: Date.now()
+      });
+    }
+
+    /* --- SENDER FLOW --- */
+    async function startSenderSession(targetFriendName, pipeChannel) {
+      cleanupSession();
+      primaryActionBtn.disabled = true;
+
+      const code = String(Math.floor(100000 + Math.random() * 900000));
+      activeRoomCode = code;
+      activeRoomRef = ref(db, `p2p_rooms/${code}`);
+
+      const pc = new RTCPeerConnection(rtcConfig);
+      activePeer = pc;
+
+      const dataChannel = pc.createDataChannel('smartToolsTransfer', { ordered: true });
+      dataChannel.binaryType = 'arraybuffer';
+      dataChannel.bufferedAmountLowThreshold = 262144;
+
+      pc.onicecandidate = (event) => {
+        if (event.candidate) {
+          const candKey = String(Date.now()) + '_' + Math.floor(Math.random() * 10000);
+          set(ref(db, `p2p_rooms/${code}/callerCandidates/${candKey}`), event.candidate.toJSON());
+        }
+      };
+
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+
+      await set(activeRoomRef, {
+        offer: { type: offer.type, sdp: offer.sdp },
+        status: 'waiting',
+        createdAt: Date.now()
+      });
+
+      idleStatusStage.style.display = 'none';
+      radarCodeStage.classList.add('active');
+      radarStatusHeadline.textContent = targetFriendName
+        ? `Request Sent to ${targetFriendName} • Waiting for Accept...`
+        : 'Waiting for Receiver to Enter Code...';
+      generatedCodeDisplay.textContent = code;
+      drawPipes();
+
+      /* Listen if Friend Declined the Request! */
+      onValue(ref(db, `p2p_rooms/${code}/status`), (snapshot) => {
+        const statusVal = snapshot.val();
+        if (statusVal === 'declined') {
+          const whoDeclined = targetFriendName || 'Your friend';
+          cleanupSession();
+          bottomStatusBox.classList.add('is-declined');
+          idleBadgeBox.classList.add('is-error');
+          idleBadgeText.textContent = `Request Declined by ${whoDeclined}`;
+          idleSubText.textContent = `${whoDeclined} declined your file transfer request.`;
+          primaryActionBtn.disabled = sendItems.length === 0;
+          drawPipes();
+        }
+      });
+
+      onValue(ref(db, `p2p_rooms/${code}/answer`), async (snapshot) => {
+        const answer = snapshot.val();
+        if (answer && !pc.currentRemoteDescription) {
+          await pc.setRemoteDescription(new RTCSessionDescription(answer));
+        }
+      });
+
+      onChildAdded(ref(db, `p2p_rooms/${code}/calleeCandidates`), (snapshot) => {
+        const cand = snapshot.val();
+        if (cand) pc.addIceCandidate(new RTCIceCandidate(cand)).catch(() => {});
+      });
+
+      dataChannel.onopen = async () => {
+        if (activeRoomRef) {
+          remove(activeRoomRef).catch(() => {});
+          activeRoomRef = null;
+        }
+        activeFriendInboxRef = null;
+
+        radarCodeStage.classList.remove('active');
+        transferProgressStage.classList.add('active');
+        resetStatusStyles();
+        bottomStatusBox.classList.add('is-connected');
+        receivedFileList.innerHTML = '';
+        setActiveBeamChannel(pipeChannel);
+        drawPipes();
+
+        await streamAllFilesToPeer(dataChannel);
+      };
+
+      dataChannel.onclose = () => {
+        setActiveBeamChannel('none');
+        primaryActionBtn.disabled = false;
+      };
+
+      return code;
+    }
+
+    async function streamAllFilesToPeer(channel) {
+      const snapshotQueue = [...sendItems];
+      const totalBytesAll = snapshotQueue.reduce((sum, item) => sum + item.size, 0);
+      let totalSentAll = 0;
+      const startTime = performance.now();
+
+      for (let i = 0; i < snapshotQueue.length; i++) {
+        const file = snapshotQueue[i].file;
+        channel.send(JSON.stringify({
+          type: 'file-meta',
+          name: file.name,
+          size: file.size,
+          mime: file.type || 'application/octet-stream',
+          index: i + 1,
+          totalFiles: snapshotQueue.length
+        }));
+
+        let offset = 0;
+        while (offset < file.size) {
+          if (channel.bufferedAmount > 1048576) {
+            await new Promise((resolve) => {
+              channel.onbufferedamountlow = () => {
+                channel.onbufferedamountlow = null;
+                resolve();
+              };
+            });
+          }
+
+          const slice = file.slice(offset, offset + CHUNK_SIZE);
+          const buffer = await slice.arrayBuffer();
+          channel.send(buffer);
+
+          offset += buffer.byteLength;
+          totalSentAll += buffer.byteLength;
+
+          const elapsedSec = Math.max(0.1, (performance.now() - startTime) / 1000);
+          const speedMBs = (totalSentAll / (1024 * 1024)) / elapsedSec;
+          const pct = Math.min(100, Math.round((totalSentAll / Math.max(1, totalBytesAll)) * 100));
+
+          transferStatusLabel.textContent = `Sending (${i + 1}/${snapshotQueue.length}): ${file.name}`;
+          transferSpeedText.textContent = `${speedMBs.toFixed(1)} MB/s • ${pct}%`;
+          beamProgressFill.style.width = `${pct}%`;
+        }
+
+        channel.send(JSON.stringify({ type: 'file-end' }));
+      }
+
+      channel.send(JSON.stringify({ type: 'all-complete' }));
+      transferStatusLabel.textContent = `✓ Sent ${snapshotQueue.length} ${snapshotQueue.length === 1 ? 'File' : 'Files'} Successfully!`;
+      setActiveBeamChannel('none');
+      primaryActionBtn.disabled = false;
+    }
+
+    /* --- RECEIVER FLOW --- */
+    async function startReceiverSession(code, pipeChannel) {
+      cleanupSession();
+      primaryActionBtn.disabled = true;
+
+      idleBadgeText.textContent = 'Connecting to Sender...';
+      idleSubText.textContent = `Establishing direct P2P link (${code})...`;
+      drawPipes();
+
+      const roomRef = ref(db, `p2p_rooms/${code}`);
+      const snap = await get(roomRef);
+
+      if (!snap.exists() || !snap.val().offer) {
+        idleBadgeText.textContent = 'Session Expired';
+        idleSubText.textContent = 'The sender closed or cancelled this transfer.';
+        primaryActionBtn.disabled = false;
+        return;
+      }
+
+      activeRoomRef = roomRef;
+      const pc = new RTCPeerConnection(rtcConfig);
+      activePeer = pc;
+
+      pc.onicecandidate = (event) => {
+        if (event.candidate) {
+          const candKey = String(Date.now()) + '_' + Math.floor(Math.random() * 10000);
+          set(ref(db, `p2p_rooms/${code}/calleeCandidates/${candKey}`), event.candidate.toJSON());
+        }
+      };
+
+      pc.ondatachannel = (event) => {
+        const receiveChannel = event.channel;
+        receiveChannel.binaryType = 'arraybuffer';
+
+        idleStatusStage.style.display = 'none';
+        transferProgressStage.classList.add('active');
+        resetStatusStyles();
+        bottomStatusBox.classList.add('is-connected');
+        receivedItems = [];
+        receivedFileList.innerHTML = '';
+        setActiveBeamChannel(pipeChannel);
+        drawPipes();
+
+        let incomingMeta = null;
+        let receivedChunks = [];
+        let receivedBytes = 0;
+        let startTime = performance.now();
+
+        receiveChannel.onmessage = (msgEvent) => {
+          if (typeof msgEvent.data === 'string') {
+            const payload = JSON.parse(msgEvent.data);
+
+            if (payload.type === 'file-meta') {
+              incomingMeta = payload;
+              receivedChunks = [];
+              receivedBytes = 0;
+              startTime = performance.now();
+              beamProgressFill.style.width = '0%';
+              transferStatusLabel.textContent = `Receiving (${payload.index}/${payload.totalFiles}): ${payload.name}`;
+            } else if (payload.type === 'file-end' && incomingMeta) {
+              const fileBlob = new Blob(receivedChunks, { type: incomingMeta.mime });
+              const downloadUrl = URL.createObjectURL(fileBlob);
+
+              const recItem = {
+                name: incomingMeta.name,
+                url: downloadUrl,
+                size: incomingMeta.size,
+                mime: incomingMeta.mime
+              };
+              const itemIndex = receivedItems.push(recItem) - 1;
+
+              const isImg = recItem.mime.startsWith('image/');
+              const ext = (recItem.name.split('.').pop() || 'FILE').toUpperCase().slice(0, 4);
+              const thumbHtml = isImg
+                ? `<img src="${recItem.url}" alt="${recItem.name}" class="file-thumb" />`
+                : `<div class="file-icon-badge">${ext}</div>`;
+
+              const row = document.createElement('div');
+              row.className = 'file-item-row is-previewable';
+              row.title = 'Click to view';
+              row.innerHTML = `
+                ${thumbHtml}
+                <div class="file-meta">
+                  <div class="file-name">${recItem.name}</div>
+                  <div class="file-stats">${formatBytes(recItem.size)} • Tap to View</div>
+                </div>
+                <div class="row-actions-group">
+                  <a href="${recItem.url}" download="${recItem.name}" class="download-btn">Save</a>
+                </div>
+              `;
+
+              row.addEventListener('click', (e) => {
+                if (e.target.closest('.download-btn')) return;
+                openGalleryPreview(receivedItems, itemIndex);
+              });
+
+              receivedFileList.appendChild(row);
+
+              // Auto-trigger download
+              const autoLink = document.createElement('a');
+              autoLink.href = downloadUrl;
+              autoLink.download = incomingMeta.name;
+              autoLink.click();
+
+              receivedChunks = [];
+              incomingMeta = null;
+              drawPipes();
+            } else if (payload.type === 'all-complete') {
+              transferStatusLabel.textContent = '✓ All Files Received!';
+              setActiveBeamChannel('none');
+              primaryActionBtn.disabled = false;
+            }
+          } else if (incomingMeta) {
+            receivedChunks.push(msgEvent.data);
+            receivedBytes += msgEvent.data.byteLength;
+
+            const elapsedSec = Math.max(0.1, (performance.now() - startTime) / 1000);
+            const speedMBs = (receivedBytes / (1024 * 1024)) / elapsedSec;
+            const pct = Math.min(100, Math.round((receivedBytes / Math.max(1, incomingMeta.size)) * 100));
+
+            transferSpeedText.textContent = `${speedMBs.toFixed(1)} MB/s • ${pct}%`;
+            beamProgressFill.style.width = `${pct}%`;
+          }
+        };
+      };
+
+      const offer = snap.val().offer;
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
+      await update(roomRef, {
+        answer: { type: answer.type, sdp: answer.sdp },
+        status: 'accepted'
+      });
+
+      onChildAdded(ref(db, `p2p_rooms/${code}/callerCandidates`), (snapshot) => {
+        const cand = snapshot.val();
+        if (cand) pc.addIceCandidate(new RTCIceCandidate(cand)).catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
